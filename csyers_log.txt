@@ -1,0 +1,12 @@
+Date		Time		Work Done					Learned
+
+3/13/15		2		Lazy Foo tutorial 1. Worked with		A new path had to be added to PATH and LD_LIBRARY_PATH.
+				PATH vairalbes to allow for SDL			Learned that the header #include <SDL2/SDL.h> must be included
+				compilation. Opened a white window,		at the beginning of the file - not simple <SDL.h> as Lazy Foo
+				and created this document to keep		says. Learned simple SDL concepts such as loading windows and 
+				track of work done on the project.		surfaces, and getting SDL errors.
+
+3/14/15		.5		Lazy Foo tutorial 2. Loaded a BMP		More basic SDL functions. Learned the concepts of blitting and
+				image to a screen. Wrote a program		updating windows. Question: is there a way to upload images
+				named sdl2.cpp that opens a window		via terminal or is webfile the best way to do it?
+				with a downloaded BMP image.
