@@ -8,3 +8,4 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided
 											of how they play. The group decided on the types
 											of characters and their relative attributes
 
+
