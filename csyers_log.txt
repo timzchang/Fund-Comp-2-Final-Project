@@ -14,3 +14,10 @@ Date		Time		Work Done					Learned
 				that loads the BMP image from last		The program now opens and window with an image and it stays 
 				tutorial and displays it until the user		there until the user pressed the "x" on the corner.
 				presses the x on the window.
+
+3/15/15		2		Lazy Foo tutorials 4 and 5 (skipped 6,		More SDL functions, including e.key.keystm.sym, which gives a
+				because it's an installation guide).		system of knowing what key is pressed. Also, a function called
+				Wrote two programs - one that handles		SDL_ConvertSurface, which takes in an SDL_Surface and changes
+				key presses (using SDL_event and Poll		it to the format of the screen. These could be useful, because
+				event), and the second was about		when loading many images for the project, it would be good to
+				optimizing images so loading is faster		have optimal images so loading/blitting is faster.
