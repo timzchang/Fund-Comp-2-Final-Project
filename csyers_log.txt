@@ -21,3 +21,9 @@ Date		Time		Work Done					Learned
 				key presses (using SDL_event and Poll		it to the format of the screen. These could be useful, because
 				event), and the second was about		when loading many images for the project, it would be good to
 				optimizing images so loading is faster		have optimal images so loading/blitting is faster.
+
+3/16/15		2		Watched video tutorials from Coding Made	Learned about SDL_Rect and how it is used in SDL_RenderCopy to
+				Easy. These went through some SDL function	crop an image and give it a destination. Worked with key presses
+				I already knew about, but also some about	to make a small map/sprite that travels around with the pressing
+				sprite animation / SDL_Rect which will be	of a key and has slight walking animation. 
+				useful in our project.
