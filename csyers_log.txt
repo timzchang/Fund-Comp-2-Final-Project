@@ -35,3 +35,13 @@ Date		Time		Work Done					Learned
 				work with getting a minimap onto the screen.
 				Also git copied the project repo onto my 
 				local machine.
+
+3/17/15		1		Continued working on the sprite.cpp program	I learned about the various function realted to TTF and text. 
+				which is a character moving around. Watched	Continued getting used to using SDL_Rects, SDL_Render, and 	
+				a video tutorial on TTF and text, which could	other simple SDL functions.
+				be useful in the project. Made a Sprite class
+				which encapsulates some of the function and
+				drawing of the characters. Made it so I could
+				easily make a second character using the same
+				class. This character is controlled with the
+				asdw keys. 
