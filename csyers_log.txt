@@ -27,3 +27,11 @@ Date		Time		Work Done					Learned
 				I already knew about, but also some about	to make a small map/sprite that travels around with the pressing
 				sprite animation / SDL_Rect which will be	of a key and has slight walking animation. 
 				useful in our project.
+
+3/17/15		1		Downloaded SDL 2 for my computer, as well	I learned how to download SDL 2 onto a computer, and continued
+				as the SDL_image library. Moved my sprite	developing proficency with SDL_Texture and SDL_Renderer
+				animation program to my local machine, and
+				got it working there. Did some unsuccessful
+				work with getting a minimap onto the screen.
+				Also git copied the project repo onto my 
+				local machine.
