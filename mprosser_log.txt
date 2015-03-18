@@ -1,0 +1,5 @@
+Date		Time Spent		Accomplished
+3/15		1.5 hours		Changed .cshrc file to automatically set path variables on startup.
+					Read first lesson of lazyfoo SDL2 tutorial. Ran the code from the
+					tutorial to make sure it worked on the student machine.
+3/18		1 hour			Read and took notes on SDL2 tutorials during lab.
