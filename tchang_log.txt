@@ -29,4 +29,7 @@ Date            Time(hr.)       Work Done                                       
 				Foo tutorial 6,7,8	       	      		more basic SDL functions. Learned about the new Texture and
 				    	     					Renderer structures of SDL2. Learned Basic Geometry Rendering
 
-
+3/18/15		3		Completed tutorials 10 and 11. Began working	Learned about color keying as well as rendering from a sprie
+				on moving_sprite.cpp, a program that will	sheet. Began work on moving_sprite.cpp. Wrote a class Character,
+				draw a sprite to the screen from a sprite	which will take care of rendering sprites fro mthe sheet. Wrote
+				sheet and allow the user to move it around.	class Background, which will optimize and render any background.
