@@ -44,4 +44,12 @@ Date		Time		Work Done					Learned
 				drawing of the characters. Made it so I could
 				easily make a second character using the same
 				class. This character is controlled with the
-				asdw keys. 
+				asdw keys.
+
+3/22/15		2		Cleaned up git reposititory. Created folder	I learned about how to create folders in github from the 
+				for various things such as logs, images,	terminal interface. I practiced writing make files that will
+				test word and the actual project. Added some	come in handy because of the large number of classes that will
+				tutorial work to the repository for Lab8	be used in the project.
+				purposes. Created a simple Makefile for the
+				Map class program written today. Worked on
+				some debugging with limitied success.
