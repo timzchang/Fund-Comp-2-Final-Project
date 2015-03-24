@@ -16,7 +16,7 @@ int main(){
   Map level1;
   SDL_Init(SDL_INIT_VIDEO);
 //  window = SDL_CreateWindow("Maps",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,level1.getWidth(),level1.getHeight());
-  window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,240,240,SDL_WINDOW_SHOWN);
+  window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,480,480,SDL_WINDOW_SHOWN);
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   if(!renderer){
     std::cout<<"INVALID RENDER CREATION" << std::endl;
@@ -28,8 +28,9 @@ int main(){
   }
 
   level1.loadImage("../maps/small_map.png",renderer);
-
-
+  level1.loadVector("../maps/small_map_info.txt");
+  int check = level1.get_tile_info(2,2); 
+  std::cout << check << std::endl;
   bool quit = false;
   SDL_Event e;
 

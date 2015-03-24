@@ -16,6 +16,7 @@ class Map{
     void loadVector(std::string);	// loads info about the map
     void render_map(SDL_Renderer*);
     void free();
+    int get_tile_info(int,int);
   private:
     SDL_Texture* map_image;		// image
     std::vector<std::vector <int> > tile_properties;		// vector for properties of tiles

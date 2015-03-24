@@ -33,7 +33,6 @@ void Map::loadImage(std::string image_path, SDL_Renderer* renderer){
   int w;
   int h;
   SDL_QueryTexture(map_image,NULL,NULL,&w,&h);
-  std::cout<<w<< " " <<h<<std::endl;
 }
 
 void Map::loadVector(std::string level_txt_path){
@@ -63,4 +62,13 @@ void Map::loadVector(std::string level_txt_path){
 void Map::render_map(SDL_Renderer* renderer){
   //rektangles?
   SDL_RenderCopy(renderer,map_image,NULL,NULL);
+}
+
+int Map::get_tile_info(int x, int y){
+  if(x>image_width/16 || x<0 || y<0 || y>image_height/16){
+    std::cout << "Out of bounds in function get_tile_info." << std::endl;
+    return -1;
+  }else{
+    return tile_properties[x][y];
+  }
 }
