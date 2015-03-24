@@ -39,6 +39,10 @@ void Map::loadImage(std::string image_path){
   SDL_FreeSurface(loadedSurface);
   map_image = loadedTexture;
   SDL_DestroyTexture(loadedTexture);
+  int w;
+  int h;
+  SDL_QueryTexture(map_image,NULL,NULL,&w,&h);
+  std::cout<<w<< " " <<h<<std::endl;
 }
 
 void Map::loadVector(std::string level_txt_path){
@@ -67,6 +71,7 @@ void Map::loadVector(std::string level_txt_path){
 
 void Map::render_map(){
   //rektangles?
+  std::cout<<"It gets here"<<std::endl;
   SDL_RenderCopy(renderer,map_image,NULL,NULL);
 }
 

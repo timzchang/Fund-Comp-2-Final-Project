@@ -19,7 +19,7 @@ int main(){
   window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,240,240,SDL_WINDOW_SHOWN);
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   SDL_SetRenderDrawColor(renderer,255,255,255,255);
-/*  level1.setRenderer(renderer);
+  level1.setRenderer(renderer);
   int imgFlags = IMG_INIT_PNG;
   if(!(IMG_Init(imgFlags) & imgFlags)){
     std::cout << "SDL_image couldn't initialize!\n";
@@ -42,7 +42,6 @@ int main(){
     SDL_RenderPresent(renderer);
   }
 
-*/
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
   window = NULL;
