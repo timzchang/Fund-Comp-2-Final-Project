@@ -11,3 +11,8 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided
 											map info and discussed our plans for making progress
 											this week. Also looked into images to use for the
 											in-game map.
+
+3/23	2				All			First level		Discussed implementation of a Map class, then began
+					(Lucas had to leave				writing the code to implement it. We tested the map
+					early)						class to make sure it properly displayed to the
+											screen.
