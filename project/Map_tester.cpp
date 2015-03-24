@@ -18,14 +18,16 @@ int main(){
 //  window = SDL_CreateWindow("Maps",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,level1.getWidth(),level1.getHeight());
   window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,240,240,SDL_WINDOW_SHOWN);
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+  if(!renderer){
+    std::cout<<"INVALID RENDER CREATION" << std::endl;
+  }
   SDL_SetRenderDrawColor(renderer,255,255,255,255);
-  level1.setRenderer(renderer);
   int imgFlags = IMG_INIT_PNG;
   if(!(IMG_Init(imgFlags) & imgFlags)){
     std::cout << "SDL_image couldn't initialize!\n";
   }
 
-  level1.loadImage("../maps/small_map.png");
+  level1.loadImage("../maps/small_map.png",renderer);
 
 
   bool quit = false;
@@ -37,7 +39,7 @@ int main(){
 	quit = true;
     }
     SDL_RenderClear(renderer);
-    level1.render_map();
+    level1.render_map(renderer);
 
     SDL_RenderPresent(renderer);
   }

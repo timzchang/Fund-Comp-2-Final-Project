@@ -12,15 +12,12 @@ class Map{
   public:
     Map();				// constructor
     ~Map();				// de
-    Map(SDL_Renderer*);
-    void loadImage(std::string);	// loads SDL_Texture with path
+    void loadImage(std::string,SDL_Renderer*);	// loads SDL_Texture with path
     void loadVector(std::string);	// loads info about the map
-    void render_map();
-    void setRenderer(SDL_Renderer*);
+    void render_map(SDL_Renderer*);
   private:
     SDL_Texture* map_image;		// image
     std::vector<std::vector <int> > tile_properties;		// vector for properties of tiles
-    SDL_Renderer* renderer;
     int image_width;
     int image_height;
  //   SDL_Surface* screen_surface; Possibly need this

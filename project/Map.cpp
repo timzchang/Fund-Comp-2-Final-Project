@@ -8,24 +8,16 @@
 #include <SDL2/SDL_image.h>
 Map::Map(){
   map_image = NULL;
-  renderer = NULL;
   std::cout << "Hello\n";
-}
-
-Map::Map(SDL_Renderer* new_renderer){
-  renderer = new_renderer;
-  map_image = NULL;
 }
 
 Map::~Map(){
   SDL_DestroyTexture(map_image);
   map_image = NULL;
-  SDL_DestroyRenderer(renderer);
-  renderer = NULL;
   std::cout << "Bye\n";
 }
 
-void Map::loadImage(std::string image_path){
+void Map::loadImage(std::string image_path, SDL_Renderer* renderer){
   SDL_Texture* loadedTexture = NULL;
   SDL_Surface* loadedSurface = IMG_Load(image_path.c_str());
   // optimize?
@@ -69,13 +61,7 @@ void Map::loadVector(std::string level_txt_path){
   }
 }
 
-void Map::render_map(){
+void Map::render_map(SDL_Renderer* renderer){
   //rektangles?
-  std::cout<<"It gets here"<<std::endl;
   SDL_RenderCopy(renderer,map_image,NULL,NULL);
-}
-
-void Map::setRenderer(SDL_Renderer* new_renderer)
-{
-  renderer = new_renderer;
 }
