@@ -1,0 +1,13 @@
+Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided
+2/15	2				All			Project ideas		Fire Emblem like game with characters that fight
+											in a war against emenemies
+
+3/3	1				All			Git setup, classes,	Each will work on SDL2 tutorials over break, each
+								tutorials, SDL2		write a simple program that uses SDL2 graphics.
+											Download old projects and play them to get an idea
+											of how they play.
+
+3/22	1				All			Game logistics		The group decided to use an integer array to store
+											map info and discussed our plans for making progress
+											this week. Also looked into images to use for the
+											in-game map.

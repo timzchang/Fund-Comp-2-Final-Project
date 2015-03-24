@@ -1,0 +1,47 @@
+Date		Time		Work Done					Learned
+
+3/13/15		2		Lazy Foo tutorial 1. Worked with		A new path had to be added to PATH and LD_LIBRARY_PATH.
+				PATH vairalbes to allow for SDL			Learned that the header #include <SDL2/SDL.h> must be included
+				compilation. Opened a white window,		at the beginning of the file - not simple <SDL.h> as Lazy Foo
+				and created this document to keep		says. Learned simple SDL concepts such as loading windows and 
+				track of work done on the project.		surfaces, and getting SDL errors.
+
+3/14/15		1		Lazy Foo tutorial 2. Loaded a BMP		More basic SDL functions. Learned the concepts of blitting and
+				image to a screen. Wrote a program		updating windows. Question: is there a way to upload images
+				named sdl2.cpp that opens a window		via terminal or is webfile the best way to do it? In tutorial 
+				with a downloaded BMP image. Lazy Foo		I learned about the SDL_Event class and how SDL_PollEvent is
+				tutorial 3. Wrote program sdl3.cpp		used to process events such as keyboard, mouse, and joystick.
+				that loads the BMP image from last		The program now opens and window with an image and it stays 
+				tutorial and displays it until the user		there until the user pressed the "x" on the corner.
+				presses the x on the window.
+
+3/15/15		2		Lazy Foo tutorials 4 and 5 (skipped 6,		More SDL functions, including e.key.keystm.sym, which gives a
+				because it's an installation guide).		system of knowing what key is pressed. Also, a function called
+				Wrote two programs - one that handles		SDL_ConvertSurface, which takes in an SDL_Surface and changes
+				key presses (using SDL_event and Poll		it to the format of the screen. These could be useful, because
+				event), and the second was about		when loading many images for the project, it would be good to
+				optimizing images so loading is faster		have optimal images so loading/blitting is faster.
+
+3/16/15		2		Watched video tutorials from Coding Made	Learned about SDL_Rect and how it is used in SDL_RenderCopy to
+				Easy. These went through some SDL function	crop an image and give it a destination. Worked with key presses
+				I already knew about, but also some about	to make a small map/sprite that travels around with the pressing
+				sprite animation / SDL_Rect which will be	of a key and has slight walking animation. 
+				useful in our project.
+
+3/17/15		1		Downloaded SDL 2 for my computer, as well	I learned how to download SDL 2 onto a computer, and continued
+				as the SDL_image library. Moved my sprite	developing proficency with SDL_Texture and SDL_Renderer
+				animation program to my local machine, and
+				got it working there. Did some unsuccessful
+				work with getting a minimap onto the screen.
+				Also git copied the project repo onto my 
+				local machine.
+
+3/17/15		1		Continued working on the sprite.cpp program	I learned about the various function realted to TTF and text. 
+				which is a character moving around. Watched	Continued getting used to using SDL_Rects, SDL_Render, and 	
+				a video tutorial on TTF and text, which could	other simple SDL functions.
+				be useful in the project. Made a Sprite class
+				which encapsulates some of the function and
+				drawing of the characters. Made it so I could
+				easily make a second character using the same
+				class. This character is controlled with the
+				asdw keys. 
