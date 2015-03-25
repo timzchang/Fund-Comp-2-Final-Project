@@ -10,3 +10,19 @@ Date		Time Spent		Accomplished
 
 3/22		1 hour			Read and took notes on SDL2 tutorials. Finished up to the 7th
 					   tutorial.
+
+3/24		2 hours			Worked on getting images on the screen using SDL2. Succeeded in
+					   blitting a black background but was unable to get a second
+					   image on top of that. After trying to make the background a
+					   texture, began having multiple errors in entirely separate
+					   functions. Errors change depending on whether the student
+					   machines or the library machines are used.
+
+3/25		1 hour			Worked more on blitting images. Without having changed the code,
+					   got a new set of errors, so removed renderer and texture to
+					   go back to just blitting surfaces. Same problem as before:
+					   background blits, but ball does not (no errors, it just
+					   doesn't appear on the screen). Attempting to optimize the
+					   background surface results in a segmentation fault when
+					   trying to optimize the ball image, which is in an entirely
+					   different function.

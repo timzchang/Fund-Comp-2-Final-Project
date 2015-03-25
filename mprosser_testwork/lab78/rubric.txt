@@ -1,0 +1,13 @@
+Mason Prosser
+Lab 7/8 Rubric
+Total: 40 pts
+
+Part 1 (10 pts): SDL Tutorials
+- (10 pts) Complete all SDL tutorials relevant to designing games 
+
+Part 2 (25 pts): Getting Started with SDL
+- (10 pts) Write a simple SDL (or SDL2) program to place an object on the screen
+- (15 pts) Make this object move around the screen based on user input
+
+Part 3 (5 pts): Logging Hours
+- Keep track of hours spent working on the project in an individual log in the group's project repository
