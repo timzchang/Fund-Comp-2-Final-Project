@@ -38,3 +38,7 @@ Date            Time(hr.)       Work Done                                       
 				functions to cut sprite sheet and load specific	Learned not to spend so much time figuring out what is wrong
 				sprites. Ran into trouble with the set_color_key   with a single function.
 				function. Does not work with my sprite sheet.
+
+3/25/15		1		Continued working on moving_sprite.cpp. Finally	Learned to implement animated sprites by using some simple math
+				have a moving, animated sprite that can be	regarding frames. Learned to enable vsync.
+				controlled by the keyboard
