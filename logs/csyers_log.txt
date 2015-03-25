@@ -53,3 +53,9 @@ Date		Time		Work Done					Learned
 				purposes. Created a simple Makefile for the
 				Map class program written today. Worked on
 				some debugging with limitied success.
+
+3/25/15		3		Continued debugging Map class. Finished the	I didn't learn too much new - just found an error about using
+				debugging process - the map now works as	the assignment operator with SDL_Texture. Commenting was as
+				intended. It loads a map image and a 2d vector	normal commenting always is.
+				of ints in as info. Also, I commented all of
+				the existing files.
