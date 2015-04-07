@@ -26,25 +26,8 @@ Character::~Character(){
 
 void Character::draw(SDL_Renderer* renderer){
   SDL_Rect destRect = {xpos*32, ypos*32, 32, 32};
-  SDL_Rect clipRect = {state*32, direction*32, 32, 32}; //is state supposed to be phase?
+  SDL_Rect clipRect = {phase*32, direction*32, 32, 32};
   SDL_RenderCopy(renderer, character_texture, &clipRect, &destRect);
-}
-
-void Character::move(int move_direction){ //there will be a move function in Game_Piece
-  switch(move_direction){
-    case 0:
-      ypos-=1;
-      break;
-    case 1:
-      xpos+=1;
-      break;
-    case 2:
-      ypos+=1;
-      break;
-    case 3:
-      xpos-=1;
-      break;
-  }
 }
 
 void Character::change_direction(int face_direction){
