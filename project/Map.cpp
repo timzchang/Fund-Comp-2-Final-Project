@@ -73,8 +73,8 @@ void Map::render_map(SDL_Renderer* renderer){
 2 = trees
 3 = hills
 4 = water
-5 = roots?
-0 = mountain/cliff/immovable space
+5 = roots
+6 = mountain/cliff
 */
 int Map::get_tile_info(int x, int y){
   if(x>image_width/16 || x<0 || y<0 || y>image_height/16){			// checks for invalid coordinate
