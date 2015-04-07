@@ -22,6 +22,8 @@ class Map{
     void render_map(SDL_Renderer*);	// renders the map onto the passed in renderer
     void free();			// deallocates the memory (used in deconstructor)
     int get_tile_info(int,int);		// returns the property (int) of the tile at position x,y
+    int get_width();
+    int get_height();
   private:
     SDL_Texture* map_image;		// image texture
     std::vector<std::vector <int> > tile_properties;	// vector for properties of tiles, each int means something different

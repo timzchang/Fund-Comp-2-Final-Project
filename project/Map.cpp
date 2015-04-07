@@ -84,3 +84,11 @@ int Map::get_tile_info(int x, int y){
     return tile_properties[x][y];						// gets the property from the 2d vector
   }
 }
+
+int Map::get_width(){
+  return image_width/16;
+}
+
+int Map::get_height(){
+  return image_height/16;
+}
