@@ -14,7 +14,7 @@ class Character: public Game_Piece {
 		void change_direction(int);
 		int get_phase();
 		void set_phase(int)
-	private:
+	protected:
 		int direction;
 		int phase;
 		SDL_Texture* character_texture;
