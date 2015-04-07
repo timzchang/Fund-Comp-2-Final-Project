@@ -84,11 +84,12 @@ int Map::get_tile_info(int x, int y){
     return tile_properties[x][y];						// gets the property from the 2d vector
   }
 }
-
+// function that returns the number of tiles the map is wide
 int Map::get_width(){
-  return image_width/16;
+  return image_width/16;			// maps are all divided into 16 pixel tiles
 }
 
+// function that returns the number of tiles the map is high
 int Map::get_height(){
-  return image_height/16;
+  return image_height/16;			// maps are divided into 16 pixel tiles
 }
