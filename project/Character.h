@@ -12,6 +12,8 @@ class Character: public Game_Piece {
 		void draw(SDL_Renderer*);
 		void move(int);
 		void change_direction(int);
+		int get_phase();
+		void set_phase(int)
 	private:
 		int direction;
 		int phase;
