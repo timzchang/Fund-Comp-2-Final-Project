@@ -3,6 +3,7 @@
 #include<string>
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
+#include "Game_Piece.h"
 using namespace std;
 class Character: public Game_Piece {
 	public:
