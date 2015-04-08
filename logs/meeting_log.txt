@@ -1,6 +1,6 @@
-Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided
+Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided/Accomplished
 2/15	2				All			Project ideas		Fire Emblem like game with characters that fight
-											in a war against emenemies
+											in a war against enemies
 
 3/3	1				All			Git setup, classes,	Each will work on SDL2 tutorials over break, each
 								tutorials, SDL2		write a simple program that uses SDL2 graphics.
@@ -16,3 +16,9 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided
 					(Lucas had to leave				writing the code to implement it. We tested the map
 					early)						class to make sure it properly displayed to the
 											screen.
+
+4/6	1				All			Map implementation,	Decided on individual responsibilities, how to treat
+								character classes,	the map and characters, and how characters will
+								sprites, movement,	move around the screen based on user input
+								individual work to	
+								be done			

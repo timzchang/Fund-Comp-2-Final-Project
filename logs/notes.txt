@@ -1,0 +1,46 @@
+Make sprites at: http://www.famitsu.com/freegame/tool/chibi/index1.html
+	- Generates transparent sprite sheets in png format
+
+Class implementation:
+	- Base class: game piece
+	   ~ has xpos, ypos, and pure virtual draw function, move function
+		- Cursor
+		   ~ has images of cursor
+		- Character
+		  ~ has loadimage, draw functions, and an array/vector for its movement info
+			- Good guy
+			   ~ has move function, sprite sheet depending on class, data members indicating which sprite to pick and how to pick it
+			- Bad guy
+			   ~ has move function, sprite sheet depending on class, data members indicating which sprite to pick and how to pick it
+
+
+Picking a path:
+ - The sprite move class should have a function to take the player's input determining the character's path and use the input to generate
+   a vector that would be passed to a Good guy's move function, telling it how to move. Range could be controlled by using an algorithm to check
+   the maximum range a character could move in any direction, then letting the player move the character to any tile within that range.
+Possible algorithm:
+ - Recursive function that moves up, right, down, left, recursively moving outward as far as it can based on the character's movement.
+ - Pseudocode:
+-------
+checkmove(x, y, movecount)
+	checkmove(up)
+		x+1, y, movecount - [some value determined by the map]
+
+Base case:
+	if(x, y == illegal)
+		...
+	else if(move == 0)
+		return
+--------
+
+
+The map:
+- Regular terrain will have movement weight 1
+- Water will 
+
+Week of 4/6:
+- Chris will write the Checkmove function for the character class to see the possible movements for characters [checkmove(x, y, moveinfo)]
+- Tim will write the Game Piece and Cursor classes
+- Mason will make the cursor images and hero sprites and help Tim with the classes
+- Lucas will be helping Chris
+Next meeting: Wednesday, 4/8
