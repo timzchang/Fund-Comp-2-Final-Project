@@ -1,0 +1,4 @@
+/*Tim Chang, Mason Prosser, Lucas Unruh, Chris Syers
+  GamePiece.cpp
+  Implementation of Gamepiece class. Only the crucial move function is really in here.
+*/
