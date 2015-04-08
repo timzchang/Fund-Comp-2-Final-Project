@@ -59,3 +59,10 @@ Date		Time		Work Done					Learned
 				intended. It loads a map image and a 2d vector	normal commenting always is.
 				of ints in as info. Also, I commented all of
 				the existing files.
+
+4/7/15		3		Worked on character heirarchy, including class	Did not learn much new - just developed classes as we have been
+				Character and Hero. Developed an algorithm to	doing in class.
+				find valid locations to move a character piece
+				with a certain mobility stat based on the map.
+				Have not tested due to the unwritten base
+				class.
