@@ -66,3 +66,7 @@ Date		Time		Work Done					Learned
 				with a certain mobility stat based on the map.
 				Have not tested due to the unwritten base
 				class.
+
+4/8/15		1		Moved around some function so that they would	Nothing new
+				not have to be written multiple times (better
+				management of inheritance heirarchy).
