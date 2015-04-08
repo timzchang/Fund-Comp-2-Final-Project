@@ -13,10 +13,17 @@ class Character: public Game_Piece {
 		void draw(SDL_Renderer*);
 		void change_direction(int);
 		int get_phase();
-		void set_phase(int)
+		void set_phase(int);
+		void check_valid_move(Map &, int, int, int, vector<vector<int>>*);
 	protected:
 		int direction;
 		int phase;
 		SDL_Texture* character_texture;
+		int attack;
+		int defence;
+		int hitpoints;
+		int mobility;
+		vector<int> terrain_effect;
+		int attack_range;
 };
 #endif
