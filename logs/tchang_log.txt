@@ -42,3 +42,10 @@ Date            Time(hr.)       Work Done                                       
 3/25/15		1		Continued working on moving_sprite.cpp. Finally	Learned to implement animated sprites by using some simple math
 				have a moving, animated sprite that can be	regarding frames. Learned to enable vsync.
 				controlled by the keyboard
+
+4/6/2015	1		Met with group, discussed classes to be written	Learned about project planning and time management. Discussed
+				and future goals of project.			implementing recursion and other computing concepts into game
+
+4/7/2015	1.5		Wrote GamePiece base class, wrote Cursor	Practiced agile coding with a partner, learned how to work on
+				derived class. Checked and edited Character	different parts of a project and merge work on Github.
+				and Hero Derived classes.
