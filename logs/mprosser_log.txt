@@ -26,3 +26,6 @@ Date		Time Spent		Accomplished
 					   background surface results in a segmentation fault when
 					   trying to optimize the ball image, which is in an entirely
 					   different function.
+
+4/7		1.5 hours		Wrote Cursor.h, then began work on Cursor.cpp. Created the sprites
+					   to be used for the cursor and the main character.
