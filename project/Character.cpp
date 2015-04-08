@@ -1,5 +1,6 @@
 #include "Character.h"
 
+
 Character::Character():Game_Piece(){
   direction = 0;
   phase = 0;

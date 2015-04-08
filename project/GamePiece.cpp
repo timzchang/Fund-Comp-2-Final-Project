@@ -10,9 +10,20 @@ GamePiece::GamePiece(int x, int y){
   ypos = y;
 }
 
-void GamePiece::move(int dx, int dy){
-  xpos += dx;
-  ypos += dy;
+void GamePiece::move(int direction){
+  switch(direction){
+  case 0:
+    y -= 1;
+    break;
+  case 1:
+    x += 1;
+    break;
+  case 2:
+    y -= 1;
+    break;
+  case 3:
+    x -= 1;
+  }
 }
 
 void GamePiece::setx(int x){
