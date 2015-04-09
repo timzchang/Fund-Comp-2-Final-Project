@@ -6,6 +6,7 @@
 #ifndef GAMEPIECE_H
 #define GAMEPIECE_H
 using namespace std;
+#include <SDL2/SDL.h>
 
 class GamePiece{
  public:

@@ -70,3 +70,8 @@ Date		Time		Work Done					Learned
 4/8/15		1		Moved around some function so that they would	Nothing new
 				not have to be written multiple times (better
 				management of inheritance heirarchy).
+
+4/8/15		2		Debugging of Character, GamePiece, Hero, and	Not much new. Learned to devlop a more complicated heirarchy
+				Cursor classes. Modified the Map_tester.cpp 	system. QUESTION: How does virtual work? Dynamic binding
+				to include drawing a cursor and a hero on the	seemed to be a little weird.
+				screen.

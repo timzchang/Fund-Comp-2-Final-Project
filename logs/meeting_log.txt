@@ -22,3 +22,7 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided/Accompli
 								sprites, movement,	move around the screen based on user input
 								individual work to	
 								be done			
+
+4/8	2				All			Further steps for	Did some debugging of previously written classes. Got
+								project.		a Map_tester.cpp to work correctly with a hero class
+											and a cursor
