@@ -56,9 +56,9 @@ void Character::change_direction(int face_direction){
 }
 
 // function to set phase
-void Character::set_phase(int new_phase){
-	if(new_phase < 0 || new_phase > 3) new_phase = 0;		// if the phase is invalid, the phase is 0
-	phase=new_phase;						// set the phase
+void Character::next_phase(){
+  phase++;			// increments phase variable
+  if(phase > 2) phase = 0;	// if it is greater than 2, reset to 0
 }
 
 // function that returns the current phase of the sprite

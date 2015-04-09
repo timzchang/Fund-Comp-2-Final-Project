@@ -17,6 +17,7 @@ SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
 
 int main(){
+  int counter = 0;
   Map level1;
   SDL_Init(SDL_INIT_VIDEO);
 //  window = SDL_CreateWindow("Maps",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,level1.getWidth(),level1.getHeight());
@@ -36,7 +37,7 @@ int main(){
   Hero *hero_ptr = NULL;
   Cursor *cursor_ptr = NULL;
   hero_ptr = new Hero("../media/Hero.png",0,0,renderer);
-  cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,3,3);
+  cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
 
@@ -45,10 +46,20 @@ int main(){
       if(e.type==SDL_QUIT)
 	quit = true;
     }
+    counter++;
+    if(counter%15==0){
+      hero_ptr->next_phase();
+      if(cursor_ptr->get_phase() == 1){
+        counter = 0;
+      }
+      if(counter%60==0){
+        cursor_ptr->next_phase();
+      }
+    }
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
     hero_ptr->draw(renderer);   
-    cursor_ptr->draw(renderer,0);
+    cursor_ptr->draw(renderer);
     SDL_RenderPresent(renderer);
   }
 

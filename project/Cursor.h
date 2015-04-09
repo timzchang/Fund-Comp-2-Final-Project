@@ -17,8 +17,11 @@ class Cursor: public GamePiece {
     Cursor();					// Default constructor
     Cursor(string, string, SDL_Renderer*, int, int);	// Non-default constructor
     ~Cursor();					// Deconstructor
-    void draw(SDL_Renderer*, int);			// Draw the cursor to the screen
+    void draw(SDL_Renderer*);			// Draw the cursor to the screen
+    void next_phase();				// changes the phase of the cursor
+    int get_phase();				// gets current phase of the cursor
   private:
+    int phase;			// phase of the cursor (0 for big, 1 for small)
     SDL_Texture* cursor_1;	// Outer cursor
     SDL_Texture* cursor_2;	// Inner cursor
 };
