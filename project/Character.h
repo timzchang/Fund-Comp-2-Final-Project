@@ -17,7 +17,7 @@ class Character: public GamePiece {
 		Character();						// default constructor
 		Character(string, int, int, SDL_Renderer*);		// non-default constructor
 		~Character();						// deconstructor
-		void draw(SDL_Renderer*);				// draw function
+		virtual void draw(SDL_Renderer*);				// draw function
 		void change_direction(int);				// changes the direction of the sprite. 0 up, 1 right... 3 left
 		int get_phase();					// returns the current phase of the sprite
 		void next_phase();					// changes the phase of the sprite

@@ -47,3 +47,7 @@ int Hero::setHitpoints(int new_hitpoints){
   if(new_hitpoints < 0) new_hitpoints = 0;		// if the new hitpoints is negative, just put to 0
   hitpoints = new_hitpoints;
 }
+
+void Hero::draw(SDL_Renderer* renderer){
+  Character::draw(renderer);
+}

@@ -13,7 +13,8 @@ class GamePiece{
   GamePiece();
   GamePiece(int,int);
   void move(int); //move function is universal for all game pieces
-  void draw(SDL_Renderer*); //each draw function of derived classes will be slightly different
+  virtual void draw(SDL_Renderer*) = 0; // each draw function of derived classes will be slightly different
+  virtual void update() = 0;		// update will do something different for each dervied class
   void setx(int);
   void sety(int);
   int getx();

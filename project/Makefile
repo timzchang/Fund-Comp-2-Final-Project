@@ -1,9 +1,29 @@
-all: Map_tester
+FLAGS = -lSDL2 -lSDL2_image
+EXEC = fire_emblem
+OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o
 
-Map_tester: Map_tester.cpp Map.cpp Character.cpp GamePiece.cpp Hero.cpp Cursor.cpp 
-	g++ Map_tester.cpp Map.cpp Hero.cpp Character.cpp GamePiece.cpp Cursor.cpp -lSDL2 -lSDL2_image -o Map_tester
+
+all: fire_emblem
+
+fire_emblem: fire_emblem.cpp $(OBJECTS)
+	g++ fire_emblem.cpp $(OBJECTS) $(FLAGS) -o fire_emblem
+
+GamePiece.o: GamePiece.cpp
+	g++ -c GamePiece.cpp
+
+Character.o: Character.cpp GamePiece.h
+	g++ -c Character.cpp
+
+Hero.o: Hero.cpp Character.h
+	g++ -c Hero.cpp
+
+Cursor.o: Cursor.cpp GamePiece.h
+	g++ -c Cursor.cpp
+
+Map.o: Map.cpp
+	g++ -c Map.cpp
 
 .PHONY: clean
 
 clean:
-	-rm Map_tester
+	-rm fire_emblem *.o

@@ -34,8 +34,8 @@ int main(){
 
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
-  Hero *hero_ptr = NULL;
-  Cursor *cursor_ptr = NULL;
+  GamePiece *hero_ptr = NULL;
+  GamePiece *cursor_ptr = NULL;
   hero_ptr = new Hero("../media/Hero.png",0,0,renderer);
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
