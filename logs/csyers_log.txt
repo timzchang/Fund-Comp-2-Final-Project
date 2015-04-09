@@ -88,3 +88,7 @@ Date		Time		Work Done					Learned
 4/9/15		.5		Changes the animation logic to be more
 				internal. Created an update() function for
 				Character and Cursor classes.
+
+4/9/15		1		Made changes to the the heirarchy so that 	Learned that virtual functions must be defined in a class
+				polymorphism can be used for GamePiece 		if polymorphism wants to be used (even if it just calls its
+				objects. 					parent class's implementation of that function)
