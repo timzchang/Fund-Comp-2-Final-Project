@@ -75,3 +75,8 @@ Date		Time		Work Done					Learned
 				Cursor classes. Modified the Map_tester.cpp 	system. QUESTION: How does virtual work? Dynamic binding
 				to include drawing a cursor and a hero on the	seemed to be a little weird.
 				screen.
+
+4/8/15		.5		Commented code in Character.(h/cpp) and 
+				Hero.(h/cpp). Next step is to add a way for
+				the phase of the hero to be controlled by some
+				global variable.
