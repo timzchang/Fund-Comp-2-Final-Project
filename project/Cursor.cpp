@@ -76,3 +76,11 @@ void Cursor::update(){
     next_phase();
   }
 }
+
+void Cursor::setHitpoints(int h){
+  return;
+}
+
+int Cursor::getHitpoints(){
+  return -1;
+}

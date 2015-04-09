@@ -4,7 +4,8 @@
 */
 
 #include"GamePiece.h"
-
+#include <iostream>
+using namespace std;
 GamePiece::GamePiece(){
   xpos = 0;
   ypos = 0;
@@ -46,4 +47,3 @@ int GamePiece::getx(){
 int GamePiece::gety(){
   return ypos;
 }
-

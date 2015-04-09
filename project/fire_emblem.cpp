@@ -43,8 +43,14 @@ int main(){
 
   while(!quit){
     while(SDL_PollEvent(&e) != 0){
-      if(e.type==SDL_QUIT)
+      if(e.type==SDL_QUIT){
 	quit = true;
+      }else if(e.type==SDL_KEYDOWN){
+        switch(e.key.keysym.sym){
+          case SDLK_a:
+            hero_ptr->setHitpoints(hero_ptr->getHitpoints()-5);
+        }
+      }
     }
     hero_ptr->update();
     cursor_ptr->update();

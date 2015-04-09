@@ -36,6 +36,9 @@ Character::~Character(){
 
 // draw function. QUESTIONS ABOUT THIS: HOW CAN WE MAKE HERO USE THIS SAME FUNCTION
 void Character::draw(SDL_Renderer* renderer){
+  if(alive == 0){
+    return;
+  }
   SDL_Rect destRect = {xpos*32, ypos*32, 32, 32};			// destination rectangle. Based on xpos and ypos of GamePiece
   SDL_Rect clipRect = {phase*32, direction*32, 32, 32};			// source rect. Clips the sprite sheet based on the phase.
   SDL_RenderCopy(renderer, character_texture, &clipRect, &destRect);	// draws it to the renderer that was passed in
@@ -86,6 +89,9 @@ void Character::check_valid_move(Map &current_map, int x, int y, int movement_re
 
 // updates counter of the character to determine when to change phase
 void Character::update(){
+  if(hitpoints==0){
+    alive = 0;
+  }
   counter++;
   if(counter == 15){		// changes phase and resets every 15 counts
     counter = 0;
