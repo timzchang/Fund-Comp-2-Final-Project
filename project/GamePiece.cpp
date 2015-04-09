@@ -5,6 +5,11 @@
 
 #include"GamePiece.h"
 
+GamePiece::GamePiece(){
+  xpos = 0;
+  ypos = 0;
+}
+
 GamePiece::GamePiece(int x, int y){
   xpos = x;
   ypos = y;
@@ -13,16 +18,16 @@ GamePiece::GamePiece(int x, int y){
 void GamePiece::move(int direction){
   switch(direction){
   case 0:
-    y -= 1;
+    ypos -= 1;
     break;
   case 1:
-    x += 1;
+    xpos += 1;
     break;
   case 2:
-    y -= 1;
+    ypos -= 1;
     break;
   case 3:
-    x -= 1;
+    xpos -= 1;
   }
 }
 
@@ -40,4 +45,8 @@ int GamePiece::getx(){
 
 int GamePiece::gety(){
   return ypos;
+}
+
+void GamePiece::draw(){
+
 }

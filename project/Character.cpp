@@ -1,13 +1,13 @@
 #include "Character.h"
 
 
-Character::Character():Game_Piece(){
+Character::Character(){
   direction = 0;
   phase = 0;
   character_texture = NULL;
 }
 
-Character::Character(string path,int x, int y, SDL_Renderer* renderer):Game_Piece(x,y){
+Character::Character(string path,int x, int y, SDL_Renderer* renderer):GamePiece(x,y){
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());
   character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
   direction = 0;
@@ -56,12 +56,12 @@ int Character::get_phase(){
 	return phase;
 }
 
-void Character::check_valid_move(Map &current_map, int x, int y, int movement_remaining,vector<vector<int>>* valid_map){
+void Character::check_valid_move(Map &current_map, int x, int y, int movement_remaining,vector< vector<int> > valid_map){
   if(movement_remaining <= 0) return;
   if(x < 0 || x > current_map.get_width()) return;
   if(y < 0 || y > current_map.get_height()) return;
-  if(terrain_effect(current_map.get_tile_info(x,y))==0) return;
-  *valid_map[x][y] = 1;
+  if(terrain_effect[current_map.get_tile_info(x,y)]==0) return;
+  valid_map[x][y] = 1;
   check_valid_move(current_map,x,y-1,movement_remaining-current_map.get_tile_info(x,y-1),valid_map);
   check_valid_move(current_map,x+1,y,movement_remaining-current_map.get_tile_info(x+1,y),valid_map);
   check_valid_move(current_map,x,y+1,movement_remaining-current_map.get_tile_info(x,y+1),valid_map);

@@ -9,15 +9,15 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include "Game_Piece.h"
+#include "GamePiece.h"
 using namespace std;
 
-class Cursor: public Game_Piece {
+class Cursor: public GamePiece {
   public:
     Cursor();					// Default constructor
     Cursor(string, string, SDL_Renderer*, int, int);	// Non-default constructor
     ~Cursor();					// Deconstructor
-    draw(SDL_Renderer*, int);			// Draw the cursor to the screen
+    void draw(SDL_Renderer*, int);			// Draw the cursor to the screen
   private:
     SDL_Texture* cursor_1;	// Outer cursor
     SDL_Texture* cursor_2;	// Inner cursor

@@ -3,9 +3,10 @@
 #include<string>
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
-#include "Game_Piece.h"
+#include "GamePiece.h"
+#include "Map.h"
 using namespace std;
-class Character: public Game_Piece {
+class Character: public GamePiece {
 	public:
 		Character();
 		Character(string, int, int, SDL_Renderer*);
@@ -14,7 +15,7 @@ class Character: public Game_Piece {
 		void change_direction(int);
 		int get_phase();
 		void set_phase(int);
-		void check_valid_move(Map &, int, int, int, vector<vector<int>>*);
+		void check_valid_move(Map &, int, int, int, vector< vector<int> >);
 	protected:
 		int direction;
 		int phase;

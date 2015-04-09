@@ -9,9 +9,10 @@ using namespace std;
 
 class GamePiece{
  public:
+  GamePiece();
   GamePiece(int,int);
   void move(int); //move function is universal for all game pieces
-  virtual void draw() = 0; //each draw function of derived classes will be slightly different
+  virtual void draw(); //each draw function of derived classes will be slightly different
   void setx(int);
   void sety(int);
   int getx();

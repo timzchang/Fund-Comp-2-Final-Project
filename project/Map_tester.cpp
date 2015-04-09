@@ -3,6 +3,10 @@
 
 
 #include "Map.h"
+#include "Character.h"
+#include "Hero.h"
+#include "Cursor.h"
+#include "GamePiece.h"
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -29,8 +33,10 @@ int main(){
 
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
-  int check = level1.get_tile_info(2,2); 
-  std::cout << check << std::endl;
+  Hero *hero_ptr = NULL;
+  Cursor *cursor_ptr = NULL;
+  hero_ptr = new Hero("../media/Hero.png",0,0,renderer);
+  cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,3,3);
   bool quit = false;
   SDL_Event e;
 
@@ -41,7 +47,8 @@ int main(){
     }
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
-
+    hero_ptr->draw(renderer);   
+    cursor_ptr->draw(renderer,0);
     SDL_RenderPresent(renderer);
   }
 

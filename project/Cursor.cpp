@@ -6,13 +6,13 @@
 #include "Cursor.h"
 
 // Default constructor
-Cursor::Cursor():Game_Piece(){
+Cursor::Cursor():GamePiece(){
   cursor_1 = NULL;
   cursor_2 = NULL;
 }
 
 // Non-default constructor
-Cursor::Cursor(string path1, string path2, SDL_Renderer* renderer, int x, int y):Game_Piece(x,y){
+Cursor::Cursor(string path1, string path2, SDL_Renderer* renderer, int x, int y):GamePiece(x,y){
   // Load images of cursors
   SDL_Surface* loadedSurface = IMG_Load(path1.c_str());
   cursor_1 = SDL_CreateTextureFromSurface(renderer, loadedSurface);
@@ -33,7 +33,7 @@ Cursor::~Cursor(){
   }
 
   if(cursor_2 != NULL){
-    SDL_DestoryTexture(cursor_2);
+    SDL_DestroyTexture(cursor_2);
     cursor_2 = NULL;
   }
 }
