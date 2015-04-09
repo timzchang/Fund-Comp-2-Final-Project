@@ -84,3 +84,7 @@ Date		Time		Work Done					Learned
 4/8/15		.5		Added the ability for the phase of Cursor and	Learned about the SYNCV blah blah option that makes the loop
 				Character to be changed based on the number	run at a reasonable rate. Developed more skill in logic that
 				of clock cycles.				controls the phase of some objects.
+
+4/9/15		.5		Changes the animation logic to be more
+				internal. Created an update() function for
+				Character and Cursor classes.
