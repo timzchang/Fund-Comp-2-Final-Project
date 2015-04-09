@@ -8,6 +8,7 @@ Character::Character(){
   direction = 0;			// direction starts at 0
   phase = 0;				// phase starts at 0
   character_texture = NULL;		// no image
+  counter = 0;
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
@@ -18,6 +19,7 @@ Character::Character(string path,int x, int y, SDL_Renderer* renderer):GamePiece
   phase = 0;									// phase starts at 0
   SDL_FreeSurface(loadedSurface);						// frees the surface
   loadedSurface = NULL;								// grounds pointer
+  counter = 0;
 }
 
 // deconstructor
@@ -80,3 +82,11 @@ void Character::check_valid_move(Map &current_map, int x, int y, int movement_re
   check_valid_move(current_map,x-1,y,movement_remaining-current_map.get_tile_info(x-1,y),valid_map);
 }
 
+// updates counter of the character to determine when to change phase
+void Character::update(){
+  counter++;
+  if(counter == 15){		// changes phase and resets every 15 counts
+    counter = 0;
+    next_phase();
+  }
+}

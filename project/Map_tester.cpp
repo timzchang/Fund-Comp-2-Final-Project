@@ -46,16 +46,8 @@ int main(){
       if(e.type==SDL_QUIT)
 	quit = true;
     }
-    counter++;
-    if(counter%15==0){
-      hero_ptr->next_phase();
-      if(cursor_ptr->get_phase() == 1){
-        counter = 0;
-      }
-      if(counter%60==0){
-        cursor_ptr->next_phase();
-      }
-    }
+    hero_ptr->update();
+    cursor_ptr->update();
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
     hero_ptr->draw(renderer);   

@@ -9,6 +9,7 @@ Cursor::Cursor():GamePiece(){
   cursor_1 = NULL;
   cursor_2 = NULL;
   phase = 0;
+  counter = 0;
 }
 
 // Non-default constructor
@@ -25,6 +26,7 @@ Cursor::Cursor(string path1, string path2, SDL_Renderer* renderer, int x, int y)
   loadedSurface = NULL;
   
   phase = 0; 			// phase starts at 0
+  counter = 0;
 }
 
 // Deconstructor
@@ -64,4 +66,13 @@ void Cursor::next_phase(){
 // function that gets the phase of the Cursor
 int Cursor::get_phase(){
   return phase;
+}
+
+// updates clock count to determine when to change images
+void Cursor::update(){
+  counter++;
+  if(counter == 40){		// updates every 40 clock cycles
+    counter = 0;
+    next_phase();
+  }
 }

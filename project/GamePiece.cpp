@@ -47,6 +47,6 @@ int GamePiece::gety(){
   return ypos;
 }
 
-void GamePiece::draw(){
+void GamePiece::draw(SDL_Renderer*){
 
 }
