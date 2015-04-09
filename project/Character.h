@@ -23,6 +23,8 @@ class Character: public GamePiece {
 		void next_phase();					// changes the phase of the sprite
 		void check_valid_move(Map &, int, int, int, vector< vector<int> >);	// modifies a vector of vectors to contain valid move
 		void update();
+		int getHitpoints();					// returns character's hitpoints
+		void setHitpoints(int);					// set character's hitpoints
 	protected:	
 		int direction;						// direction the sprite is facing
 		int phase;						// what foot the sprite is on
@@ -34,5 +36,6 @@ class Character: public GamePiece {
 		vector<int> terrain_effect;				// effect each terrain has on mobility
 		int attack_range;					// range of attack
 		int counter;						// variable to count clock cycles
+		int alive;
 };
 #endif

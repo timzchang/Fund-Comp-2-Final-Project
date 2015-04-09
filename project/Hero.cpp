@@ -37,17 +37,6 @@ Hero::Hero(string path, int x, int y, SDL_Renderer* renderer):Character(path,x,y
   terrain_effect.push_back(0);
 }
 
-// function that returns the Hero's hitpoints
-int Hero::getHitpoints(){
-  return hitpoints;
-}
-
-// function that sets the Hero's hitpoints
-int Hero::setHitpoints(int new_hitpoints){
-  if(new_hitpoints < 0) new_hitpoints = 0;		// if the new hitpoints is negative, just put to 0
-  hitpoints = new_hitpoints;
-}
-
 void Hero::draw(SDL_Renderer* renderer){
   Character::draw(renderer);
 }

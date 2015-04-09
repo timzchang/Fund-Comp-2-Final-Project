@@ -13,8 +13,6 @@ class Hero: public Character{
   public:
     Hero();					// default constructor
     Hero(string, int, int, SDL_Renderer*);	// non-default constructor
-    int getHitpoints();				// returns the Hero's current hitpoints
-    int setHitpoints(int);			// sets the Hero's hitpoints
     void draw(SDL_Renderer*);
   private:
 };

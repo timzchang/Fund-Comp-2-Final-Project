@@ -9,6 +9,7 @@ Character::Character(){
   phase = 0;				// phase starts at 0
   character_texture = NULL;		// no image
   counter = 0;
+  alive = 0;				// with non-default, make the character dead
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
@@ -20,6 +21,7 @@ Character::Character(string path,int x, int y, SDL_Renderer* renderer):GamePiece
   SDL_FreeSurface(loadedSurface);						// frees the surface
   loadedSurface = NULL;								// grounds pointer
   counter = 0;
+  alive = 1;									// indicates the character is alive
 }
 
 // deconstructor
@@ -89,4 +91,15 @@ void Character::update(){
     counter = 0;
     next_phase();
   }
+}
+  
+//function that return's the character's current hitpoints
+int Character::getHitpoints(){
+  return hitpoints;
+}
+
+// function that sets the character's hitpoints
+void Character::setHitpoints(int new_hp){
+  if(new_hp < 0) new_hp = 0;
+  hitpoints = new_hp;
 }
