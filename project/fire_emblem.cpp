@@ -10,6 +10,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <vector>
 //const int SCREEN_WIDTH = 240;
 //const int SCREEN_HEIGHT = 240;
 
@@ -34,9 +35,11 @@ int main(){
 
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
-  GamePiece *hero_ptr = NULL;
-  GamePiece *cursor_ptr = NULL;
-  hero_ptr = new Hero("../media/Hero.png",0,0,renderer);
+  vector<Character*> players;
+  Cursor *cursor_ptr = NULL;
+  players.push_back(new Hero("../media/Hero.png",0,0,renderer));
+  players.push_back(new Hero("../media/Hero.png",1,0,renderer));
+  players.push_back(new Hero("../media/Hero.png",2,0,renderer));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
@@ -48,15 +51,19 @@ int main(){
       }else if(e.type==SDL_KEYDOWN){
         switch(e.key.keysym.sym){
           case SDLK_a:
-            hero_ptr->setHitpoints(hero_ptr->getHitpoints()-5);
+            players[0]->setHitpoints(players[0]->getHitpoints()-5);
         }
       }
     }
-    hero_ptr->update();
+    players[0]->update();
+    players[1]->update();
+    players[2]->update();
     cursor_ptr->update();
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
-    hero_ptr->draw(renderer);   
+    players[0]->draw(renderer);   
+    players[1]->draw(renderer);   
+    players[2]->draw(renderer);   
     cursor_ptr->draw(renderer);
     SDL_RenderPresent(renderer);
   }

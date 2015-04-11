@@ -15,8 +15,6 @@ class GamePiece{
   void move(int); //move function is universal for all game pieces
   virtual void draw(SDL_Renderer*) = 0; // each draw function of derived classes will be slightly different
   virtual void update() = 0;		// update will do something different for each dervied class
-  virtual void setHitpoints(int) = 0;
-  virtual int getHitpoints(void) = 0; 
   void setx(int);
   void sety(int);
   int getx();

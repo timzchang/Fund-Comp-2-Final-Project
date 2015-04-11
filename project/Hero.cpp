@@ -36,15 +36,3 @@ Hero::Hero(string path, int x, int y, SDL_Renderer* renderer):Character(path,x,y
   terrain_effect.push_back(2);
   terrain_effect.push_back(0);
 }
-
-void Hero::draw(SDL_Renderer* renderer){
-  Character::draw(renderer);
-}
-
-void Hero::setHitpoints(int h){
-  Character::setHitpoints(h);
-}
-
-int Hero::getHitpoints(){
-  return Character::getHitpoints();
-}

@@ -13,9 +13,6 @@ class Hero: public Character{
   public:
     Hero();					// default constructor
     Hero(string, int, int, SDL_Renderer*);	// non-default constructor
-    void draw(SDL_Renderer*);
-    void setHitpoints(int);
-    int getHitpoints();
   private:
 };
 #endif
