@@ -110,3 +110,6 @@ Date		Time		Work Done					Learned
 				function of Character class.			program and how important it is to keep track of them. Next
 				I believe it works as intended			step is to add a blue highlight to valid squares and make a 
 										character move into valid squares on command.
+
+4/11/15		1		Made a blue_highlight.png that is		Not much new was learned.
+				drawn wherever a character can move.
