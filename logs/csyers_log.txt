@@ -96,3 +96,8 @@ Date		Time		Work Done					Learned
 4/9/15		.5		Created a mechanism to change the hp
 				of a character, and to kill it when
 				its hp is 0.
+
+4/10/15		2		Kept modifying the Cursor class to		Learned a decent amount about some advanced inheritance
+				allow it to move across the screen.		concepts, and honed skills on virtual and pure virtual
+				Now can move with key clicks and		functions.
+				stop at the border of maps.
