@@ -77,7 +77,8 @@ void Map::render_map(SDL_Renderer* renderer){
 6 = mountain/cliff
 */
 int Map::get_tile_info(int x, int y){
-  if(x>image_width/16 || x<0 || y<0 || y>image_height/16){			// checks for invalid coordinate
+  if(x>get_width() || x<0 || y<0 || y>get_height()){			// checks for invalid coordinate
+    std::cout << "x=" << x << " y=" << y << " width=" << get_width() << " height=" << get_height() << std::endl;
     std::cout << "Out of bounds in function get_tile_info." << std::endl;	// error message
     return -1;									// error return
   }else{

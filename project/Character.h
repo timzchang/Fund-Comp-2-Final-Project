@@ -10,6 +10,7 @@
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_image.h>
 #include "GamePiece.h"
+#include "Valid_board.h"
 #include "Map.h"
 using namespace std;
 class Character: public GamePiece {
@@ -21,10 +22,11 @@ class Character: public GamePiece {
 		void change_direction(int);				// changes the direction of the sprite. 0 up, 1 right... 3 left
 		int get_phase();					// returns the current phase of the sprite
 		void next_phase();					// changes the phase of the sprite
-		void check_valid_move(Map &, int, int, int, vector< vector<int> >);	// modifies a vector of vectors to contain valid move
+		void check_valid_move(Map*, int, int, int, Valid_board*);// modifies a vector of vectors to contain valid move
 		void update();
 		int getHitpoints();					// returns character's hitpoints
 		void setHitpoints(int);					// set character's hitpoints
+		int getMobility();					// gets the character's movement
 	protected:	
 		int direction;						// direction the sprite is facing
 		int phase;						// what foot the sprite is on

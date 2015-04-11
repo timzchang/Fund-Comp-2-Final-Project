@@ -1,6 +1,6 @@
 FLAGS = -lSDL2 -lSDL2_image
 EXEC = fire_emblem
-OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o
+OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o
 
 
 all: fire_emblem
@@ -23,6 +23,8 @@ Cursor.o: Cursor.cpp GamePiece.h
 Map.o: Map.cpp
 	g++ -c Map.cpp
 
+Valid_board.o: Valid_board.cpp
+	g++ -c Valid_board.cpp
 .PHONY: clean
 
 clean:

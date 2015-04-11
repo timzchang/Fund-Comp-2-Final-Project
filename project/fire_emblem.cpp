@@ -7,6 +7,7 @@
 #include "Hero.h"
 #include "Cursor.h"
 #include "GamePiece.h"
+#include "Valid_board.h"
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -18,6 +19,23 @@ SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
 
 int main(){
+/*  Valid_board test(10,10);
+  test.print();
+cout << endl;
+  test.resize(10,15);
+  test.print();
+cout << endl;
+  test.resize(15,10);
+  test.print();
+  test.set_tile(0,0);
+  test.set_tile(5,5);
+  test.set_tile(-1,-1);
+  test.set_tile(15,10);
+cout << endl;
+  test.print();
+  test.to_zeros();
+cout << endl;
+  test.print();*/
   int counter = 0;
   Map level1;
   SDL_Init(SDL_INIT_VIDEO);
@@ -35,12 +53,18 @@ int main(){
 
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
+  Valid_board vb(level1.get_width(),level1.get_height());
+  vb.print();
   vector<Character*> players;
   GamePiece *cursor_ptr = NULL;
   players.push_back(new Hero("../media/Hero.png",0,0,renderer));
   players.push_back(new Hero("../media/Hero.png",1,0,renderer));
   players.push_back(new Hero("../media/Hero.png",2,0,renderer));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
+  cout << players[1]->getx() << endl;
+  cout << players[1]->gety() << endl;
+  players[1]->check_valid_move(&level1,players[1]->getx(),players[1]->gety(),players[1]->getMobility(),&vb);
+  vb.print();
   bool quit = false;
   SDL_Event e;
 
