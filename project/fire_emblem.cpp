@@ -19,27 +19,8 @@ SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
 
 int main(){
-/*  Valid_board test(10,10);
-  test.print();
-cout << endl;
-  test.resize(10,15);
-  test.print();
-cout << endl;
-  test.resize(15,10);
-  test.print();
-  test.set_tile(0,0);
-  test.set_tile(5,5);
-  test.set_tile(-1,-1);
-  test.set_tile(15,10);
-cout << endl;
-  test.print();
-  test.to_zeros();
-cout << endl;
-  test.print();*/
-  int counter = 0;
   Map level1;
   SDL_Init(SDL_INIT_VIDEO);
-//  window = SDL_CreateWindow("Maps",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,level1.getWidth(),level1.getHeight());
   window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,480,480,SDL_WINDOW_SHOWN);
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   if(!renderer){
@@ -50,11 +31,9 @@ cout << endl;
   if(!(IMG_Init(imgFlags) & imgFlags)){
     std::cout << "SDL_image couldn't initialize!\n";
   }
-
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
-  Valid_board vb(level1.get_width(),level1.get_height());
-  vb.print();
+  Valid_board vb(level1.get_width(),level1.get_height(),"../media/blue_highlight.png",renderer);
   vector<Character*> players;
   GamePiece *cursor_ptr = NULL;
   players.push_back(new Hero("../media/Hero.png",0,0,renderer));
@@ -62,7 +41,6 @@ cout << endl;
   players.push_back(new Hero("../media/Hero.png",9,9,renderer));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   players[2]->check_valid_move(&level1,players[2]->getx(),players[2]->gety(),players[2]->getMobility(),&vb);
-  vb.print();
   bool quit = false;
   SDL_Event e;
 
@@ -96,6 +74,7 @@ cout << endl;
     cursor_ptr->update();
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
+    vb.draw(renderer);
     players[0]->draw(renderer);   
     players[1]->draw(renderer);   
     players[2]->draw(renderer);   
