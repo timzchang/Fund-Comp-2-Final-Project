@@ -36,7 +36,7 @@ int main(){
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
   vector<Character*> players;
-  Cursor *cursor_ptr = NULL;
+  GamePiece *cursor_ptr = NULL;
   players.push_back(new Hero("../media/Hero.png",0,0,renderer));
   players.push_back(new Hero("../media/Hero.png",1,0,renderer));
   players.push_back(new Hero("../media/Hero.png",2,0,renderer));
@@ -52,6 +52,19 @@ int main(){
         switch(e.key.keysym.sym){
           case SDLK_a:
             players[0]->setHitpoints(players[0]->getHitpoints()-5);
+            break;
+	  case SDLK_DOWN:
+	    cursor_ptr->move(2,level1.get_width(),level1.get_height());
+	    break;
+          case SDLK_UP:
+	    cursor_ptr->move(0,level1.get_width(),level1.get_height());
+	    break;
+	  case SDLK_LEFT:
+	    cursor_ptr->move(3,level1.get_width(),level1.get_height());
+	    break;
+	  case SDLK_RIGHT:
+	    cursor_ptr->move(1,level1.get_width(),level1.get_height());
+	    break;
         }
       }
     }

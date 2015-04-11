@@ -21,6 +21,7 @@ class Cursor: public GamePiece {
     void next_phase();				// changes the phase of the cursor
     int get_phase();				// gets current phase of the cursor
     void update();				// updates clock counts
+    void move(int,int,int);
   private:
     int phase;			// phase of the cursor (0 for big, 1 for small)
     SDL_Texture* cursor_1;	// Outer cursor

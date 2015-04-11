@@ -7,12 +7,12 @@
 #define GAMEPIECE_H
 using namespace std;
 #include <SDL2/SDL.h>
-
 class GamePiece{
  public:
   GamePiece();
   GamePiece(int,int);
-  void move(int); //move function is universal for all game pieces
+  virtual void move(int); 		//move function is universal for all game pieces
+  virtual void move(int,int,int);
   virtual void draw(SDL_Renderer*) = 0; // each draw function of derived classes will be slightly different
   virtual void update() = 0;		// update will do something different for each dervied class
   void setx(int);

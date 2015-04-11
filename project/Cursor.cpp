@@ -76,3 +76,25 @@ void Cursor::update(){
     next_phase();
   }
 }
+
+// function that moves the cursor and keeps it from going outside of the map.
+void Cursor::move(int change, int max_width, int max_height){
+  switch(change){
+    case(0):
+      if(ypos==0) return;
+      else ypos = ypos-1;
+      break;
+    case(1):
+      if(xpos == max_width-1) return;
+      else xpos = xpos+1;
+      break;
+    case(2):
+      if(ypos == max_height-1) return;
+      else ypos = ypos+1;
+      break;
+    case(3):
+      if(xpos==0) return;
+      else xpos = xpos-1;
+      break;
+  }
+}

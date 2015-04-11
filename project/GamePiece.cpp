@@ -25,7 +25,7 @@ void GamePiece::move(int direction){
     xpos += 1;
     break;
   case 2:
-    ypos -= 1;
+    ypos += 1;
     break;
   case 3:
     xpos -= 1;
@@ -46,4 +46,8 @@ int GamePiece::getx(){
 
 int GamePiece::gety(){
   return ypos;
+}
+
+void GamePiece::move(int choice, int a, int b){
+  std::cout<<"This shouldn't be here"<<std::endl;
 }
