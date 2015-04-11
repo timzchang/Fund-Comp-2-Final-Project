@@ -27,6 +27,7 @@ class Character: public GamePiece {
 		int getHitpoints();					// returns character's hitpoints
 		void setHitpoints(int);					// set character's hitpoints
 		int getMobility();					// gets the character's movement
+		int get_terrain_effect(int);				// returns the mobility required to move on a certain tile
 	protected:	
 		int direction;						// direction the sprite is facing
 		int phase;						// what foot the sprite is on

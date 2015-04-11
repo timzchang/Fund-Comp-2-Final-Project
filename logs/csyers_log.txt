@@ -105,3 +105,8 @@ Date		Time		Work Done					Learned
 4/10/15		2		Developed Valid_board class and			I learned it is very confusing to have two different coordinate
 				began debugging for the valid			systems going on - the graphics one and the standard 2d vector
 				move checking of a character			one. Will continue to work this problem out in future.
+
+4/11/15		2		Error checked the valid_moves			Increased my knowledge about coordinate systems used in the 
+				function of Character class.			program and how important it is to keep track of them. Next
+				I believe it works as intended			step is to add a blue highlight to valid squares and make a 
+										character move into valid squares on command.

@@ -76,18 +76,21 @@ int Character::get_phase(){
 
 // function that takes in a vector of vector and returns it populated with 1s where a character can move
 void Character::check_valid_move(Map *current_map, int x, int y, int movement_remaining,Valid_board *vb){
-  cout << "Checking x=" << x << " y=" << y << " with movement=" << movement_remaining << "." << endl;
-  if(movement_remaining <= 0) return;					// if the character is out of movement, end recursion
-  if(x < 0 || x > current_map->get_width()) return;			// if the x is out of range, end function
-  if(y < 0 || y > current_map->get_height()) return;			// if y coordinate is out of range, end function
-  if(terrain_effect[current_map->get_tile_info(y,x)]==0) return;	// if the character can't move onto the x,y coordinate, end function
-  vb->set_tile(y,x);							// if it makes it through checks, the position is valid
-  cout << "Setting x=" << x << " y=" << y << " with movement=" << movement_remaining << "." << endl;
+// BE CAREFUL WITH COORDINATE SYSTEM - IT IS SLIGHTLY CONFUSING WITH GRAPHICS COORDINATES AND REGULAR VECTOR ARGUMENTS
+  if(movement_remaining < 0)  
+    return;							// if the character is out of movement, end recursion
+  if(terrain_effect[current_map->get_tile_info(y,x)]==0) 
+    return;							// if the character can't move onto the x,y coordinate, end function
+  vb->set_tile(y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recurrsion)
-  if(y-1 >= 0) check_valid_move(current_map,x,y-1,movement_remaining-current_map->get_tile_info(x,y-1),vb);
-  if(x+1 <= current_map->get_width()) check_valid_move(current_map,x+1,y,movement_remaining-current_map->get_tile_info(y,x+1),vb);
-  if(y+1 <= current_map->get_height()) check_valid_move(current_map,x,y+1,movement_remaining-current_map->get_tile_info(x,y+1),vb);
-  if(x-1 >= 0) check_valid_move(current_map,x-1,y,movement_remaining-current_map->get_tile_info(x-1,y),vb);
+  if(y-1 >= 0) 
+    check_valid_move(current_map,x,y-1,movement_remaining-terrain_effect[current_map->get_tile_info(y-1,x)],vb);
+  if(x+1 <= current_map->get_width())
+    check_valid_move(current_map,x+1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x+1)],vb);
+  if(y+1 <= current_map->get_height())
+    check_valid_move(current_map,x,y+1,movement_remaining-terrain_effect[current_map->get_tile_info(y+1,x)],vb);
+  if(x-1 >= 0) 
+    check_valid_move(current_map,x-1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x-1)],vb);
 }
 
 // updates counter of the character to determine when to change phase
@@ -116,4 +119,10 @@ void Character::setHitpoints(int new_hp){
 // function to get character's movement
 int Character::getMobility(){
   return mobility;
+}
+
+// returns the terrain's effect on mobility
+int Character::get_terrain_effect(int tile){
+  if(tile < 0) return -1;
+  return terrain_effect[tile];
 }
