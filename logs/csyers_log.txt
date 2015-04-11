@@ -101,3 +101,7 @@ Date		Time		Work Done					Learned
 				allow it to move across the screen.		concepts, and honed skills on virtual and pure virtual
 				Now can move with key clicks and		functions.
 				stop at the border of maps.
+
+4/10/15		2		Developed Valid_board class and			I learned it is very confusing to have two different coordinate
+				began debugging for the valid			systems going on - the graphics one and the standard 2d vector
+				move checking of a character			one. Will continue to work this problem out in future.
