@@ -41,7 +41,7 @@ int main(){
   players.push_back(new Hero("../media/Hero.png",9,10,renderer));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   players[2]->check_valid_move(&level1,players[2]->getx(),players[2]->gety(),players[2]->getMobility(),&vb);
-  vb.add_attack_spots(1);
+  vb.add_attack_spots(2);
   vb.print();
   bool quit = false;
   SDL_Event e;

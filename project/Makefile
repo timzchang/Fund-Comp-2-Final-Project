@@ -6,7 +6,7 @@ OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o
 all: fire_emblem
 
 fire_emblem: fire_emblem.cpp $(OBJECTS)
-	g++ fire_emblem.cpp $(OBJECTS) $(FLAGS) -O0 -g3 -o fire_emblem
+	g++ fire_emblem.cpp $(OBJECTS) $(FLAGS) -o fire_emblem
 
 GamePiece.o: GamePiece.cpp
 	g++ -c GamePiece.cpp
