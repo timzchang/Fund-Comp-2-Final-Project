@@ -77,11 +77,12 @@ int Character::get_phase(){
 // function that takes in a vector of vector and returns it populated with 1s where a character can move
 void Character::check_valid_move(Map *current_map, int x, int y, int movement_remaining,Valid_board *vb){
 // BE CAREFUL WITH COORDINATE SYSTEM - IT IS SLIGHTLY CONFUSING WITH GRAPHICS COORDINATES AND REGULAR VECTOR ARGUMENTS
-  if(movement_remaining < 0)  
-    return;							// if the character is out of movement, end recursion
+  if(movement_remaining < 0){  	// if the character is out of movement
+    return;		
+  }
   if(terrain_effect[current_map->get_tile_info(y,x)]==0) 
     return;							// if the character can't move onto the x,y coordinate, end function
-  vb->set_tile(y,x);						// if it makes it through checks, the position is valid
+  vb->set_tile(1,y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recurrsion)
   if(y-1 >= 0) 
     check_valid_move(current_map,x,y-1,movement_remaining-terrain_effect[current_map->get_tile_info(y-1,x)],vb);
