@@ -117,3 +117,11 @@ Date		Time		Work Done					Learned
 4/11/15		1		Made ability to draw where a player		Nothing much was learned
 				can attack. Highlights those squares
 				in red.
+
+4/12/15		1		Found a memory error in the function		I learend about how && were checked. If the first fails, the 
+				to add valid attack spaces to a valid		second is never run, which is useful for things like checking
+				board. Fixed it by switching around		if an index is valid before actually using that index.
+				which was the conditionals were checked.
+				Now the function works for ranges 1 and 2,
+				and can be easily adapted if larger
+				attack ranges exist in the game.
