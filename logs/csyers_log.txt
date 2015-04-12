@@ -113,3 +113,7 @@ Date		Time		Work Done					Learned
 
 4/11/15		1		Made a blue_highlight.png that is		Not much new was learned.
 				drawn wherever a character can move.
+
+4/11/15		1		Made ability to draw where a player		Nothing much was learned
+				can attack. Highlights those squares
+				in red.
