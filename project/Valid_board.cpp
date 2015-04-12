@@ -122,10 +122,10 @@ void Valid_board::add_attack_spots(int range){
       if(valid_tiles[i][j]==1){
         for( int k = range; k >= 1; k--){
 cout << i << " " << j << " " << k << endl;
-          if(valid_tiles[i-k][j] == 0 && i-k >= 0) valid_tiles[i-k][j] = 2;
-          if(valid_tiles[i+k][j] == 0 && i+k < get_num_rows()) valid_tiles[i+k][j] = 2;
-          if(valid_tiles[i][j-k] == 0 && j-k >= 0) valid_tiles[i][j-k] = 2;
-          if(valid_tiles[i][j+k] == 0 && j+k < get_num_cols()) valid_tiles[i][j+k] = 2;
+          if(i-k >= 0 && valid_tiles[i-k][j] == 0) valid_tiles[i-k][j] = 2;
+          if(i+k < get_num_rows() && valid_tiles[i+k][j] == 0) valid_tiles[i+k][j] = 2;
+          if(j-k >= 0 && valid_tiles[i][j-k] == 0) valid_tiles[i][j-k] = 2;
+          if(j+k < get_num_cols() && valid_tiles[i][j+k] == 0) valid_tiles[i][j+k] = 2;
         }
       }
     }
