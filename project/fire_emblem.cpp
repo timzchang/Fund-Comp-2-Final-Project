@@ -55,6 +55,9 @@ int main(){
 	    players[2]->select();
             players[2]->check_valid_move(&level1,players[2]->getx(),players[2]->gety(),players[2]->getMobility());
 	    break;
+          case SDLK_u:
+	    players[2]->unselect();
+	    break;
 	  case SDLK_DOWN:
 	    cursor_ptr->move(2,level1.get_width(),level1.get_height());
 	    break;

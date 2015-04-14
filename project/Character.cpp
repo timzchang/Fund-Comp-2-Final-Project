@@ -8,7 +8,7 @@ using namespace std;
 // default constructor (calls non-default of GamePiece which sets xpos and ypos to 0)
 Character::Character(){
   direction = 0;			// direction starts at 0
-  phase = 0;				// phase starts at 0
+  phase = 1;				// phase starts at 1 (stand still)
   character_texture = NULL;		// no image
   counter = 0;
   alive = 0;				// with non-default, make the character dead
@@ -20,7 +20,7 @@ Character::Character(string path,int x, int y, SDL_Renderer* renderer, int width
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());				// loads the image into character_texture
   character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
   direction = 0;								// direction starts at 0
-  phase = 0;									// phase starts at 0
+  phase = 1;									// phase starts at 1 (stand still phase)
   SDL_FreeSurface(loadedSurface);						// frees the surface
   loadedSurface = NULL;								// grounds pointer
   counter = 0;
@@ -43,7 +43,7 @@ void Character::draw(SDL_Renderer* renderer){
   if(alive == 0){
     return;
   }
-  if(selected = 1){
+  if(selected == 1){
     vb.draw(renderer);
   }
   SDL_Rect destRect = {xpos*32, ypos*32, 32, 32};			// destination rectangle. Based on xpos and ypos of GamePiece
@@ -105,7 +105,7 @@ void Character::update(){
   if(hitpoints==0){
     alive = 0;
   }
-  if(selected){
+  if(selected==1){
     counter++;
     if(counter == 15){		// changes phase and resets every 15 counts
       counter = 0;
@@ -145,4 +145,5 @@ void Character::select(){
 // changes selected data member to 0
 void Character::unselect(){
   selected = 0;
+  phase = 1;
 }
