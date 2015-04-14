@@ -134,3 +134,9 @@ Date		Time		Work Done					Learned
 				be just to have the 2d array of 
 				ints that it needs for check valid
 				move.
+
+4/14/15		2		Changed the Character class to have		Learned about how to check for segfaults effectively.
+				a 2d vector that is the same as the
+				map's 2d vector. This allows 
+				check_valid_move to be called without
+				a Map object being passed in.
