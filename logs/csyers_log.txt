@@ -140,3 +140,8 @@ Date		Time		Work Done					Learned
 				map's 2d vector. This allows 
 				check_valid_move to be called without
 				a Map object being passed in.
+
+4/14/15		1		Added ability to write text			Learned about SDL_TTF and how to use it to write text to the
+				to the screen. Will eventually			screen.
+				become important for displaying
+				stats of characters.
