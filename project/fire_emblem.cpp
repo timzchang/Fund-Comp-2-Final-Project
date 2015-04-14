@@ -12,6 +12,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <vector>
+#include <SDL2/SDL_ttf.h>
 //const int SCREEN_WIDTH = 240;
 //const int SCREEN_HEIGHT = 240;
 
@@ -33,13 +34,20 @@ int main(){
   }
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
+  if( TTF_Init() == -1){
+    cout << "SDL TTF couln't initialize!\n";
+  }
+  TTF_Font* Sans = TTF_OpenFont("../media/sans.ttf",48);
+  SDL_Color White = {255,255,255,0};
+  SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans,"Test for text",White);
+  SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer,surfaceMessage);
+  SDL_Rect Message_rect = {100,100,100,25};
+  SDL_FreeSurface(surfaceMessage);
   vector<Character*> players;
   GamePiece *cursor_ptr = NULL;
   players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_tile_prop()));
- // players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_width(),level1.get_height()));
- // players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_width(),level1.get_height()));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
@@ -85,6 +93,7 @@ int main(){
     players[1]->draw(renderer);   
     players[2]->draw(renderer);   
     cursor_ptr->draw(renderer);
+    SDL_RenderCopy(renderer,Message,NULL,&Message_rect);
     SDL_RenderPresent(renderer);
   }
 
