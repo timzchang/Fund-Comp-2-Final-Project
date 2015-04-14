@@ -35,9 +35,11 @@ int main(){
   level1.loadVector("../maps/small_map_info.txt");
   vector<Character*> players;
   GamePiece *cursor_ptr = NULL;
-  players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_width(),level1.get_height()));
-  players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_width(),level1.get_height()));
-  players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_width(),level1.get_height()));
+  players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_tile_prop()));
+ // players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_width(),level1.get_height()));
+ // players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_width(),level1.get_height()));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
@@ -53,7 +55,7 @@ int main(){
             break;
 	  case SDLK_s:
 	    players[2]->select();
-            players[2]->check_valid_move(&level1,players[2]->getx(),players[2]->gety(),players[2]->getMobility());
+            players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility());
 	    break;
           case SDLK_u:
 	    players[2]->unselect();

@@ -12,7 +12,7 @@
 class Hero: public Character{
   public:
     Hero();					// default constructor
-    Hero(string, int, int, SDL_Renderer*,int,int);// non-default constructor
+    Hero(string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif

@@ -24,6 +24,8 @@ class Map{
     int get_tile_info(int,int);		// returns the property (int) of the tile at position x,y
     int get_width();			// returns the number of tiles the width of the map is
     int get_height();			// returns the number of tiles the height of the map is
+    std::vector<std::vector <int> > get_tile_prop();		// returns a copy of the 2d vector of tile properties
+    void print();
   private:
     SDL_Texture* map_image;		// image texture
     std::vector<std::vector <int> > tile_properties;	// vector for properties of tiles, each int means something different

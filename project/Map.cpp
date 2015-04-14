@@ -10,7 +10,7 @@
 #include <fstream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-
+using namespace std;
 // default constructor 
 Map::Map(){
   map_image = NULL;		// sets SDL_Texture to NULL to avoid random pointer
@@ -42,15 +42,13 @@ void Map::loadImage(std::string image_path, SDL_Renderer* renderer){
 void Map::loadVector(std::string level_txt_path){
   int num_tiles_w = image_width/16;				// the number of tiles wide the map is
   int num_tiles_h = image_height/16;				// the number of tiles high the map is
-
   int tempVar;							// variable to hold read in ints from txt file
   std::vector<int> tempVec;					// temp vector to push back into the second dimension
 
   std::ifstream infile;					
   infile.open(level_txt_path.c_str());				// open the file that contains the formatted information
 
-  while(!infile.eof()){	
-
+  for(int i = 0; i < num_tiles_h; i++){	
     for(int i = 0; i < num_tiles_w; i++){			// for each row
       infile >> tempVar;					// read an int
       tempVec.push_back(tempVar);				// push that int onto a vector
@@ -93,4 +91,24 @@ int Map::get_width(){
 // function that returns the number of tiles the map is high
 int Map::get_height(){
   return image_height/16;			// maps are divided into 16 pixel tiles
+}
+
+// returns copy of the 2d int vector tile_properties
+std::vector<std::vector <int> > Map::get_tile_prop(){
+  std::vector<std::vector <int> > to_return;
+  to_return = tile_properties;
+  return to_return;
+}
+
+// function to print the 2d vector of ints of the map
+void Map::print(){
+/*  for(int i = 0; i < tile_properties.size(); i++){
+    for(int j = 0; j < tile_properties[0].size(); j++){
+      cout << tile_properties[i][j] << " ";
+    }
+cout <<endl;
+  }
+*/
+ cout << tile_properties.size() << endl;
+ cout << tile_properties[0].size() << endl;
 }

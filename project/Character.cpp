@@ -16,7 +16,7 @@ Character::Character(){
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
-Character::Character(string path,int x, int y, SDL_Renderer* renderer, int width, int height):GamePiece(x,y), vb(width,height,"../media/blue_highlight.png","../media/red_highlight.png",renderer){
+Character::Character(string path,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop[0].size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());				// loads the image into character_texture
   character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
   direction = 0;								// direction starts at 0
@@ -26,6 +26,14 @@ Character::Character(string path,int x, int y, SDL_Renderer* renderer, int width
   counter = 0;
   alive = 1;									// indicates the character is alive
   selected = 0;
+  tile_properties = tile_prop;
+/*  for(int i=0;i<tile_properties.size();i++){
+    for(int j=0;j<tile_properties[0].size();j++){
+      cout << tile_properties[i][j] << " ";
+    }
+    cout << endl;
+  }
+cout << endl;*/
 }
 
 // deconstructor
@@ -81,23 +89,45 @@ int Character::get_phase(){
 }
 
 // function that takes in a vector of vector and returns it populated with 1s where a character can move
-void Character::check_valid_move(Map *current_map, int x, int y, int movement_remaining){
+void Character::check_valid_move(int x, int y, int movement_remaining){
 // BE CAREFUL WITH COORDINATE SYSTEM - IT IS SLIGHTLY CONFUSING WITH GRAPHICS COORDINATES AND REGULAR VECTOR ARGUMENTS
+/*cout << "Checking x =" << x << " and y =" << y << endl;
+  for(int i=0;i<tile_properties.size();i++){
+    for(int j=0;j<tile_properties[0].size();j++){
+      cout << tile_properties[i][j] << " ";
+    }
+    cout << endl;
+  }
+cout << endl;
+cout << "segfaults and doesn't reach this" << endl;*/
+cout << "Segfault with x = " << x << " y = " << y << " tile_prop = " << tile_properties[y][x] << " mobility = " << movement_remaining << endl;
   if(movement_remaining < 0){  	// if the character is out of movement
     return;		
   }
-  if(terrain_effect[current_map->get_tile_info(y,x)]==0) 
+  if(terrain_effect[tile_properties[y][x]]==0) 
     return;							// if the character can't move onto the x,y coordinate, end function
   vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recurrsion)
-  if(y-1 >= 0) 
-    check_valid_move(current_map,x,y-1,movement_remaining-terrain_effect[current_map->get_tile_info(y-1,x)]);
-  if(x+1 <= current_map->get_width())
-    check_valid_move(current_map,x+1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x+1)]);
-  if(y+1 <= current_map->get_height())
-    check_valid_move(current_map,x,y+1,movement_remaining-terrain_effect[current_map->get_tile_info(y+1,x)]);
-  if(x-1 >= 0) 
-    check_valid_move(current_map,x-1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x-1)]);
+  if(y-1 >= 0){
+    cout << "y-1" << endl;
+    check_valid_move(x,y-1,movement_remaining-terrain_effect[tile_properties[y-1][x]]);
+    cout << "past y-1" << endl;
+  }
+  if(x+1 < tile_properties.size()){
+    cout << "x+1" << endl;
+    check_valid_move(x+1,y,movement_remaining-terrain_effect[tile_properties[y][x+1]]);
+    cout << "past x+1" << endl;
+  }
+  if(y+1 < tile_properties[0].size()){
+    cout << y+1 << endl;
+    check_valid_move(x,y+1,movement_remaining-terrain_effect[tile_properties[y+1][x]]);
+    cout << "past y+!" << endl;
+  }
+  if(x-1 >= 0){
+    cout << "x-1" << endl;
+    check_valid_move(x-1,y,movement_remaining-terrain_effect[tile_properties[y][x-1]]);
+    cout << "past x-1" << endl;
+  }
 }
 
 // updates counter of the character to determine when to change phase
