@@ -33,16 +33,12 @@ int main(){
   }
   level1.loadImage("../maps/small_map.png",renderer);
   level1.loadVector("../maps/small_map_info.txt");
-  Valid_board vb(level1.get_width(),level1.get_height(),"../media/blue_highlight.png","../media/red_highlight.png",renderer);
   vector<Character*> players;
   GamePiece *cursor_ptr = NULL;
-  players.push_back(new Hero("../media/Hero.png",0,0,renderer));
-  players.push_back(new Hero("../media/Hero.png",2,8,renderer));
-  players.push_back(new Hero("../media/Hero.png",9,10,renderer));
+  players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_width(),level1.get_height()));
+  players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_width(),level1.get_height()));
+  players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_width(),level1.get_height()));
   cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
-  players[2]->check_valid_move(&level1,players[2]->getx(),players[2]->gety(),players[2]->getMobility(),&vb);
-  vb.add_attack_spots(2);
-  vb.print();
   bool quit = false;
   SDL_Event e;
 
@@ -55,6 +51,10 @@ int main(){
           case SDLK_a:
             players[0]->setHitpoints(players[0]->getHitpoints()-5);
             break;
+	  case SDLK_s:
+	    players[2]->select();
+            players[2]->check_valid_move(&level1,players[2]->getx(),players[2]->gety(),players[2]->getMobility());
+	    break;
 	  case SDLK_DOWN:
 	    cursor_ptr->move(2,level1.get_width(),level1.get_height());
 	    break;
@@ -76,7 +76,6 @@ int main(){
     cursor_ptr->update();
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
-    vb.draw(renderer);
     players[0]->draw(renderer);   
     players[1]->draw(renderer);   
     players[2]->draw(renderer);   

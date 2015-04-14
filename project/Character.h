@@ -16,18 +16,20 @@ using namespace std;
 class Character: public GamePiece {
 	public:
 		Character();						// default constructor
-		Character(string, int, int, SDL_Renderer*);		// non-default constructor
+		Character(string, int, int, SDL_Renderer*,int,int);	// non-default constructor
 		~Character();						// deconstructor
 		void draw(SDL_Renderer*);				// draw function
 		void change_direction(int);				// changes the direction of the sprite. 0 up, 1 right... 3 left
 		int get_phase();					// returns the current phase of the sprite
 		void next_phase();					// changes the phase of the sprite
-		void check_valid_move(Map*, int, int, int, Valid_board*);// modifies a vector of vectors to contain valid move
+		void check_valid_move(Map*, int, int, int);		// modifies a vector of vectors to contain valid move
 		void update();
 		int getHitpoints();					// returns character's hitpoints
 		void setHitpoints(int);					// set character's hitpoints
 		int getMobility();					// gets the character's movement
 		int get_terrain_effect(int);				// returns the mobility required to move on a certain tile
+		void select();						// changes value of selected data member
+		void unselect();					// changes selected to 0
 	protected:	
 		int direction;						// direction the sprite is facing
 		int phase;						// what foot the sprite is on
@@ -39,6 +41,8 @@ class Character: public GamePiece {
 		vector<int> terrain_effect;				// effect each terrain has on mobility
 		int attack_range;					// range of attack
 		int counter;						// variable to count clock cycles
-		int alive;
+		int alive;						// if the character has any hitpoints left
+		int selected;						// if the character has been selected
+		Valid_board vb;						// a 2d array of possible move places and attack spaces
 };
 #endif

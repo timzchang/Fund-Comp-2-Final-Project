@@ -3,6 +3,7 @@
 
 #include "Character.h"
 #include <iostream>
+#include <string>
 using namespace std;
 // default constructor (calls non-default of GamePiece which sets xpos and ypos to 0)
 Character::Character(){
@@ -11,10 +12,11 @@ Character::Character(){
   character_texture = NULL;		// no image
   counter = 0;
   alive = 0;				// with non-default, make the character dead
+  selected = 0;
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
-Character::Character(string path,int x, int y, SDL_Renderer* renderer):GamePiece(x,y){
+Character::Character(string path,int x, int y, SDL_Renderer* renderer, int width, int height):GamePiece(x,y), vb(width,height,"../media/blue_highlight.png","../media/red_highlight.png",renderer){
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());				// loads the image into character_texture
   character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
   direction = 0;								// direction starts at 0
@@ -23,6 +25,7 @@ Character::Character(string path,int x, int y, SDL_Renderer* renderer):GamePiece
   loadedSurface = NULL;								// grounds pointer
   counter = 0;
   alive = 1;									// indicates the character is alive
+  selected = 0;
 }
 
 // deconstructor
@@ -39,6 +42,9 @@ Character::~Character(){
 void Character::draw(SDL_Renderer* renderer){
   if(alive == 0){
     return;
+  }
+  if(selected = 1){
+    vb.draw(renderer);
   }
   SDL_Rect destRect = {xpos*32, ypos*32, 32, 32};			// destination rectangle. Based on xpos and ypos of GamePiece
   SDL_Rect clipRect = {phase*32, direction*32, 32, 32};			// source rect. Clips the sprite sheet based on the phase.
@@ -75,23 +81,23 @@ int Character::get_phase(){
 }
 
 // function that takes in a vector of vector and returns it populated with 1s where a character can move
-void Character::check_valid_move(Map *current_map, int x, int y, int movement_remaining,Valid_board *vb){
+void Character::check_valid_move(Map *current_map, int x, int y, int movement_remaining){
 // BE CAREFUL WITH COORDINATE SYSTEM - IT IS SLIGHTLY CONFUSING WITH GRAPHICS COORDINATES AND REGULAR VECTOR ARGUMENTS
   if(movement_remaining < 0){  	// if the character is out of movement
     return;		
   }
   if(terrain_effect[current_map->get_tile_info(y,x)]==0) 
     return;							// if the character can't move onto the x,y coordinate, end function
-  vb->set_tile(1,y,x);						// if it makes it through checks, the position is valid
+  vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recurrsion)
   if(y-1 >= 0) 
-    check_valid_move(current_map,x,y-1,movement_remaining-terrain_effect[current_map->get_tile_info(y-1,x)],vb);
+    check_valid_move(current_map,x,y-1,movement_remaining-terrain_effect[current_map->get_tile_info(y-1,x)]);
   if(x+1 <= current_map->get_width())
-    check_valid_move(current_map,x+1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x+1)],vb);
+    check_valid_move(current_map,x+1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x+1)]);
   if(y+1 <= current_map->get_height())
-    check_valid_move(current_map,x,y+1,movement_remaining-terrain_effect[current_map->get_tile_info(y+1,x)],vb);
+    check_valid_move(current_map,x,y+1,movement_remaining-terrain_effect[current_map->get_tile_info(y+1,x)]);
   if(x-1 >= 0) 
-    check_valid_move(current_map,x-1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x-1)],vb);
+    check_valid_move(current_map,x-1,y,movement_remaining-terrain_effect[current_map->get_tile_info(y,x-1)]);
 }
 
 // updates counter of the character to determine when to change phase
@@ -99,10 +105,13 @@ void Character::update(){
   if(hitpoints==0){
     alive = 0;
   }
-  counter++;
-  if(counter == 15){		// changes phase and resets every 15 counts
-    counter = 0;
-    next_phase();
+  if(selected){
+    counter++;
+    if(counter == 15){		// changes phase and resets every 15 counts
+      counter = 0;
+      next_phase();
+    }
+    vb.add_attack_spots(attack_range);
   }
 }
   
@@ -126,4 +135,14 @@ int Character::getMobility(){
 int Character::get_terrain_effect(int tile){
   if(tile < 0) return -1;
   return terrain_effect[tile];
+}
+
+// changes selected data member to 1
+void Character::select(){
+  selected = 1;
+}
+
+// changes selected data member to 0
+void Character::unselect(){
+  selected = 0;
 }

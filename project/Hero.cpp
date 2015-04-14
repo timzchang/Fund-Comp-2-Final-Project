@@ -21,7 +21,7 @@ Hero::Hero(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Hero::Hero(string path, int x, int y, SDL_Renderer* renderer):Character(path,x,y,renderer){	
+Hero::Hero(string path, int x, int y, SDL_Renderer* renderer, int w, int h):Character(path,x,y,renderer,w,h){	
   // sets stats
   hitpoints = 25;
   attack = 10;

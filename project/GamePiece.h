@@ -7,6 +7,7 @@
 #define GAMEPIECE_H
 using namespace std;
 #include <SDL2/SDL.h>
+#include "Map.h"
 class GamePiece{
  public:
   GamePiece();
