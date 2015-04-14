@@ -125,3 +125,12 @@ Date		Time		Work Done					Learned
 				Now the function works for ranges 1 and 2,
 				and can be easily adapted if larger
 				attack ranges exist in the game.
+
+4/14/15		2		Made Valid_board a datamember of		Learned about some concepts of composition and how non-default
+				the Character class. Next step is		constructors are called in member list initialization.
+				to maybe make Map a data member of
+				Character so it doesn't have to be
+				passed in. Or perhaps better would
+				be just to have the 2d array of 
+				ints that it needs for check valid
+				move.
