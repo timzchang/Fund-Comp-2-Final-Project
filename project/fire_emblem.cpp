@@ -42,6 +42,12 @@ int main(){
   SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans,"Test for text",White);
   SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer,surfaceMessage);
   SDL_Rect Message_rect = {100,100,100,25};
+  SDL_Surface* stat_box = IMG_Load("../media/stat_box.png");
+if(stat_box == NULL) cout << "hello" << endl;
+  SDL_Texture* stat_tex = SDL_CreateTextureFromSurface(renderer,stat_box);
+ // SDL_Rect destRect_stat = {0,0,192,96};
+  SDL_Rect source_rect = {288,384,196,92};
+  SDL_FreeSurface(stat_box);
   SDL_FreeSurface(surfaceMessage);
   vector<Character*> players;
   GamePiece *cursor_ptr = NULL;
@@ -94,6 +100,7 @@ int main(){
     players[2]->draw(renderer);   
     cursor_ptr->draw(renderer);
     SDL_RenderCopy(renderer,Message,NULL,&Message_rect);
+    SDL_RenderCopy(renderer,stat_tex,/*&destRect_stat*/NULL,&source_rect);
     SDL_RenderPresent(renderer);
   }
 
