@@ -145,3 +145,7 @@ Date		Time		Work Done					Learned
 				to the screen. Will eventually			screen.
 				become important for displaying
 				stats of characters.
+
+4/14/15		.5		Made a stat box image to display		Nothing new
+				the health, attack, name, etc. of
+				a character that is being examined.
