@@ -31,7 +31,7 @@ int main(){
   //initialize/create Renderer
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   if(!renderer){
-    std::cout<<"INVALID RENDER CREATION" << std::endl;
+    std::cout<<"INVALID RENDER CREATION"<< std::endl;
     return 1;
   }
   SDL_SetRenderDrawColor(renderer,255,255,255,255);
@@ -70,7 +70,12 @@ int main(){
 
   vector<Character*> players; //vector of characters
   GamePiece *cursor_ptr = NULL; //initialize the cursor
-
+  vector<int> moves;
+  moves.push_back(0);
+  moves.push_back(0);
+  moves.push_back(0);
+  moves.push_back(0);
+  moves.push_back(0);
   //init hero
   players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
@@ -94,18 +99,23 @@ int main(){
 	    break;
           case SDLK_u:
 	    players[2]->unselect();
+	    players[1]->process_move_vector(moves,level1.get_width(),level1.get_height());
 	    break;
 	  case SDLK_DOWN:
 	    cursor_ptr->move(2,level1.get_width(),level1.get_height());
+	    players[1]->move(2,level1.get_width(),level1.get_height());
 	    break;
           case SDLK_UP:
 	    cursor_ptr->move(0,level1.get_width(),level1.get_height());
+	    players[1]->move(0,level1.get_width(),level1.get_height());
 	    break;
 	  case SDLK_LEFT:
 	    cursor_ptr->move(3,level1.get_width(),level1.get_height());
+	    players[1]->move(3,level1.get_width(),level1.get_height());
 	    break;
 	  case SDLK_RIGHT:
 	    cursor_ptr->move(1,level1.get_width(),level1.get_height());
+	    players[1]->move(1,level1.get_width(),level1.get_height());
 	    break;
         }
       }

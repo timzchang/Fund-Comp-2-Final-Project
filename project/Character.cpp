@@ -151,4 +151,38 @@ void Character::select(){
 void Character::unselect(){
   selected = 0;
   phase = 1;
+  direction = 0;
+}
+
+// functio to move the character
+void Character::move(int change, int max_width, int max_height){
+  switch(change){
+    case(0):
+      change_direction(0);
+      if(ypos==0) return;
+      else ypos = ypos-1;
+      break;
+    case(1):
+      change_direction(1);
+      if(xpos == max_width-1) return;
+      else xpos = xpos+1;
+      break;
+    case(2):
+      change_direction(2);
+      if(ypos == max_height-1) return;
+      else ypos = ypos+1;
+      break;
+    case(3):
+      change_direction(3);
+      if(xpos==0) return;
+      else xpos = xpos-1;
+      break;
+  }
+}
+
+// function that moves a series of direction that are in a vector
+void Character::process_move_vector(vector<int> moves,int max_width,int max_height){
+  for(int i = 0; i<moves.size(); i++){
+    move(moves[i],max_width,max_height);
+  }
 }
