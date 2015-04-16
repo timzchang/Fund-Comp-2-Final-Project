@@ -49,6 +49,3 @@ Date            Time(hr.)       Work Done                                       
 4/7/2015	1.5		Wrote GamePiece base class, wrote Cursor	Practiced agile coding with a partner, learned how to work on
 				derived class. Checked and edited Character	different parts of a project and merge work on Github.
 				and Hero Derived classes.
-
-4/16/2015	2		Added flags to Makefile to facilitate		Learned in more detail the finer points of compiling things
-				Mac compiling. 		   			on a BSD based operating system, especially libraries like SDL.
