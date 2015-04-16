@@ -12,7 +12,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <vector>
-#include <SDL2/SDL_ttf.h>
+//#include <SDL2/SDL_ttf.h>
 //const int SCREEN_WIDTH = 240;
 //const int SCREEN_HEIGHT = 240;
 
@@ -21,19 +21,36 @@ SDL_Renderer * renderer = NULL;
 
 int main(){
   Map level1;
+
+  //initialize SDL
   SDL_Init(SDL_INIT_VIDEO);
+
+  //Create window
   window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,480,480,SDL_WINDOW_SHOWN);
+
+  //initialize/create Renderer
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   if(!renderer){
     std::cout<<"INVALID RENDER CREATION" << std::endl;
+    return 1;
   }
   SDL_SetRenderDrawColor(renderer,255,255,255,255);
+
+  //initializing SDL_Image
   int imgFlags = IMG_INIT_PNG;
   if(!(IMG_Init(imgFlags) & imgFlags)){
     std::cout << "SDL_image couldn't initialize!\n";
+    return 1;
   }
+
+  //load map image
   level1.loadImage("../maps/small_map.png",renderer);
+
+  //load map info
   level1.loadVector("../maps/small_map_info.txt");
+
+  /* Just for now, student machines don't have ttf
+  //initialize SDL_ttf
   if( TTF_Init() == -1){
     cout << "SDL TTF couln't initialize!\n";
   }
@@ -43,14 +60,18 @@ int main(){
   SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer,surfaceMessage);
   SDL_Rect Message_rect = {100,100,100,25};
   SDL_Surface* stat_box = IMG_Load("../media/stat_box.png");
-if(stat_box == NULL) cout << "hello" << endl;
+  if(stat_box == NULL) cout << "hello" << endl;
   SDL_Texture* stat_tex = SDL_CreateTextureFromSurface(renderer,stat_box);
  // SDL_Rect destRect_stat = {0,0,192,96};
   SDL_Rect source_rect = {288,384,196,92};
   SDL_FreeSurface(stat_box);
   SDL_FreeSurface(surfaceMessage);
-  vector<Character*> players;
-  GamePiece *cursor_ptr = NULL;
+  */
+
+  vector<Character*> players; //vector of characters
+  GamePiece *cursor_ptr = NULL; //initialize the cursor
+
+  //init hero
   players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_tile_prop()));
@@ -99,8 +120,8 @@ if(stat_box == NULL) cout << "hello" << endl;
     players[1]->draw(renderer);   
     players[2]->draw(renderer);   
     cursor_ptr->draw(renderer);
-    SDL_RenderCopy(renderer,Message,NULL,&Message_rect);
-    SDL_RenderCopy(renderer,stat_tex,/*&destRect_stat*/NULL,&source_rect);
+    //SDL_RenderCopy(renderer,Message,NULL,&Message_rect);
+    //SDL_RenderCopy(renderer,stat_tex,/*&destRect_stat*/NULL,&source_rect); //Just for now, student machines don't have ttf
     SDL_RenderPresent(renderer);
   }
 

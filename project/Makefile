@@ -1,4 +1,4 @@
-FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf
+FLAGS = -lSDL2 -lSDL2_image #-lSDL2_ttf
 EXEC = fire_emblem
 OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o
 
