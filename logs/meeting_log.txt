@@ -26,3 +26,10 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided/Accompli
 4/8	2				All			Further steps for	Did some debugging of previously written classes. Got
 								project.		a Map_tester.cpp to work correctly with a hero class
 											and a cursor
+
+4/15	1.5				All			Reviewing changes,	1. add more characters //Mason
+								Discussion of 		2. Start menu -> instruction menu -> game //Lucas
+								further steps:		3. cursor select Character. When hovering, show stat menu //Tim & Mason
+								implement Menu		4. When selected, get possible moves //Tim
+								implement instructions	5. small menu for end of move phase.
+								correct character move
