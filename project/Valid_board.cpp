@@ -6,8 +6,8 @@
 
 #include "Valid_board.h"
 #include <iostream>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL_image.h>
+//#include <SDL2/SDL.h>
 // default constructor with fallback values
 Valid_board::Valid_board(int width, int height){
   vector<int> temp;

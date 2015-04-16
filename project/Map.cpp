@@ -8,8 +8,8 @@
 #include "Map.h"
 #include <iostream>
 #include <fstream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+//#include <SDL2/SDL.h>
+//#include <SDL2/SDL_image.h>
 using namespace std;
 // default constructor 
 Map::Map(){

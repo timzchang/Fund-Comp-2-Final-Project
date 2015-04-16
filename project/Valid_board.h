@@ -9,8 +9,10 @@
 #ifndef VALID_BOARD_H
 #define VALID_BOARD_H
 
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL_image.h>
+//#include <SDL2/SDL.h>
+#include<SDL.h>
+#include<SDL_image.h>
 #include <vector>
 #include <string>
 using namespace std;
@@ -35,3 +37,4 @@ class Valid_board{
 };
 
 #endif
+
