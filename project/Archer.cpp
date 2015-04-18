@@ -1,16 +1,16 @@
-// Hero.cpp
-// Interface for the Hero class. Defines the various member function of Hero.
+// Archer.cpp
+// Interface for the Archer class. Defines the various member function of Archer.
 
-#include "Hero.h"
+#include "Archer.h"
 
 // default constructor (calls default constructor of Character class)
-Hero::Hero(){
+Archer::Archer(){
   // set stats
-  hitpoints = 25;
-  attack = 10;		
-  defence = 7;
-  attack_range = 1;
-  mobility = 4;
+  hitpoints = 18;
+  attack = 9;		
+  defence = 6;
+  attack_range = 3;
+  mobility = 5;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);	// Plains
   terrain_effect.push_back(1);	// Trees
@@ -21,13 +21,13 @@ Hero::Hero(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Hero::Hero(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
+Archer::Archer(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
   // sets stats
-  hitpoints = 25;
-  attack = 10;
-  defence = 7;
-  attack_range = 1;
-  mobility = 4;
+  hitpoints = 18;
+  attack = 9;
+  defence = 6;
+  attack_range = 3;
+  mobility = 5;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);
   terrain_effect.push_back(1);

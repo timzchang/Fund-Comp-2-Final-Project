@@ -1,16 +1,16 @@
-// Hero.cpp
-// Interface for the Hero class. Defines the various member function of Hero.
+// Sorcerer.cpp
+// Interface for the Sorcerer class. Defines the various member function of Sorcerer.
 
-#include "Hero.h"
+#include "Sorcerer.h"
 
 // default constructor (calls default constructor of Character class)
-Hero::Hero(){
+Sorcerer::Sorcerer(){
   // set stats
-  hitpoints = 25;
-  attack = 10;		
-  defence = 7;
-  attack_range = 1;
-  mobility = 4;
+  hitpoints = 15;
+  attack = 14;		
+  defence = 6;
+  attack_range = 2;
+  mobility = 3;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);	// Plains
   terrain_effect.push_back(1);	// Trees
@@ -21,13 +21,13 @@ Hero::Hero(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Hero::Hero(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
+Sorcerer::Sorcerer(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
   // sets stats
-  hitpoints = 25;
-  attack = 10;
-  defence = 7;
-  attack_range = 1;
-  mobility = 4;
+  hitpoints = 15;
+  attack = 14;
+  defence = 6;
+  attack_range = 2;
+  mobility = 3;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);
   terrain_effect.push_back(1);

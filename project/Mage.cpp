@@ -1,15 +1,15 @@
-// Hero.cpp
-// Interface for the Hero class. Defines the various member function of Hero.
+// Mage.cpp
+// Interface for the Mage class. Defines the various member function of Mage.
 
-#include "Hero.h"
+#include "Mage.h"
 
 // default constructor (calls default constructor of Character class)
-Hero::Hero(){
+Mage::Mage(){
   // set stats
-  hitpoints = 25;
-  attack = 10;		
-  defence = 7;
-  attack_range = 1;
+  hitpoints = 15;
+  attack = 13;		
+  defence = 6;
+  attack_range = 2;
   mobility = 4;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);	// Plains
@@ -21,12 +21,12 @@ Hero::Hero(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Hero::Hero(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
+Mage::Mage(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
   // sets stats
-  hitpoints = 25;
-  attack = 10;
-  defence = 7;
-  attack_range = 1;
+  hitpoints = 15;
+  attack = 13;
+  defence = 6;
+  attack_range = 2;
   mobility = 4;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);
