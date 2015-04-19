@@ -100,10 +100,18 @@ void Cursor::move(int change, int max_width, int max_height){
   }
 }
 
-//function to check if the cursor is on a character. If so, select it.
-int Cursor::check_select(Character * patient){
-    if (this->getx() == patient->getx() && this->gety()==patient->gety()){ //if they're on the same position.
-        return 1;
-    }else
-        return 0;
+//if Cursor is over a character, it will be selected or deselected. Needs the character vector to loop through
+//needs map object and moves vector for the 2 valid board functions.
+void Cursor::check_select(vector<Character *> * players, Map * level, vector<int> moves){
+  for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
+    if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety()){ //if this cursor and character are on the same coordinate
+      if((*hero)->get_select()==0){ //and this player is not selected
+	(*hero)->select();  //select (this only changes the "selected" member of Character to 1. Makes the guy animate as well.
+	(*hero)->check_valid_move((*hero)->getx(),(*hero)->gety(),(*hero)->getMobility()); //this is the one that updates its valid board
+      }else{
+	(*hero)->unselect();
+	(*hero)->process_move_vector(moves,level->get_width(),level->get_height()); //same problem as above. This is used for processing character moves.
+      }
+    }
+  }
 }

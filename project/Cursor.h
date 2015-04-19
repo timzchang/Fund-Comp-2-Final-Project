@@ -11,6 +11,8 @@
 //#include <SDL2/SDL_image.h>
 #include "GamePiece.h"
 #include "Character.h"
+#include "Map.h"
+#include <vector>
 using namespace std;
 
 class Cursor: public GamePiece {
@@ -23,7 +25,7 @@ class Cursor: public GamePiece {
     int get_phase();				// gets current phase of the cursor
     void update();				// updates clock counts
     void move(int,int,int);
-    int check_select(Character *); //reference to a character to pass in x and y pos.
+    void check_select(vector<Character *> *, Map *, vector<int>); //if the cursor is over a character, it will be selected.
   private:
     int phase;			// phase of the cursor (0 for big, 1 for small)
     SDL_Texture* cursor_1;	// Outer cursor
