@@ -1,4 +1,4 @@
-/* CSE20212 Final Project                4/7/2015
+    /* CSE20212 Final Project                4/7/2015
    Mason Prosser, Tim Chang, Chris Syers, Lucas Unruh
    Cursor.h
    Header file for cursor, which will be the player's way of interacting with the map */
@@ -10,6 +10,7 @@
 //#include <SDL2/SDL.h>
 //#include <SDL2/SDL_image.h>
 #include "GamePiece.h"
+#include "Character.h"
 using namespace std;
 
 class Cursor: public GamePiece {
@@ -22,6 +23,7 @@ class Cursor: public GamePiece {
     int get_phase();				// gets current phase of the cursor
     void update();				// updates clock counts
     void move(int,int,int);
+    int check_select(Character *); //reference to a character to pass in x and y pos.
   private:
     int phase;			// phase of the cursor (0 for big, 1 for small)
     SDL_Texture* cursor_1;	// Outer cursor

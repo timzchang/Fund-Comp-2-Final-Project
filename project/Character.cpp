@@ -154,6 +154,10 @@ void Character::unselect(){
   direction = 0;
 }
 
+int Character::get_select(){
+    return selected;
+}
+
 // functio to move the character
 void Character::move(int change, int max_width, int max_height){
   switch(change){

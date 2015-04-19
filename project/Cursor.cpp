@@ -4,6 +4,7 @@
    Implementation of Cursor class */
 
 #include "Cursor.h"
+#include<iostream>
 // Default constructor
 Cursor::Cursor():GamePiece(){
   cursor_1 = NULL;
@@ -97,4 +98,12 @@ void Cursor::move(int change, int max_width, int max_height){
       else xpos = xpos-1;
       break;
   }
+}
+
+//function to check if the cursor is on a character. If so, select it.
+int Cursor::check_select(Character * patient){
+    if (this->getx() == patient->getx() && this->gety()==patient->gety()){ //if they're on the same position.
+        return 1;
+    }else
+        return 0;
 }

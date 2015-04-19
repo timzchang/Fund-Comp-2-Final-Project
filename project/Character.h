@@ -32,7 +32,8 @@ class Character: public GamePiece {
 		int get_terrain_effect(int);				// returns the mobility required to move on a certain tile
 		void select();						// changes value of selected data member
 		void unselect();					// changes selected to 0
-		void move(int,int,int);					// moves the character 
+        int get_select();
+		void move(int,int,int);					// moves the character
 		void process_move_vector(vector<int>,int,int);		// moves a series of steps as per the vector passed in
 	protected:	
 		int direction;						// direction the sprite is facing

@@ -9,6 +9,7 @@ using namespace std;
 //#include <SDL2/SDL.h>
 //#include<SDL.h>
 #include "Map.h"
+
 class GamePiece{
  public:
   GamePiece();
@@ -17,6 +18,7 @@ class GamePiece{
   virtual void move(int,int,int);
   virtual void draw(SDL_Renderer*) = 0; // each draw function of derived classes will be slightly different
   virtual void update() = 0;		// update will do something different for each dervied class
+  //virtual void check_select(Character *) = 0;
   void setx(int);
   void sety(int);
   int getx();

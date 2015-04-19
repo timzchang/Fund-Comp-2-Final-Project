@@ -5,6 +5,12 @@
 #include "Map.h"
 #include "Character.h"
 #include "Hero.h"
+#include "Archer.h"
+#include "Angel.h"
+#include "Mage.h"
+#include "Pirate.h"
+#include "Soldier.h"
+#include "Sorcerer.h"
 #include "Cursor.h"
 #include "GamePiece.h"
 #include "Valid_board.h"
@@ -69,7 +75,8 @@ int main(){
   */
 
   vector<Character*> players; //vector of characters
-  GamePiece *cursor_ptr = NULL; //initialize the cursor
+  //GamePiece *cursor_ptr = NULL; //initialize the cursor
+  Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   vector<int> moves;
   moves.push_back(0);
   moves.push_back(0);
@@ -80,7 +87,8 @@ int main(){
   players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_tile_prop()));
-  cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
+  players.push_back(new Angel("../media/Angel2.png",10,5,renderer,level1.get_tile_prop())); //added stuff
+  //cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
 
@@ -93,43 +101,59 @@ int main(){
           case SDLK_a:
             players[0]->setHitpoints(players[0]->getHitpoints()-5);
             break;
-	  case SDLK_s:
-	    players[2]->select();
-        players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility());
-	    break;
+          case SDLK_s:
+	        players[2]->select();
+            players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility());
+	        break;
           case SDLK_u:
-	    players[2]->unselect();
-	    players[1]->process_move_vector(moves,level1.get_width(),level1.get_height());
-	    break;
-	  case SDLK_DOWN:
-	    cursor_ptr->move(2,level1.get_width(),level1.get_height());
-	    players[1]->move(2,level1.get_width(),level1.get_height());
-	    break;
+	        players[2]->unselect();
+            players[1]->process_move_vector(moves,level1.get_width(),level1.get_height()); //for some reason this makes the character jump upwards to their max movement
+            break;
+          case SDLK_DOWN:
+            cursor_ptr.move(2,level1.get_width(),level1.get_height());
+            players[1]->move(2,level1.get_width(),level1.get_height());
+            break;
           case SDLK_UP:
-	    cursor_ptr->move(0,level1.get_width(),level1.get_height());
-	    players[1]->move(0,level1.get_width(),level1.get_height());
-	    break;
-	  case SDLK_LEFT:
-	    cursor_ptr->move(3,level1.get_width(),level1.get_height());
-	    players[1]->move(3,level1.get_width(),level1.get_height());
-	    break;
-	  case SDLK_RIGHT:
-	    cursor_ptr->move(1,level1.get_width(),level1.get_height());
-	    players[1]->move(1,level1.get_width(),level1.get_height());
-	    break;
+            cursor_ptr.move(0,level1.get_width(),level1.get_height());
+            players[1]->move(0,level1.get_width(),level1.get_height());
+            break;
+        case SDLK_LEFT:
+            cursor_ptr.move(3,level1.get_width(),level1.get_height());
+            players[1]->move(3,level1.get_width(),level1.get_height());
+            break;
+        case SDLK_RIGHT:
+            cursor_ptr.move(1,level1.get_width(),level1.get_height());
+            players[1]->move(1,level1.get_width(),level1.get_height());
+            break;
+        case SDLK_RETURN:
+            //do select stuff
+            for (vector<Character *>::iterator i=players.begin(); i !=players.end(); ++i) {
+                if(cursor_ptr.check_select(*i)){
+                    if((*i)->get_select()==0){
+                        (*i)->select();
+                        (*i)->check_valid_move((*i)->getx(),(*i)->gety(),(*i)->getMobility());
+                    }else{
+                        (*i)->unselect();
+                        (*i)->process_move_vector(moves,level1.get_width(),level1.get_height()); //same problem as above.
+                    }
+                }
+            }
+            break;
         }
       }
     }
     players[0]->update();
     players[1]->update();
     players[2]->update();
-    cursor_ptr->update();
+    players[3]->update(); //added Angel
+    cursor_ptr.update();
     SDL_RenderClear(renderer);
     level1.render_map(renderer);
     players[0]->draw(renderer);   
     players[1]->draw(renderer);   
-    players[2]->draw(renderer);   
-    cursor_ptr->draw(renderer);
+    players[2]->draw(renderer);
+    players[3]->draw(renderer); //added Angel
+    cursor_ptr.draw(renderer);
     //SDL_RenderCopy(renderer,Message,NULL,&Message_rect);
     //SDL_RenderCopy(renderer,stat_tex,/*&destRect_stat*/NULL,&source_rect); //Just for now, student machines don't have ttf
     SDL_RenderPresent(renderer);
