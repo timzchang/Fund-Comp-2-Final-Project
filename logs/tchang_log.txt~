@@ -52,7 +52,3 @@ Date            Time(hr.)       Work Done                                       
 
 4/16/2015	2		Added flags to Makefile to facilitate		Learned in more detail the finer points of compiling things
 				Mac compiling. 		   			on a BSD based operating system, especially libraries like SDL.
-
-4/18/2015	3.5		Added functionality for cursor to select	Learned to deal with iterators and class pointers.
-				a character. Noted some bugs with valid
-				board functions
