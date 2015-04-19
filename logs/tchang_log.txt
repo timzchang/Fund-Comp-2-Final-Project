@@ -56,3 +56,12 @@ Date            Time(hr.)       Work Done                                       
 4/18/2015	3.5		Added functionality for cursor to select	Learned to deal with iterators and class pointers.
 				a character. Noted some bugs with valid
 				board functions
+
+4/19/2015	2		Modified check_select() function, fixed bugs	Nothing of import.
+				with valid board functions. Commented code
+
+
+
+
+
+Total Hours: 23
