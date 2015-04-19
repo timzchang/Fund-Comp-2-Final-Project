@@ -80,7 +80,7 @@ int main(){
   vector<Character*> players; //vector of characters
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
   Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object from GamePiece ptr. Necessary for check_select()
-  vector<int> moves;
+  vector<int> moves; //vector of moves
   moves.push_back(0);
   moves.push_back(0);
   moves.push_back(0);
@@ -110,7 +110,7 @@ int main(){
 	  break;
 	case SDLK_u:
 	  players[2]->unselect();
-	  players[1]->process_move_vector(moves,level1.get_width(),level1.get_height()); //for some reason this makes the character jump upwards to their max movement
+	  players[1]->process_move_vector(moves,level1.get_width(),level1.get_height()); //for some reason this makes the character jump upwards to their max movement. SOLVED. We have a moves vector instantiated up top with 4 up moves.
 	  break;
 	case SDLK_DOWN:
 	  cursor_ptr.move(2,level1.get_width(),level1.get_height());

@@ -143,15 +143,16 @@ int Character::get_terrain_effect(int tile){
 }
 
 // changes selected data member to 1
-void Character::select(){
+void Character::select(){ //maybe move check_valid_moves() in here?
   selected = 1;
 }
 
 // changes selected data member to 0
-void Character::unselect(){
+void Character::unselect(){ 
   selected = 0;
   phase = 1;
   direction = 0;
+  vb.to_zeros(); //clear the valid board after unselected.
 }
 
 int Character::get_select(){
@@ -185,6 +186,7 @@ void Character::move(int change, int max_width, int max_height){
 }
 
 // function that moves a series of direction that are in a vector
+//called everytime character is deselected and moved.
 void Character::process_move_vector(vector<int> moves,int max_width,int max_height){
   for(int i = 0; i<moves.size(); i++){
     move(moves[i],max_width,max_height);
