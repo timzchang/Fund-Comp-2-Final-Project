@@ -81,10 +81,10 @@ int main(){
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
   Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object of GamePiece from ptr. Necessary for check_select()
   //init heroes
-  players.push_back(new Hero("../media/Hero.png","Chris",0,0,renderer,level1.get_tile_prop()));
-  players.push_back(new Hero("../media/Hero.png","Lucas",2,8,renderer,level1.get_tile_prop()));
-  players.push_back(new Hero("../media/Hero.png","Mason",8,12,renderer,level1.get_tile_prop()));
-  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,renderer,level1.get_tile_prop())); //added stuff
+  players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_tile_prop()));
+  players.push_back(new Angel("../media/Angel2.png",10,5,renderer,level1.get_tile_prop())); //added stuff
   //cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;

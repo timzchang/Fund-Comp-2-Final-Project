@@ -79,69 +79,68 @@ int main(){
 
   vector<Character*> players; //vector of characters
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
-  Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object of GamePiece from ptr. Necessary for check_select()
-  //init heroes
-  players.push_back(new Hero("../media/Hero.png","Chris",0,0,renderer,level1.get_tile_prop()));
-  players.push_back(new Hero("../media/Hero.png","Lucas",2,8,renderer,level1.get_tile_prop()));
-  players.push_back(new Hero("../media/Hero.png","Mason",8,12,renderer,level1.get_tile_prop()));
-  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,renderer,level1.get_tile_prop())); //added stuff
+  Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object from GamePiece ptr. Necessary for check_select()
+  vector<int> moves; //vector of moves
+  moves.push_back(0);
+  moves.push_back(0);
+  moves.push_back(0);
+  moves.push_back(0);
+  moves.push_back(0);
+  //init hero
+  players.push_back(new Hero("../media/Hero.png",0,0,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero.png",2,8,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero.png",8,12,renderer,level1.get_tile_prop()));
+  players.push_back(new Angel("../media/Angel2.png",10,5,renderer,level1.get_tile_prop())); //added stuff
   //cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
 
-    //Key:
-    //0 = up
-    //1 = right
-    //2 = down
-    //3 = left
   while(!quit){
     while(SDL_PollEvent(&e) != 0){
       if(e.type==SDL_QUIT){
-        quit = true;
+	quit = true;
       }else if(e.type==SDL_KEYDOWN){
         switch(e.key.keysym.sym){
-        case SDLK_a:
-          players[0]->setHitpoints(players[0]->getHitpoints()-5);
-          break;
-        case SDLK_s:
-          players[2]->select();
-          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility());
-          break;
-        case SDLK_u:
-          players[2]->unselect();
-          break;
-        case SDLK_DOWN:
-          cursor_ptr.move_select(&players,2);
-          cursor_ptr.move(2,level1.get_width(),level1.get_height());
-          break;
-        case SDLK_UP:
-          cursor_ptr.move_select(&players,0);
-          cursor_ptr.move(0,level1.get_width(),level1.get_height());
-          break;
+	case SDLK_a:
+	  players[0]->setHitpoints(players[0]->getHitpoints()-5);
+	  break;
+	case SDLK_s:
+	  players[2]->select();
+	  players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility());
+	  break;
+	case SDLK_u:
+	  players[2]->unselect();
+	  players[1]->process_move_vector(moves,level1.get_width(),level1.get_height()); //for some reason this makes the character jump upwards to their max movement. SOLVED. We have a moves vector instantiated up top with 4 up moves.
+	  break;
+	case SDLK_DOWN:
+	  cursor_ptr.move(2,level1.get_width(),level1.get_height());
+	  players[1]->move(2,level1.get_width(),level1.get_height());
+	  break;
+	case SDLK_UP:
+	  cursor_ptr.move(0,level1.get_width(),level1.get_height());
+	  players[1]->move(0,level1.get_width(),level1.get_height());
+	  break;
         case SDLK_LEFT:
-          cursor_ptr.move_select(&players,3);
-          cursor_ptr.move(3,level1.get_width(),level1.get_height());
-          break;
+	  cursor_ptr.move(3,level1.get_width(),level1.get_height());
+	  players[1]->move(3,level1.get_width(),level1.get_height());
+	  break;
         case SDLK_RIGHT:
-          cursor_ptr.move_select(&players,1);
-          cursor_ptr.move(1,level1.get_width(),level1.get_height());
-          break;
+	  cursor_ptr.move(1,level1.get_width(),level1.get_height());
+	  players[1]->move(1,level1.get_width(),level1.get_height());
+	  break;
         case SDLK_RETURN:
 	  //do select stuff
-	  cursor_ptr.toggle_select(&players,&level1); //managed to encompass everything in one function. Selects or deselects players. moves players. Will need to modify when we implement a popup menu.
+	  cursor_ptr.check_select(&players,&level1,moves); //managed to encompass everything in one function. This could come in handy.
 	  break;
         }
       }
     }
-    //update players/cursor
     players[0]->update();
     players[1]->update();
     players[2]->update();
     players[3]->update(); //added Angel
     cursor_ptr.update();
-    //clear
     SDL_RenderClear(renderer);
-    //draw stuff
     level1.render_map(renderer);
     players[0]->draw(renderer);   
     players[1]->draw(renderer);   

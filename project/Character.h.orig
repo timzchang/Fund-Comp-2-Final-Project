@@ -52,8 +52,12 @@ class Character: public GamePiece {
 		int alive;                          // if the character has any hitpoints left
 		int selected;						// if the character has been selected
 		Valid_board vb;						// a 2d array of possible move places and attack spaces
+<<<<<<< HEAD
 		vector<vector <int> > tile_properties;  // an array of tile properties
         vector<int> moves;                  // stores moves.
+=======
 		string name;
+		vector<vector <int> > tile_properties;
+>>>>>>> a43a9665c032dc5e15935aed79a9a38c598821c5
 };
 #endif
