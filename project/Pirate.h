@@ -12,7 +12,7 @@
 class Pirate: public Character{
   public:
     Pirate();					// default constructor
-    Pirate(string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
+    Pirate(string,string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif

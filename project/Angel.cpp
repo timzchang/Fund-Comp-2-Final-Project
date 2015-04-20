@@ -21,7 +21,7 @@ Angel::Angel(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Angel::Angel(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
+Angel::Angel(string path,string name ,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,name,x,y,renderer,tile_prop){	
   // sets stats
   hitpoints = 19;
   attack = 12;

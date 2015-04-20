@@ -21,7 +21,7 @@ Sorcerer::Sorcerer(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Sorcerer::Sorcerer(string path, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,x,y,renderer,tile_prop){	
+Sorcerer::Sorcerer(string path, string my_name, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
   // sets stats
   hitpoints = 15;
   attack = 14;

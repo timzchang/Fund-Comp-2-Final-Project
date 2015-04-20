@@ -12,7 +12,7 @@
 class Angel: public Character{
   public:
     Angel();					// default constructor
-    Angel(string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
+    Angel(string,string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif
