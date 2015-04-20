@@ -185,10 +185,41 @@ void Character::move(int change, int max_width, int max_height){
   }
 }
 
+void Character::clear_move(){
+    moves.clear();
+}
+
 // function that moves a series of direction that are in a vector
 //called everytime character is deselected and moved.
-void Character::process_move_vector(vector<int> moves,int max_width,int max_height){
+void Character::process_move_vector(/*vector<int> moves,*/int max_width,int max_height){
   for(int i = 0; i<moves.size(); i++){
     move(moves[i],max_width,max_height);
   }
+    clear_move(); //after processing, clear the move vector.
+}
+
+//Key:
+//0 = up
+//1 = right
+//2 = down
+//3 = left
+//we add a move specified by "move" into the moves vector. If the move is opposite of a previous one, we pop_back.
+void Character::add_move(int move){
+    if(moves.size()>0){                             //if we have a moves vector greater than one, we have to check the previous move
+        if(moves[moves.size()-1]==2 && move==0)      //if previous move was down, and we move up, pop_back
+            moves.pop_back();
+        else if(moves[moves.size()-1]==0 && move==2) //if previous move was up and we move down, pop_back
+            moves.pop_back();
+        else if(moves[moves.size()-1]==1 && move==3) //if previous move was right and we move left, pop_back
+            moves.pop_back();
+        else if(moves[moves.size()-1]==3 && move==1) //if previous move was left and we mover right, pop_back
+            moves.pop_back();
+        else
+            moves.push_back(move); //else push back the move
+    }else
+        moves.push_back(move); //first move
+}
+
+int Character::size_move(){
+    return moves.size();
 }

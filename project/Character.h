@@ -20,35 +20,39 @@ class Character: public GamePiece {
 		Character();						// default constructor
 		Character(string, int, int, SDL_Renderer*,vector<vector <int> >);	// non-default constructor
 		~Character();						// deconstructor
-		void draw(SDL_Renderer*);				// draw function
-		void change_direction(int);				// changes the direction of the sprite. 0 up, 1 right... 3 left
+		void draw(SDL_Renderer*);			// draw function
+		void change_direction(int);			// changes the direction of the sprite. 0 up, 1 right... 3 left
 		int get_phase();					// returns the current phase of the sprite
 		void next_phase();					// changes the phase of the sprite
-		void check_valid_move(int, int, int);			// modifies a vector of vectors to contain valid move
+		void check_valid_move(int, int, int);	// modifies a vector of vectors to contain valid move
 		void update();
 		int getHitpoints();					// returns character's hitpoints
-		void setHitpoints(int);					// set character's hitpoints
+		void setHitpoints(int);				// set character's hitpoints
 		int getMobility();					// gets the character's movement
-		int get_terrain_effect(int);				// returns the mobility required to move on a certain tile
+		int get_terrain_effect(int);		// returns the mobility required to move on a certain tile
 		void select();						// changes value of selected data member
 		void unselect();					// changes selected to 0
         int get_select();
-		void move(int,int,int);					// moves the character
-		void process_move_vector(vector<int>,int,int);		// moves a series of steps as per the vector passed in
-	protected:	
+		void move(int,int,int);				// moves the character
+		void process_move_vector(int,int);	// moves a series of steps as per the vector passed in
+        void add_move(int);                 // pushes a value into the moves vector
+        void clear_move();                  // clears the move vector
+        int size_move();                    // return moves size
+	protected:
 		int direction;						// direction the sprite is facing
-		int phase;						// what foot the sprite is on
-		SDL_Texture* character_texture;				// the image .png file of the sprite sheet
-		int attack;						// attack stat
+		int phase;                          // what foot the sprite is on
+		SDL_Texture* character_texture;		// the image .png file of the sprite sheet
+		int attack;                         // attack stat
 		int defence;						// defence stat
 		int hitpoints;						// hitpoints
 		int mobility;						// max tiles the Character can move
-		vector<int> terrain_effect;				// effect each terrain has on mobility
+		vector<int> terrain_effect;			// effect each terrain has on mobility
 		int attack_range;					// range of attack
 		int counter;						// variable to count clock cycles
-		int alive;						// if the character has any hitpoints left
+		int alive;                          // if the character has any hitpoints left
 		int selected;						// if the character has been selected
 		Valid_board vb;						// a 2d array of possible move places and attack spaces
-		vector<vector <int> > tile_properties;
+		vector<vector <int> > tile_properties;  // an array of tile properties
+        vector<int> moves;                  // stores moves.
 };
 #endif
