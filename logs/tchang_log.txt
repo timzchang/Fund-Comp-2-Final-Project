@@ -60,8 +60,12 @@ Date            Time(hr.)       Work Done                                       
 4/19/2015	2		Modified check_select() function, fixed bugs	Nothing of import.
 				with valid board functions. Commented code
 
+4/20/2015	2		Added movement functionality to game.		Learned how to manage merge conflicts with git mergetool.
+				Characters can now be selected and moved	Almost had a heart attack.
+				to any location on the screen. that will
+				be fixed in next update. Also merged
+				some conflicts with git
 
 
 
-
-Total Hours: 23
+Total Hours: 25
