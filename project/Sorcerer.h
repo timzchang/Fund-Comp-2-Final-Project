@@ -12,7 +12,7 @@
 class Sorcerer: public Character{
   public:
     Sorcerer();					// default constructor
-    Sorcerer(string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
+    Sorcerer(string, string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif

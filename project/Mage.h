@@ -12,7 +12,7 @@
 class Mage: public Character{
   public:
     Mage();					// default constructor
-    Mage(string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
+    Mage(string,string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif

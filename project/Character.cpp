@@ -13,10 +13,11 @@ Character::Character(){
   counter = 0;
   alive = 0;				// with non-default, make the character dead
   selected = 0;
+  name = "Anonymous";
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
-Character::Character(string path,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop[0].size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
+Character::Character(string path,string my_name,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop[0].size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());				// loads the image into character_texture
   character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
   direction = 0;								// direction starts at 0
@@ -27,6 +28,7 @@ Character::Character(string path,int x, int y, SDL_Renderer* renderer,vector<vec
   alive = 1;									// indicates the character is alive
   selected = 0;
   tile_properties = tile_prop;
+  name = my_name;
 }
 
 // deconstructor
