@@ -150,6 +150,12 @@ Date		Time		Work Done					Learned
 				the health, attack, name, etc. of
 				a character that is being examined.
 
-4/15/15		1		Worked on the movement of characters.			Nothing
+4/15/15		1		Worked on the movement of characters.		Nothing
 				Still needs work to slow down processing
 				of vectors. 
+
+4/20/15		1		Added a name data member of every		I learned that it is kind of annoying to have so many differnt
+				character class. This will be used to		classes for each type of character. I think it is necessary
+				display in the info screen that appears		but a minor change took quite a while to implement.
+				when a player is hovered over (next step
+				in development)
