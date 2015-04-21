@@ -1,9 +1,9 @@
 #Ignore the $(#MACFLAGS) variable. I need this to compile locally on my mac. It's a pain. Please comment out when compiling on Linux
 
 MACFLAGS = `sdl2-config --cflags --libs` 
-FLAGS = -lSDL2 -lSDL2_image $(MACFLAGS) #-lSDL2_ttf #-lSDL2_image  
+FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf $(MACFLAGS) #-lSDL2_ttf #-lSDL2_image  
 EXEC = fire_emblem
-OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o Angel.o Archer.o Mage.o Pirate.o Soldier.o Sorcerer.o
+OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o Angel.o Archer.o Mage.o Pirate.o Soldier.o Sorcerer.o Stats_Menu.o
 
 
 all: fire_emblem
@@ -47,6 +47,8 @@ Map.o: Map.cpp
 Valid_board.o: Valid_board.cpp
 	g++ -c Valid_board.cpp $(MACFLAGS)
 
+Stats_Menu.o: Stats_Menu.cpp
+	g++ -c Stats_Menu.cpp $(MACFLAGS)
 
 .PHONY: clean
 

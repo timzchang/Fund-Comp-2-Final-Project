@@ -18,13 +18,11 @@
 #include "GamePiece.h"
 #include "Valid_board.h"
 #include <iostream>
-//#include <SDL2/SDL.h>
-//#include <SDL2/SDL_image.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <vector>
-//#include <SDL2/SDL_ttf.h>
-//const int SCREEN_WIDTH = 240;
-//const int SCREEN_HEIGHT = 240;
-
+#include <SDL2/SDL_ttf.h>
+#include "Stats_Menu.h"
 SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
 
@@ -52,30 +50,16 @@ int main(){
     return 1;
   }
 
+  //initialize SDL_ttf
+  if( TTF_Init() == -1){
+    cout << "SDL TTF couln't initialize!\n";
+  }
+  Stats_Menu stat_menu("../media/blue_stats.png","../media/red_stats.png","../media/sans.ttf",renderer);
   //load map image
   level1.loadImage("../maps/small_map.png",renderer);
 
   //load map info
   level1.loadVector("../maps/small_map_info.txt");
-
-  /* Just for now, student machines don't have ttf
-  //initialize SDL_ttf
-  if( TTF_Init() == -1){
-    cout << "SDL TTF couln't initialize!\n";
-  }
-  TTF_Font* Sans = TTF_OpenFont("../media/sans.ttf",48);
-  SDL_Color White = {255,255,255,0};
-  SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans,"Test for text",White);
-  SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer,surfaceMessage);
-  SDL_Rect Message_rect = {100,100,100,25};
-  SDL_Surface* stat_box = IMG_Load("../media/stat_box.png");
-  if(stat_box == NULL) cout << "hello" << endl;
-  SDL_Texture* stat_tex = SDL_CreateTextureFromSurface(renderer,stat_box);
- // SDL_Rect destRect_stat = {0,0,192,96};
-  SDL_Rect source_rect = {288,384,196,92};
-  SDL_FreeSurface(stat_box);
-  SDL_FreeSurface(surfaceMessage);
-  */
 
   vector<Character*> players; //vector of characters
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
@@ -148,8 +132,7 @@ int main(){
     players[2]->draw(renderer);
     players[3]->draw(renderer); //added Angel
     cursor_ptr.draw(renderer);
-    //SDL_RenderCopy(renderer,Message,NULL,&Message_rect);
-    //SDL_RenderCopy(renderer,stat_tex,/*&destRect_stat*/NULL,&source_rect); //Just for now, student machines don't have ttf
+    stat_menu.draw(renderer,0,15,0);
     SDL_RenderPresent(renderer);
   }
 
