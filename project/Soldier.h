@@ -12,7 +12,7 @@
 class Soldier: public Character{
   public:
     Soldier();					// default constructor
-    Soldier(string,string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
+    Soldier(string,string, int, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif

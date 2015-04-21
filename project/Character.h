@@ -32,7 +32,8 @@ class Character: public GamePiece {
 		string getName();				// returns character's name
 		int getAttack();				// returns character's attack
 		int getDefence();				// returns character's defence
-		int getMobility();					// gets the character's movement
+		int getMobility();				// gets the character's movement
+		int getPlayer();				// returns the character's team
 		int get_terrain_effect(int);		// returns the mobility required to move on a certain tile
 		void select();						// changes value of selected data member
 		void unselect();					// changes selected to 0
@@ -43,6 +44,7 @@ class Character: public GamePiece {
         void clear_move();                  // clears the move vector
         int size_move();                    // return moves size
 	protected:
+		int player;		// 1 or 2 depending on the player
 		int direction;						// direction the sprite is facing
 		int phase;                          // what foot the sprite is on
 		SDL_Texture* character_texture;		// the image .png file of the sprite sheet

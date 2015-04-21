@@ -245,3 +245,8 @@ void Character::add_move(int move){
 int Character::size_move(){
     return moves.size();
 }
+
+// function to return the player's team
+int Character::getPlayer(){
+  return player; 
+}

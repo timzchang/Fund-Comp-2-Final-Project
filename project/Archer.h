@@ -12,7 +12,7 @@
 class Archer: public Character{
   public:
     Archer();					// default constructor
-    Archer(string, string, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
+    Archer(string, string, int, int, int, SDL_Renderer*,vector<vector <int> >);// non-default constructor
   private:
 };
 #endif

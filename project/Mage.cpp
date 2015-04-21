@@ -6,6 +6,7 @@
 // default constructor (calls default constructor of Character class)
 Mage::Mage(){
   // set stats
+  player = 1;
   current_hitpoints = 15;
   max_hitpoints = 15;
   attack = 13;		
@@ -22,8 +23,9 @@ Mage::Mage(){
 }
 
 // non-default constructor. Calls non-default constructor of Character class.
-Mage::Mage(string path, string name, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,name,x,y,renderer,tile_prop){	
+Mage::Mage(string path, string name, int x, int y, int my_player, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,name,x,y,renderer,tile_prop){	
   // sets stats
+  player = my_player;
   current_hitpoints = 15;
   max_hitpoints = 15;
   attack = 13;
