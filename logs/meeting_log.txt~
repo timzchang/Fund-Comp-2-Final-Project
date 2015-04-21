@@ -34,11 +34,6 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided/Accompli
 								implement instructions	5. small menu for end of move phase.
 								correct character move
 
-4/20	1.5				All			Reviewed changes,	1. pop up menu for attack/status/moving. //Chris
-					(Lucas had to leave	Discussion of further	2. Main Menu //Lucas & Tim
-					early. Chris was late)	steps:	      		3. fix movement //Tim
-								implement Menu		4. implement attack //Tim & Mason
-								improve movement	5. turn processing //Mason & Tim
-								implement attack
-								implement pop-up menu
-								Implement turn processing
+4/20	1.5				All			
+					(Lucas had to leave
+					early. Chris was late)
