@@ -163,3 +163,7 @@ Date		Time		Work Done					Learned
 4/21/15		1		Added get/set functions for each of the		I didn't learn too much.
 				needed stats for what is going to be a
 				info menu when a player is hovered over.
+
+4/21/15		3		Worked on the Stats_Menu class. It now		I learned a lot of stuff about TTF.
+				draws text onto the screen in a menu.
+				Works when hovered over.
