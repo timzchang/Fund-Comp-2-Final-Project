@@ -6,7 +6,8 @@
 // default constructor (calls default constructor of Character class)
 Angel::Angel(){
   // set stats
-  hitpoints = 19;
+  current_hitpoints = 19;
+  max_hitpoints = 19;
   attack = 12;		
   defence = 6;
   attack_range = 1;
@@ -23,7 +24,8 @@ Angel::Angel(){
 // non-default constructor. Calls non-default constructor of Character class.
 Angel::Angel(string path,string name ,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,name,x,y,renderer,tile_prop){	
   // sets stats
-  hitpoints = 19;
+  current_hitpoints = 19;
+  max_hitpoints = 19;
   attack = 12;
   defence = 6;
   attack_range = 1;

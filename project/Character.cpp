@@ -109,7 +109,7 @@ void Character::check_valid_move(int x, int y, int movement_remaining){
 
 // updates counter of the character to determine when to change phase
 void Character::update(){
-  if(hitpoints==0){
+  if(current_hitpoints==0){
     alive = 0;
   }
   if(selected==1){
@@ -122,15 +122,35 @@ void Character::update(){
   }
 }
   
-//function that return's the character's current hitpoints
-int Character::getHitpoints(){
-  return hitpoints;
+//function that returns the character's current hitpoints
+int Character::getCurrentHitpoints(){
+  return current_hitpoints;
 }
 
 // function that sets the character's hitpoints
-void Character::setHitpoints(int new_hp){
+void Character::setCurrentHitpoints(int new_hp){
   if(new_hp < 0) new_hp = 0;
-  hitpoints = new_hp;
+  current_hitpoints = new_hp;
+}
+
+// function that returns the character's max hitpoints
+int Character::getMaxHitpoints(){
+  return max_hitpoints;
+}
+
+// function that returns the character's name
+string Character::getName(){
+  return name;
+}
+
+// function that returns the character's attack
+int Character::getAttack(){
+  return attack;
+}
+
+// function that returns the character's defence
+int Character::getDefence(){
+  return defence;
 }
 
 // function to get character's movement

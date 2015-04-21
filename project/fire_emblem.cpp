@@ -101,7 +101,7 @@ int main(){
       }else if(e.type==SDL_KEYDOWN){
         switch(e.key.keysym.sym){
         case SDLK_a:
-          players[0]->setHitpoints(players[0]->getHitpoints()-5);
+          players[0]->setCurrentHitpoints(players[0]->getCurrentHitpoints()-5);
           break;
         case SDLK_s:
           players[2]->select();

@@ -6,7 +6,8 @@
 // default constructor (calls default constructor of Character class)
 Soldier::Soldier(){
   // set stats
-  hitpoints = 26;
+  current_hitpoints = 26;
+  max_hitpoints = 26;
   attack = 7;		
   defence = 9;
   attack_range = 1;
@@ -23,7 +24,8 @@ Soldier::Soldier(){
 // non-default constructor. Calls non-default constructor of Character class.
 Soldier::Soldier(string path, string my_name, int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
   // sets stats
-  hitpoints = 26;
+  current_hitpoints = 26;
+  max_hitpoints = 26;
   attack = 7;
   defence = 9;
   attack_range = 1;

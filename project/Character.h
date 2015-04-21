@@ -26,8 +26,12 @@ class Character: public GamePiece {
 		void next_phase();					// changes the phase of the sprite
 		void check_valid_move(int, int, int);	// modifies a vector of vectors to contain valid move
 		void update();
-		int getHitpoints();					// returns character's hitpoints
-		void setHitpoints(int);				// set character's hitpoints
+		int getCurrentHitpoints();			// returns character's hitpoints
+		void setCurrentHitpoints(int);			// set character's hitpoints
+		int getMaxHitpoints();				// returns the character's max hitpoints
+		string getName();				// returns character's name
+		int getAttack();				// returns character's attack
+		int getDefence();				// returns character's defence
 		int getMobility();					// gets the character's movement
 		int get_terrain_effect(int);		// returns the mobility required to move on a certain tile
 		void select();						// changes value of selected data member
@@ -44,7 +48,8 @@ class Character: public GamePiece {
 		SDL_Texture* character_texture;		// the image .png file of the sprite sheet
 		int attack;                         // attack stat
 		int defence;						// defence stat
-		int hitpoints;						// hitpoints
+		int current_hitpoints;						// hitpoints
+                int max_hitpoints;
 		int mobility;						// max tiles the Character can move
 		vector<int> terrain_effect;			// effect each terrain has on mobility
 		int attack_range;					// range of attack
