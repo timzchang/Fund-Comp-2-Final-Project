@@ -132,7 +132,12 @@ int main(){
     players[2]->draw(renderer);
     players[3]->draw(renderer); //added Angel
     cursor_ptr.draw(renderer);
-    stat_menu.draw(renderer,0,15,0);
+// LOOPS THROUGHT PLAYERS AND DRAWS THEIR STATS MENU IF ONE IS HOVERED OVER
+    for(int i = 0; i < players.size(); i++){
+      if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
+        stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),0);
+      }
+    } 
     SDL_RenderPresent(renderer);
   }
 
@@ -143,6 +148,6 @@ int main(){
 
   IMG_Quit();
   SDL_Quit();
-
+  TTF_Quit();
   return 0;
 }

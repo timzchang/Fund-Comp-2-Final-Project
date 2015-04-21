@@ -48,7 +48,7 @@ void Stats_Menu::print_stats(){
 // function to draw the stat menu
 void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team){
   if(team == 0){		// blue team (player 1)
-    if(y >= map_height/2){	// if the character is currently in the bottom half of the screen
+    if(y < map_height/2){	// if the character is currently in the bottom half of the screen
       SDL_Rect dest = {0,map_height*32-96,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
       SDL_Rect source = {0,0,192,96};     			// gets whole image
       SDL_RenderCopy(renderer,blue_menu,&source,&dest);		// draws the rectangle to the renderer
@@ -58,10 +58,14 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team){
       SDL_RenderCopy(renderer,blue_menu,&source,&dest);		// draws the rectangle to the renderer
     }
   }else{			// red team (player 2)
-    if(y >= map_height/2){	// if the character is in the bottom half the screen
-    
+    if(y < map_height/2){	// if the character is in the bottom half the screen
+      SDL_Rect dest = {0,map_height*32-96,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
+      SDL_Rect source = {0,0,192,96};     			// gets whole image
+      SDL_RenderCopy(renderer,red_menu,&source,&dest);		// draws the rectangle to the renderer
     }else{			// if the character is in the top hald of the screen
-    
+      SDL_Rect dest = {0,0,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
+      SDL_Rect source = {0,0,192,96};     			// gets whole image
+      SDL_RenderCopy(renderer,red_menu,&source,&dest);		// draws the rectangle to the renderer
     }
   }
 }
