@@ -68,7 +68,7 @@ int main(){
   players.push_back(new Hero("../media/Hero.png","Chris",0,0,1,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png","Lucas",2,8,1,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero.png","Mason",8,12,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,1,renderer,level1.get_tile_prop())); //added stuff
+  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,2,renderer,level1.get_tile_prop())); //added stuff
   //cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
@@ -135,7 +135,7 @@ int main(){
 // LOOPS THROUGHT PLAYERS AND DRAWS THEIR STATS MENU IF ONE IS HOVERED OVER
     for(int i = 0; i < players.size(); i++){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
-        stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer());
+        stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());
       }
     } 
     SDL_RenderPresent(renderer);
