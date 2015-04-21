@@ -159,3 +159,7 @@ Date		Time		Work Done					Learned
 				display in the info screen that appears		but a minor change took quite a while to implement.
 				when a player is hovered over (next step
 				in development)
+
+4/21/15		1		Added get/set functions for each of the		I didn't learn too much.
+				needed stats for what is going to be a
+				info menu when a player is hovered over.
