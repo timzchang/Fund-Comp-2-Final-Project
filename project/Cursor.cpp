@@ -141,18 +141,35 @@ void Cursor::move_select(vector<Character *> * players, int move,Map *level){
     int hero_selected=0;
     for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
         if((*hero)->get_select()){   //if a hero is selected,
-            /*switch(move){
+            switch(move){
                 case 0: //up
-                    if((*hero)->get_tile((*hero)->gety()-1,(*hero)->getx()) == 1){
-                        std::cout<< (*hero)->get_tile((*hero)->gety()-1,(*hero)->getx());
+                    if((*hero)->get_tile(gety()-1,getx()) == 1){
                         (*hero)->add_move(move);
                         Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
                     }
                     break;
-            }*/
+                case 1: //right
+                    if((*hero)->get_tile(gety(),getx()+1) == 1){
+                        (*hero)->add_move(move);
+                        Cursor::move(1,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    break;
+                case 2: //down
+                    if((*hero)->get_tile(gety()+1,getx()) == 1){
+                        (*hero)->add_move(move);
+                        Cursor::move(2,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    break;
+                case 3: //left
+                    if((*hero)->get_tile(gety(),getx()-1) == 1){
+                        (*hero)->add_move(move);
+                        Cursor::move(3,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    break;
+            }
             hero_selected=1;
-            (*hero)->add_move(move);
-            Cursor::move(move,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+            //(*hero)->add_move(move);
+            //Cursor::move(move,(*hero)->get_vb_width(),(*hero)->get_vb_height());
         }/*else{
             Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
         }*/
