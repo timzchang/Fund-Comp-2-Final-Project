@@ -22,7 +22,9 @@ Map::~Map(){
 }
 
 void Map::free(){
-  SDL_DestroyTexture(map_image);	// destroy the texture
+  if(map_image!=NULL){
+    SDL_DestroyTexture(map_image);	// destroy the texture
+  }
   map_image = NULL;			// grounds the pointer
 }
 

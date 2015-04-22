@@ -172,3 +172,6 @@ Date		Time		Work Done					Learned
 				Now works as intended, but the programs
 				gives a seg fault whenever the window is
 				closed.
+
+4/21/15		.5		Fixed the segmentation fault in the Stats_		I learned that it is good to check if a pointer
+				Menu class.						is null before trying to free it.

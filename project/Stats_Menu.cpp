@@ -31,9 +31,15 @@ Stats_Menu::Stats_Menu(string path_blue, string path_red, string path_font, SDL_
 // deconstructor
 Stats_Menu::~Stats_Menu(){
 // frees all of the textures and fonts
-  SDL_DestroyTexture(red_menu);
-  SDL_DestroyTexture(blue_menu);
-  TTF_CloseFont(font);
+  if(red_menu!=NULL){
+    SDL_DestroyTexture(red_menu);
+  }
+  if(blue_menu!=NULL){
+    SDL_DestroyTexture(blue_menu);
+  }
+  if(font!=NULL){
+    TTF_CloseFont(font);
+  }
   red_menu = NULL;
   blue_menu = NULL;
   font = NULL;
