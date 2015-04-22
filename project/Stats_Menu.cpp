@@ -49,8 +49,8 @@ void Stats_Menu::print_stats(){
 void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, string name, int currHP, int maxHP, int attack, int defence){
   SDL_Color color = {255,255,255};
   string name_str = "Name: " + name;
-  string attack_str = "Attack: " + attack;
-  string defence_str = "Defence: " + defence;
+  string attack_str = "Attack: " + to_string(attack);
+  string defence_str = "Defence: " + to_string(defence);
   string hit_points = "Hitpoints: " + to_string(currHP) + "/" + to_string(maxHP);
   SDL_Surface* loadedText = TTF_RenderText_Blended(font, name_str.c_str(), color);
   SDL_Texture* nameTexture = SDL_CreateTextureFromSurface(renderer,loadedText);
@@ -79,8 +79,8 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
       SDL_Rect source = {0,0,192,96};     			// gets whole image
       SDL_Rect nameRect = {10,0,100,20};			// destination of the name string
       SDL_Rect hpRect = {10,20,150,20};				// where to draw the hp string
-      SDL_Rect attackRect = {10,40,150,20};			// where to draw the attack
-      SDL_Rect defenceRect = {10,60,150,20};			// where to draw the defence 
+      SDL_Rect attackRect = {10,40,80,20};			// where to draw the attack
+      SDL_Rect defenceRect = {10,60,80,20};			// where to draw the defence 
       SDL_RenderCopy(renderer,blue_menu,&source,&dest);		// draws the rectangle to the renderer
       SDL_RenderCopy(renderer,nameTexture,NULL,&nameRect);	// draws the name onto the renderer
       SDL_RenderCopy(renderer,attackTexture,NULL,&attackRect);	// draws the hitpoints to the screen
@@ -93,8 +93,8 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
       SDL_Rect source = {0,0,192,96};     			// gets whole image
       SDL_Rect nameRect = {10,map_height*32-90,100,20};		// size of the name
       SDL_Rect hpRect = {10,map_height*32-70,150,20};		// where to draw the hp string
-      SDL_Rect attackRect = {10,map_height*32-50,150,20};	// where to draw the attack
-      SDL_Rect defenceRect = {10,map_height*32-30,150,20};	// where to draw the defence 
+      SDL_Rect attackRect = {10,map_height*32-50,80,20};	// where to draw the attack
+      SDL_Rect defenceRect = {10,map_height*32-30,80,20};	// where to draw the defence 
       SDL_RenderCopy(renderer,red_menu,&source,&dest);		// draws the rectangle to the renderer
       SDL_RenderCopy(renderer,nameTexture,NULL,&nameRect);	// draws the name onto the screen
       SDL_RenderCopy(renderer,attackTexture,NULL,&attackRect);	// draws the hitpoints to the screen
@@ -105,8 +105,8 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
       SDL_Rect source = {0,0,192,96};     			// gets whole image
       SDL_Rect nameRect = {10,0,100,20};			// size of the name
       SDL_Rect hpRect = {10,20,150,20};				// where to draw the hp string
-      SDL_Rect attackRect = {10,40,150,20};			// where to draw the attack
-      SDL_Rect defenceRect = {10,60,150,20};			// where to draw the defence 
+      SDL_Rect attackRect = {10,40,80,20};			// where to draw the attack
+      SDL_Rect defenceRect = {10,60,80,20};			// where to draw the defence 
       SDL_RenderCopy(renderer,red_menu,&source,&dest);		// draws the rectangle to the renderer
       SDL_RenderCopy(renderer,nameTexture,NULL,&nameRect);	// draws the name onto the screen
       SDL_RenderCopy(renderer,attackTexture,NULL,&attackRect);	// draws the hitpoints to the screen
@@ -114,4 +114,8 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
       SDL_RenderCopy(renderer,hitpointsTexture,NULL,&hpRect);	// draws the hitpoints to the screen
     }
   }
+  SDL_DestroyTexture(nameTexture);
+  SDL_DestroyTexture(attackTexture);
+  SDL_DestroyTexture(hitpointsTexture);
+  SDL_DestroyTexture(nameTexture);
 }

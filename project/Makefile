@@ -9,7 +9,7 @@ OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o Angel.o Ar
 all: fire_emblem
 
 fire_emblem: fire_emblem.cpp $(OBJECTS)
-	g++ fire_emblem.cpp $(OBJECTS) -o fire_emblem $(FLAGS) 
+	g++ fire_emblem.cpp $(OBJECTS) -g3 -O0 -o fire_emblem $(FLAGS) 
 
 GamePiece.o: GamePiece.cpp
 	g++ -c GamePiece.cpp $(MACFLAGS)
