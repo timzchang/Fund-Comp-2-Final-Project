@@ -121,7 +121,7 @@ void Cursor::toggle_select(vector<Character *> * players, Map * level){
         }
       }
         if((*hero)->get_select() && (*hero)->size_move()>0){                                 //if this hero is selected and its move vector is greater than zero
-          (*hero)->unselect();                                                               //deselect and process move vector.
+          //(*hero)->unselect();                                                               //deselect and process move vector.
           (*hero)->process_move_vector(level->get_width(),level->get_height());
         }
     }
@@ -139,8 +139,12 @@ void Cursor::toggle_select(vector<Character *> * players, Map * level){
 //if the character is selectecd, we will update its move vector with the "move" value.
 void Cursor::move_select(vector<Character *> * players, int move){
     for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
-        if((*hero)->get_select())
+        if((*hero)->get_select()){
+            /*switch(move){
+                case 0: //up
+                    if((*hero)->vb)
+            }*/
             (*hero)->add_move(move);
-            
+        }
     }
 }

@@ -30,7 +30,7 @@ Angel::Angel(string path,string name ,int x, int y, int my_player, SDL_Renderer*
   max_hitpoints = 19;
   attack = 12;
   defence = 6;
-  attack_range = 1;
+  attack_range = 2;
   mobility = 7;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);

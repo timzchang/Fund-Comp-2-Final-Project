@@ -100,7 +100,7 @@ int Valid_board::get_num_cols(){
   return valid_tiles[0].size();
 }
 
-// function to draw blue highlights where the character can move.
+// function to draw blue and red highlights where the character can move.
 void Valid_board::draw(SDL_Renderer* renderer){
   for(int i = 0; i < valid_tiles.size(); i++){
     for(int j = 0; j < valid_tiles[0].size(); j++){

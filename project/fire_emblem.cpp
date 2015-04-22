@@ -18,10 +18,10 @@
 #include "GamePiece.h"
 #include "Valid_board.h"
 #include <iostream>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
+//#include <SDL2/SDL.h>
+//#include <SDL2/SDL_image.h>
 #include <vector>
-#include <SDL2/SDL_ttf.h>
+//#include <SDL2/SDL_ttf.h>
 #include "Stats_Menu.h"
 SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
@@ -95,7 +95,7 @@ int main(){
           players[2]->unselect();
           break;
         case SDLK_DOWN:
-          cursor_ptr.move_select(&players,2);
+          cursor_ptr.move_select(&players,2); //if any players are selected, modify move vector
           cursor_ptr.move(2,level1.get_width(),level1.get_height());
           break;
         case SDLK_UP:
@@ -112,7 +112,7 @@ int main(){
           break;
         case SDLK_RETURN:
 	  //do select stuff
-	  cursor_ptr.toggle_select(&players,&level1); //managed to encompass everything in one function. Selects or deselects players. moves players. Will need to modify when we implement a popup menu.
+          cursor_ptr.toggle_select(&players,&level1); //managed to encompass everything in one function. Selects or deselects players. moves players. Will need to modify when we implement a popup menu.
 	  break;
         }
       }

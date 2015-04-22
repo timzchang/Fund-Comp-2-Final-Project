@@ -7,10 +7,10 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include<string>
-#include<SDL2/SDL.h>
-#include<SDL2/SDL_image.h>
-#include<SDL.h>
-#include<SDL_image.h>
+//#include<SDL2/SDL.h>
+//#include<SDL2/SDL_image.h>
+//#include<SDL.h>
+//#include<SDL_image.h>
 #include "GamePiece.h"
 #include "Valid_board.h"
 #include <vector>
