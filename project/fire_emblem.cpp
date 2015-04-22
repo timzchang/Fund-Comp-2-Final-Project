@@ -89,7 +89,7 @@ int main(){
           break;
         case SDLK_s:
           players[2]->select();
-          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility());
+          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility(), &players);
           break;
         case SDLK_u:
           players[2]->unselect();

@@ -24,7 +24,7 @@ class Character: public GamePiece {
 		void change_direction(int);			// changes the direction of the sprite. 0 up, 1 right... 3 left
 		int get_phase();					// returns the current phase of the sprite
 		void next_phase();					// changes the phase of the sprite
-		void check_valid_move(int, int, int);	// modifies a vector of vectors to contain valid move
+		void check_valid_move(int, int, int, vector<Character *> *);	// modifies a vector of vectors to contain valid move
 		void update();
 		int getCurrentHitpoints();			// returns character's hitpoints
 		void setCurrentHitpoints(int);			// set character's hitpoints

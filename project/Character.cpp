@@ -94,22 +94,22 @@ void Character::check_valid_move(int x, int y, int movement_remaining, vector<Ch
 
   vector<Character *>::iterator it;
   for(it = (*players).begin(); it != (*players).end(); ++it){
-    if((*players)->gety() == x && (*players)->getx() == y)	// if the given x,y coordinate is already occupied, end function
+    if((*it)->gety() == x && (*it)->getx() == y)	// if the given x,y coordinate is already occupied, end function
       return;
   }
   vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recursion)
   if(y-1 >= 0){
-    check_valid_move(x,y-1,movement_remaining-terrain_effect[tile_properties[y-1][x]], &players);
+    check_valid_move(x,y-1,movement_remaining-terrain_effect[tile_properties[y-1][x]], players);
   }
   if(x+1 < tile_properties.size()){
-    check_valid_move(x+1,y,movement_remaining-terrain_effect[tile_properties[y][x+1]], &players);
+    check_valid_move(x+1,y,movement_remaining-terrain_effect[tile_properties[y][x+1]], players);
   }
   if(y+1 < tile_properties[0].size()){
-    check_valid_move(x,y+1,movement_remaining-terrain_effect[tile_properties[y+1][x]], &players);
+    check_valid_move(x,y+1,movement_remaining-terrain_effect[tile_properties[y+1][x]], players);
   }
   if(x-1 >= 0){
-    check_valid_move(x-1,y,movement_remaining-terrain_effect[tile_properties[y][x-1]], &players);
+    check_valid_move(x-1,y,movement_remaining-terrain_effect[tile_properties[y][x-1]], players);
   }
 }
 

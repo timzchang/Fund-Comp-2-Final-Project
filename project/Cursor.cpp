@@ -114,7 +114,7 @@ void Cursor::toggle_select(vector<Character *> * players, Map * level){
       if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety()){                    //if this cursor and character are on the same coordinate
         if((*hero)->get_select()==0){                                                        //and this player is not selected
           (*hero)->select();                                                                 //select (this only changes the "selected" member of Character to 1. Makes the guy animate as well.)
-          (*hero)->check_valid_move((*hero)->getx(),(*hero)->gety(),(*hero)->getMobility()); //this is the one that updates its valid board
+          (*hero)->check_valid_move((*hero)->getx(),(*hero)->gety(),(*hero)->getMobility(), players); //this is the one that updates its valid board
         }else{
           (*hero)->unselect();                                                               //similarly, this only changes "selected" to 0. stops the guy from being animated
           (*hero)->process_move_vector(level->get_width(),level->get_height());              //process move vector.
