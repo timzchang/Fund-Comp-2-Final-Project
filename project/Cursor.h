@@ -26,7 +26,9 @@ class Cursor: public GamePiece {
     void update();				// updates clock counts
     void move(int,int,int);
     void toggle_select(vector<Character *> *, Map *); //if the cursor is over a character, it will be selected or deselected. If it is not over a character and the move vector>1, we process_move_vector
-    void move_select(vector<Character *> *, int move); //loop through character vector, if a character is selected (there should only be one at a time), update a move vector.
+    void move_select(vector<Character *> *, int move, Map *); //loop through character vector, if a character is selected (there should only be one at a time), update a move vector.
+    //TEST FUNCTION PLEASE IGNORE
+    void test_move(int change, int max_width, int max_height);
   private:
     int phase;			// phase of the cursor (0 for big, 1 for small)
     SDL_Texture* cursor_1;	// Outer cursor

@@ -95,20 +95,24 @@ int main(){
           players[2]->unselect();
           break;
         case SDLK_DOWN:
-          cursor_ptr.move_select(&players,2); //if any players are selected, modify move vector
-          cursor_ptr.move(2,level1.get_width(),level1.get_height());
+          //cursor_ptr.test_move(2,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
+          cursor_ptr.move_select(&players,2,&level1); //if any players are selected, modify move vector
+          //cursor_ptr.move(2,level1.get_width(),level1.get_height());
           break;
         case SDLK_UP:
-          cursor_ptr.move_select(&players,0);
-          cursor_ptr.move(0,level1.get_width(),level1.get_height());
+          cursor_ptr.move_select(&players,0,&level1);
+          //cursor_ptr.test_move(0,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
+          //cursor_ptr.move(0,level1.get_width(),level1.get_height());
           break;
         case SDLK_LEFT:
-          cursor_ptr.move_select(&players,3);
-          cursor_ptr.move(3,level1.get_width(),level1.get_height());
+          cursor_ptr.move_select(&players,3,&level1);
+          //cursor_ptr.test_move(3,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
+          //cursor_ptr.move(3,level1.get_width(),level1.get_height());
           break;
         case SDLK_RIGHT:
-          cursor_ptr.move_select(&players,1);
-          cursor_ptr.move(1,level1.get_width(),level1.get_height());
+          cursor_ptr.move_select(&players,1,&level1);
+          //cursor_ptr.test_move(1,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
+          //cursor_ptr.move(1,level1.get_width(),level1.get_height());
           break;
         case SDLK_RETURN:
 	  //do select stuff

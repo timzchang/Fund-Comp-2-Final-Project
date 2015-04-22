@@ -17,7 +17,7 @@ Character::Character(){
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
-Character::Character(string path,string my_name,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop[0].size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
+Character::Character(string path,string my_name,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop/*[0]*/.size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());				// loads the image into character_texture
   character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
   direction = 0;								// direction starts at 0
@@ -252,4 +252,19 @@ int Character::size_move(){
 // function to return the player's team
 int Character::getPlayer(){
   return player; 
+}
+
+//returns vb location at x,y
+int Character::get_tile(int x,int y){
+    return vb.get_value(x,y);
+}
+
+//returns vb width. Need for Cursor::move()
+int Character::get_vb_width(){
+    return vb.get_num_cols();
+}
+
+//returns vb height. Need for Cursor::move()
+int Character::get_vb_height(){
+    return vb.get_num_rows();
 }

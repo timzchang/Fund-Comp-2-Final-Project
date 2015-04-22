@@ -43,6 +43,9 @@ class Character: public GamePiece {
 	        void add_move(int);                 // pushes a value into the moves vector
        		void clear_move();                  // clears the move vector
        		int size_move();                    // return moves size
+        int get_tile(int,int);           //returns the vb value at specified location
+        int get_vb_width();              //gets vb width
+        int get_vb_height();             //gets vb height
 	protected:
 		int player;		// 1 or 2 depending on the player
 		int direction;						// direction the sprite is facing

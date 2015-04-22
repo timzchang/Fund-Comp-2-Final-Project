@@ -26,6 +26,7 @@ class Valid_board{
     void resize(int, int);				// resizes the board and fills it with 0s
     void print();					// for testing purposes
     void set_tile(int,int,int);				// sets tile (int, int) to 1
+    int get_value(int,int);            //returns val at (x,y)
     int get_num_rows();					// returns the number of rows
     int get_num_cols();					// returns the number of column
     void draw(SDL_Renderer*);				// draws all valid location with 

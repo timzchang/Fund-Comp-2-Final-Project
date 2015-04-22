@@ -137,14 +137,34 @@ void Cursor::toggle_select(vector<Character *> * players, Map * level){
 //This function is called each time someone hits the arrow keys.
 //it will loop through the character vector in search of a character who is selected.
 //if the character is selectecd, we will update its move vector with the "move" value.
-void Cursor::move_select(vector<Character *> * players, int move){
+void Cursor::move_select(vector<Character *> * players, int move,Map *level){
+    int hero_selected=0;
     for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
-        if((*hero)->get_select()){
+        if((*hero)->get_select()){   //if a hero is selected,
             /*switch(move){
                 case 0: //up
-                    if((*hero)->vb)
+                    if((*hero)->get_tile((*hero)->gety()-1,(*hero)->getx()) == 1){
+                        std::cout<< (*hero)->get_tile((*hero)->gety()-1,(*hero)->getx());
+                        (*hero)->add_move(move);
+                        Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    break;
             }*/
+            hero_selected=1;
             (*hero)->add_move(move);
-        }
+            Cursor::move(move,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+        }/*else{
+            Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+        }*/
+        
     }
+    if(!hero_selected)
+        Cursor::move(move,level->get_width(),level->get_height());
+        
+}
+
+
+//TEST FUNCTION PLEASE IGNORE
+void Cursor::test_move(int change, int max_width, int max_height){
+    move(change, max_width,max_height);
 }

@@ -90,6 +90,10 @@ void Valid_board::set_tile(int value, int x, int y){
   valid_tiles[x][y] = value;
 }
 
+int Valid_board::get_value(int x, int y){
+    return valid_tiles[x][y];
+}
+
 // returns the number of rows
 int Valid_board::get_num_rows(){
   return valid_tiles.size();
