@@ -66,6 +66,11 @@ Date            Time(hr.)       Work Done                                       
 				be fixed in next update. Also merged
 				some conflicts with git
 
-
+4/22/2015	3.5		Fixed movement functionality to game.		Nothing of import.
+				characters can now only go to the limit
+				of their movement range.
+				Modified check_valid_moves in Character
+				class to detect other characters.
+				promptly screwed up the valid-board generation
 
 Total Hours: 25
