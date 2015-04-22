@@ -84,26 +84,32 @@ int Character::get_phase(){
 }
 
 // function that takes in a vector of vector and returns it populated with 1s where a character can move
-void Character::check_valid_move(int x, int y, int movement_remaining){
+void Character::check_valid_move(int x, int y, int movement_remaining, vector<Character *> * players){
 // BE CAREFUL WITH COORDINATE SYSTEM - IT IS SLIGHTLY CONFUSING WITH GRAPHICS COORDINATES AND REGULAR VECTOR ARGUMENTS
   if(movement_remaining < 0){  	// if the character is out of movement
     return;		
   }
   if(terrain_effect[tile_properties[y][x]]==0) 
     return;							// if the character can't move onto the x,y coordinate, end function
+
+  vector<Character *>::iterator it;
+  for(it = (*players).begin(); it != (*players).end(); ++it){
+    if((*players)->gety() == x && (*players)->getx() == y)	// if the given x,y coordinate is already occupied, end function
+      return;
+  }
   vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
-  // repeat in all direction (recurrsion)
+  // repeat in all direction (recursion)
   if(y-1 >= 0){
-    check_valid_move(x,y-1,movement_remaining-terrain_effect[tile_properties[y-1][x]]);
+    check_valid_move(x,y-1,movement_remaining-terrain_effect[tile_properties[y-1][x]], &players);
   }
   if(x+1 < tile_properties.size()){
-    check_valid_move(x+1,y,movement_remaining-terrain_effect[tile_properties[y][x+1]]);
+    check_valid_move(x+1,y,movement_remaining-terrain_effect[tile_properties[y][x+1]], &players);
   }
   if(y+1 < tile_properties[0].size()){
-    check_valid_move(x,y+1,movement_remaining-terrain_effect[tile_properties[y+1][x]]);
+    check_valid_move(x,y+1,movement_remaining-terrain_effect[tile_properties[y+1][x]], &players);
   }
   if(x-1 >= 0){
-    check_valid_move(x-1,y,movement_remaining-terrain_effect[tile_properties[y][x-1]]);
+    check_valid_move(x-1,y,movement_remaining-terrain_effect[tile_properties[y][x-1]], &players);
   }
 }
 
@@ -237,7 +243,7 @@ void Character::add_move(int move){
             moves.pop_back();
         else if(moves[moves.size()-1]==1 && move==3) //if previous move was right and we move left, pop_back
             moves.pop_back();
-        else if(moves[moves.size()-1]==3 && move==1) //if previous move was left and we mover right, pop_back
+        else if(moves[moves.size()-1]==3 && move==1) //if previous move was left and we move right, pop_back
             moves.pop_back();
         else
             moves.push_back(move); //else push back the move
