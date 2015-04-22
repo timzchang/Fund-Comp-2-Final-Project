@@ -7,10 +7,10 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include<string>
-//#include<SDL2/SDL.h>
-//#include<SDL2/SDL_image.h>
-//#include<SDL.h>
-//#include<SDL_image.h>
+#include<SDL2/SDL.h>
+#include<SDL2/SDL_image.h>
+#include<SDL.h>
+#include<SDL_image.h>
 #include "GamePiece.h"
 #include "Valid_board.h"
 #include <vector>
@@ -37,12 +37,12 @@ class Character: public GamePiece {
 		int get_terrain_effect(int);		// returns the mobility required to move on a certain tile
 		void select();						// changes value of selected data member
 		void unselect();					// changes selected to 0
-        int get_select();
+	        int get_select();
 		void move(int,int,int);				// moves the character
 		void process_move_vector(int,int);	// moves a series of steps as per the vector passed in
-        void add_move(int);                 // pushes a value into the moves vector
-        void clear_move();                  // clears the move vector
-        int size_move();                    // return moves size
+	        void add_move(int);                 // pushes a value into the moves vector
+       		void clear_move();                  // clears the move vector
+       		int size_move();                    // return moves size
 	protected:
 		int player;		// 1 or 2 depending on the player
 		int direction;						// direction the sprite is facing
@@ -60,7 +60,7 @@ class Character: public GamePiece {
 		int selected;						// if the character has been selected
 		Valid_board vb;						// a 2d array of possible move places and attack spaces
 		vector<vector <int> > tile_properties;  // an array of tile properties
-        vector<int> moves;                  // stores moves.
+       		vector<int> moves;                  // stores moves.
 		string name;
 };
 #endif

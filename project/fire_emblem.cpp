@@ -54,7 +54,7 @@ int main(){
   if( TTF_Init() == -1){
     cout << "SDL TTF couln't initialize!\n";
   }
-  Stats_Menu stat_menu("../media/blue_stats.png","../media/red_stats.png","../media/sans.ttf",renderer);
+  //Stats_Menu stat_menu("../media/blue_stats.png","../media/red_stats.png","../media/sans.ttf",renderer);
   //load map image
   level1.loadImage("../maps/small_map.png",renderer);
 
@@ -133,11 +133,13 @@ int main(){
     players[3]->draw(renderer); //added Angel
     cursor_ptr.draw(renderer);
 // LOOPS THROUGHT PLAYERS AND DRAWS THEIR STATS MENU IF ONE IS HOVERED OVER
+/*
     for(int i = 0; i < players.size(); i++){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
         stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());
       }
-    } 
+    }
+ */
     SDL_RenderPresent(renderer);
   }
 

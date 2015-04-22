@@ -167,3 +167,8 @@ Date		Time		Work Done					Learned
 4/21/15		3		Worked on the Stats_Menu class. It now		I learned a lot of stuff about TTF.
 				draws text onto the screen in a menu.
 				Works when hovered over.
+
+4/21/15		2		Continued work on the Stats_Menu class.		I didn't learn anything new.
+				Now works as intended, but the programs
+				gives a seg fault whenever the window is
+				closed.

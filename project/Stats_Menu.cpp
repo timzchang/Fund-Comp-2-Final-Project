@@ -21,6 +21,7 @@ Stats_Menu::Stats_Menu(string path_blue, string path_red, string path_font, SDL_
   loaded_surface = IMG_Load(path_blue.c_str());		
   blue_menu = SDL_CreateTextureFromSurface(renderer,loaded_surface);	// stores the blue menu
   SDL_FreeSurface(loaded_surface);
+  loaded_surface = NULL;
   loaded_surface = IMG_Load(path_red.c_str());
   red_menu = SDL_CreateTextureFromSurface(renderer,loaded_surface);	// stores the red menu
   SDL_FreeSurface(loaded_surface);					// frees the surface used for the creation of the textures
@@ -47,20 +48,29 @@ void Stats_Menu::print_stats(){
 
 // function to draw the stat menu
 void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, string name, int currHP, int maxHP, int attack, int defence){
-  SDL_Color color = {255,255,255};
-  string name_str = "Name: " + name;
-  string attack_str = "Attack: " + to_string(attack);
-  string defence_str = "Defence: " + to_string(defence);
-  string hit_points = "Hitpoints: " + to_string(currHP) + "/" + to_string(maxHP);
-  SDL_Surface* loadedText = TTF_RenderText_Blended(font, name_str.c_str(), color);
-  SDL_Texture* nameTexture = SDL_CreateTextureFromSurface(renderer,loadedText);
-  loadedText = TTF_RenderText_Blended(font,hit_points.c_str(),color);
-  SDL_Texture* hitpointsTexture = SDL_CreateTextureFromSurface(renderer,loadedText);
+  SDL_Surface* loadedText;
+  SDL_Color color = {255,255,255};		// sets color to white
+  string name_str = "Name: " + name;		// loads the name string with a label
+  string attack_str = "Attack: " + to_string(attack);		// loads the attack string with a label (needs c++ 11)
+  string defence_str = "Defence: " + to_string(defence);	// loads the defence string with a label (needs c++ 11)
+  string hit_points = "Hitpoints: " + to_string(currHP) + "/" + to_string(maxHP);	// loads the hitpoints in the form curr/max.  c++ 11
+  loadedText = TTF_RenderText_Blended(font, name_str.c_str(), color);	// creates a surface for the name text
+  SDL_Texture* nameTexture = SDL_CreateTextureFromSurface(renderer,loadedText);		// creates a nameTexture
+  SDL_FreeSurface(loadedText);
+  loadedText = NULL;
+  loadedText = TTF_RenderText_Blended(font,hit_points.c_str(),color);			// creates a surface for the hitpoints 
+// Continue this process for the rest of the texts
+  SDL_Texture* hitpointsTexture = SDL_CreateTextureFromSurface(renderer,loadedText);	
+  SDL_FreeSurface(loadedText);
+  loadedText = NULL;
   loadedText = TTF_RenderText_Blended(font, attack_str.c_str(), color);
   SDL_Texture* attackTexture = SDL_CreateTextureFromSurface(renderer,loadedText);
+  SDL_FreeSurface(loadedText);
+  loadedText = NULL;
   loadedText = TTF_RenderText_Blended(font, defence_str.c_str(), color);
   SDL_Texture* defenceTexture = SDL_CreateTextureFromSurface(renderer,loadedText);
   SDL_FreeSurface(loadedText);
+  loadedText = NULL;
   if(team == 1){		// blue team (player 1)
     if(y < map_height/2){	// if the character is currently in the bottom half of the screen
       SDL_Rect dest = {0,map_height*32-96,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
@@ -114,8 +124,13 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
       SDL_RenderCopy(renderer,hitpointsTexture,NULL,&hpRect);	// draws the hitpoints to the screen
     }
   }
+// FREE AND GROUND ALL POINTERS THAT WERE USED
   SDL_DestroyTexture(nameTexture);
+  nameTexture = NULL;
   SDL_DestroyTexture(attackTexture);
+  nameTexture = NULL;
   SDL_DestroyTexture(hitpointsTexture);
+  hitpointsTexture = NULL;
   SDL_DestroyTexture(nameTexture);
+  nameTexture = NULL;
 }
