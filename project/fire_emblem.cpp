@@ -50,6 +50,18 @@ int main(){
     return 1;
   }
 
+// Menu loop (with "instructions" loop inside) will go here most likely (and exit when "play" is chosen - We could add a large while loop if we want the game to return to the menu after it finishes
+/* menu() menu
+ selection=menu
+ while(selection!=play)
+    if (menu)
+            selection=menu.display()
+    if (instruction)
+            selection=instruction()
+    else if quit
+            return
+*/
+
   //initialize SDL_ttf
   if( TTF_Init() == -1){
     cout << "SDL TTF couln't initialize!\n";
