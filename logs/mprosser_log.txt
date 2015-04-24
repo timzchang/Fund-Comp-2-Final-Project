@@ -31,3 +31,9 @@ Date		Time Spent		Accomplished
 					   to be used for the cursor and the main character.
 
 4/18		1.5 hours		Created 6 new character classes and sprite sheets for each.
+
+4/22		1 hour			Added a way to prevent characters from occupying the same space to
+					   the check_valid_move function. The changes didn't work, but are
+					   at least a good start.
+
+4/24		

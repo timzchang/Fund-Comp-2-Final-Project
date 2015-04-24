@@ -94,8 +94,8 @@ void Character::check_valid_move(int x, int y, int movement_remaining, vector<Ch
 
   vector<Character *>::iterator it;
   for(it = (*players).begin(); it != (*players).end(); ++it){
-    if((*it)->gety() == x && (*it)->getx() == y)	// if the given x,y coordinate is already occupied, end function
-      return;
+    if((*it)->gety() == x && (*it)->getx() == y)
+      /*if (player != (*it)->getPlayer())*/ return;			// if coordinate is occupied by enemy player, end function
   }
   vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recursion)
