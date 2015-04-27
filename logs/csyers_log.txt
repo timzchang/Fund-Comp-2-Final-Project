@@ -188,3 +188,11 @@ Date		Time		Work Done					Learned
 				functionality of the game. Added functions
 				to get and set a canMove data member
 				of the Character class
+
+4/27/15		2		Continued working with the turn		I didn't learn much new - just continued to develop skill in wokring
+				mechanism for the game. Added two	with pngs.
+				images that are messages that the
+				player turn is switching. Still
+				needs imporvement on when it happens
+				(right now it happends before the
+				player actually takes its turn)

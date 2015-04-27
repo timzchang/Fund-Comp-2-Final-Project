@@ -71,6 +71,15 @@ int main(){
   //load map image
   level1.loadImage("../maps/small_map.png",renderer);
 
+  // LOAD PLAYER TURN NOTIFICATIONS
+  SDL_Surface* loadedImage = IMG_Load("../media/player1turn.png");
+  SDL_Texture* player1turn = SDL_CreateTextureFromSurface(renderer,loadedImage);
+  loadedImage = IMG_Load("../media/player2turn.png");
+  SDL_Texture* player2turn = SDL_CreateTextureFromSurface(renderer,loadedImage);
+  SDL_FreeSurface(loadedImage);
+  loadedImage = NULL;
+  SDL_Rect turnDestRect = {80,100,300,100};
+
   //load map info
   level1.loadVector("../maps/small_map_info.txt");
   Choice_Menu choices(renderer,"../media/choice_menu_attack.png","../media/choice_menu_wait.png");
@@ -155,12 +164,20 @@ int main(){
     }
     cursor_ptr.draw(renderer);
     if(moves_left == 0){
-      if(player_turn == 1) player_turn = 2;
-      else if(player_turn == 2) player_turn = 1;
+      if(player_turn == 1){
+        player_turn = 2;
+        SDL_RenderCopy(renderer,player2turn,NULL,&turnDestRect);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(2000);
+      }else if(player_turn == 2){
+        player_turn = 1;
+        SDL_RenderCopy(renderer,player1turn,NULL,&turnDestRect);
+        SDL_RenderPresent(renderer);
+        SDL_Delay(2000);
+      }
       for(int i = 0; i < players.size(); i++){
         players[i]->setMove();
       }
-      cout << "Switched plaer turn" << endl;
     }
     for(int i = 0; i < players.size(); i++){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
