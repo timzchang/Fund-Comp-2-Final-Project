@@ -189,38 +189,39 @@ int Character::get_select(){
     return selected;
 }
 
-// functio to move the character
+// function to move the character. 0 up, 1 right, 2 down, and 3 left.
 void Character::move(int change, int max_width, int max_height){
-  switch(change){
+  switch(change){			
     case(0):
-      change_direction(0);
-      if(ypos==0) return;
-      else ypos = ypos-1;
-      break;
+      change_direction(0);		// turns the character to face upward
+      if(ypos==0) return;		// if the character is already at the end of the map, don't do anything
+      else ypos = ypos-1;		// move the character up 1 spot
+      break;				// end the function
     case(1):
-      change_direction(1);
-      if(xpos == max_width-1) return;
-      else xpos = xpos+1;
-      break;
+      change_direction(1);		// turn the character right
+      if(xpos == max_width-1) return;	// if it is already at the right limit, do nothing
+      else xpos = xpos+1;		// move the character right 1 space
+      break;				// end the function
     case(2):
-      change_direction(2);
-      if(ypos == max_height-1) return;
-      else ypos = ypos+1;
-      break;
+      change_direction(2);		// turns the player down
+      if(ypos == max_height-1) return;	// if the player is at the bottom of the map, do nothing
+      else ypos = ypos+1;		// move the character down
+      break;				// end loop
     case(3):
-      change_direction(3);
-      if(xpos==0) return;
-      else xpos = xpos-1;
-      break;
+      change_direction(3);		// change direction to the left
+      if(xpos==0) return;		// if the character is already at the left limit, do nothing
+      else xpos = xpos-1;		// move character to the left
+      break;				// end loop
   }
 }
 
+// clears the move vector of the character. Used after the vector has been processed
 void Character::clear_move(){
     moves.clear();
 }
 
 // function that moves a series of direction that are in a vector
-//called everytime character is deselected and moved.
+// called everytime character is deselected and moved.
 void Character::process_move_vector(int max_width,int max_height){
   for(int i = 0; i<moves.size(); i++){
     move(moves[i],max_width,max_height);
@@ -228,7 +229,7 @@ void Character::process_move_vector(int max_width,int max_height){
     vb.to_zeros(); //clear the valid board after we process the move vector.
     vb.set_tile(1,ypos,xpos); //if we set tile to 1, add_attack_values will draw the attack range.
     clear_move(); //after processing, clear the move vector.
-    takeMove();
+    takeMove();	  // once a character has processed a move vector, take its move capability
 }
 
 //Key:
@@ -262,38 +263,39 @@ int Character::getPlayer(){
   return player; 
 }
 
-//returns vb location at x,y
+// returns vb location at x,y
 int Character::get_tile(int x,int y){
     return vb.get_value(x,y);
 }
 
-//returns vb width. Need for Cursor::move()
+// returns vb width. Need for Cursor::move()
 int Character::get_vb_width(){
     return vb.get_num_cols();
 }
 
-//returns vb height. Need for Cursor::move()
+// returns vb height. Need for Cursor::move()
 int Character::get_vb_height(){
     return vb.get_num_rows();
 }
 
-// sets canMove to 1
+// sets canMove to 1. Used when a turn expires to reset all character to be able to move
 void Character::setMove(){
   canMove = 1;
 }
 
 
-// makes CanMove data member 0
+// makes CanMove data member 0. Used to indicate a player has taken a move so that they cannot go twice in a turn
 void Character::takeMove(){
   canMove = 0;
 }
 
-// get function for the data member canMove
+// get function for the data member canMove. Used to count the number of moves left for a team
 int Character::getMove(){
   return canMove;
 }
 
-// function to tell if a Character is alive
+// function to tell if a Character is alive (1 if they are alive, 0 if they are head)
+// used to see which characters should be removed from the players vector
 int Character::isAlive(){
   if(alive){
     return 1;

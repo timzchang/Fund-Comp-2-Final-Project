@@ -37,7 +37,7 @@ class Character: public GamePiece {
 		int get_terrain_effect(int);		// returns the mobility required to move on a certain tile
 		void select();						// changes value of selected data member
 		void unselect();					// changes selected to 0
-	        int get_select();
+	        int get_select();				// returns if the character is selected
 		void move(int,int,int);				// moves the character
 		void process_move_vector(int,int);	// moves a series of steps as per the vector passed in
 	        void add_move(int);                 // pushes a value into the moves vector
@@ -51,24 +51,24 @@ class Character: public GamePiece {
                 int getMove();			// return a 1 or 0 that corresponds to the variable canMove:
                 int isAlive();			// tells if the character's health is 0
 	protected:
-		int player;		// 1 or 2 depending on the player
+		int player;						// 1 or 2 depending on the player
 		int direction;						// direction the sprite is facing
-		int phase;                          // what foot the sprite is on
-		SDL_Texture* character_texture;		// the image .png file of the sprite sheet
-		int attack;                         // attack stat
+		int phase;                      			// what foot the sprite is on
+		SDL_Texture* character_texture;				// the image .png file of the sprite sheet
+		int attack;                        			// attack stat
 		int defence;						// defence stat
-		int current_hitpoints;						// hitpoints
-                int max_hitpoints;
+		int current_hitpoints;					// curent HP
+                int max_hitpoints;					// maximum hitpoints
 		int mobility;						// max tiles the Character can move
-		vector<int> terrain_effect;			// effect each terrain has on mobility
+		vector<int> terrain_effect;				// effect each terrain has on mobility
 		int attack_range;					// range of attack
 		int counter;						// variable to count clock cycles
-		int alive;                          // if the character has any hitpoints left
+		int alive;              			        // if the character has any hitpoints left
 		int selected;						// if the character has been selected
 		Valid_board vb;						// a 2d array of possible move places and attack spaces
-		vector<vector <int> > tile_properties;  // an array of tile properties
-       		vector<int> moves;                  // stores moves.
-		string name;
-		int canMove;
+		vector<vector <int> > tile_properties;  		// an array of tile properties
+       		vector<int> moves;               	   		// stores moves.
+		string name;						// holds the name of the Character	
+		int canMove;						// indicates if a character can move (0 if the have already taken a turn)
 };
 #endif
