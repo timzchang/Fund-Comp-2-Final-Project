@@ -49,6 +49,7 @@ class Character: public GamePiece {
 		void setMove();			// changes canMove to 1
 		void takeMove();		// changes canMove to 0
                 int getMove();			// return a 1 or 0 that corresponds to the variable canMove:
+                int isAlive();			// tells if the character's health is 0
 	protected:
 		int player;		// 1 or 2 depending on the player
 		int direction;						// direction the sprite is facing

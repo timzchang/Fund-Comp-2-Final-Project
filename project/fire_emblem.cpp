@@ -87,7 +87,7 @@ int main(){
   vector<Character*> players; //vector of characters
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
   Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object of GamePiece from ptr. Necessary for check_select()
-  //init heroes
+  //init Characters
   players.push_back(new Hero("../media/Hero.png","Chris",0,0,1,renderer,level1.get_tile_prop()));
   players.push_back(new Archer("../media/Archer.png","Billy",2,0,1,renderer,level1.get_tile_prop()));
   players.push_back(new Mage("../media/Mage.png","Messi",0,2,1,renderer,level1.get_tile_prop()));
@@ -111,7 +111,7 @@ int main(){
       }else if(e.type==SDL_KEYDOWN){
         switch(e.key.keysym.sym){
         case SDLK_a:
-          players[0]->setCurrentHitpoints(players[0]->getCurrentHitpoints()-5);
+          players[1]->setCurrentHitpoints(players[1]->getCurrentHitpoints()-5);
           break;
         case SDLK_s:
           players[2]->select();
@@ -162,7 +162,10 @@ int main(){
         moves_left += players[i]->getMove();
       }
     }
+// DRAWS CURSOR
     cursor_ptr.draw(renderer);
+
+// PROCESS MOVES
     if(moves_left == 0){
       if(player_turn == 1){
         player_turn = 2;
@@ -179,6 +182,16 @@ int main(){
         players[i]->setMove();
       }
     }
+// END PROCESS MOVES
+
+// DELETES CHARACTERS WHO HAVE DIED
+    for(int i = 0; i < players.size(); i++){
+      if(players[i]->isAlive() == 0){
+        players.erase(players.begin()+i);
+        i--;
+      }
+    }
+// ENDS DELETING CHARACTER WHO HAVE DIED
     for(int i = 0; i < players.size(); i++){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
         stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());

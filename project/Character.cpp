@@ -292,3 +292,11 @@ void Character::takeMove(){
 int Character::getMove(){
   return canMove;
 }
+
+// function to tell if a Character is alive
+int Character::isAlive(){
+  if(alive){
+    return 1;
+  }
+  return 0;
+}

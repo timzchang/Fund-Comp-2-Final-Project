@@ -196,3 +196,6 @@ Date		Time		Work Done					Learned
 				needs imporvement on when it happens
 				(right now it happends before the
 				player actually takes its turn)
+
+4/27/15		.25		Added the functionaliy to delete	Nothing
+				dead players from the game
