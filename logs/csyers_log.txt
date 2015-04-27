@@ -173,9 +173,13 @@ Date		Time		Work Done					Learned
 				gives a seg fault whenever the window is
 				closed.
 
-4/21/15		.5		Fixed the segmentation fault in the Stats_		I learned that it is good to check if a pointer
-				Menu class.						is null before trying to free it.
+4/21/15		.5		Fixed the segmentation fault in the Stats_	I learned that it is good to check if a pointer
+				Menu class.					is null before trying to free it.
 
-4/22/15		.25		Fixed the error that was happening on the		I learned that to use c++11 on the sutdent machines,
-				student machines. Now compiles/works correctly		I needed to add the '-static-libstdc++' flag to all
-				on the machines.					g++ commands.
+4/22/15		.25		Fixed the error that was happening on the	I learned that to use c++11 on the sutdent machines,
+				student machines. Now compiles/works correctly	I needed to add the '-static-libstdc++' flag to all
+				on the machines.				g++ commands.
+
+4/25/15		2		Developed the Choice_Menu class. Was going to	I didn't learn anything new other than how to create
+				be how a player selected their move, but 	png images using a picture editor.
+				will not be included in the final game.

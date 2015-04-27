@@ -3,7 +3,7 @@
 MACFLAGS = `sdl2-config --cflags --libs` -std=c++11 -static-libstdc++
 FLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf $(MACFLAGS) #-lSDL2_ttf #-lSDL2_image  
 EXEC = fire_emblem
-OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o Angel.o Archer.o Mage.o Pirate.o Soldier.o Sorcerer.o Stats_Menu.o
+OBJECTS = GamePiece.o Map.o Character.o Hero.o Cursor.o Valid_board.o Angel.o Archer.o Mage.o Pirate.o Soldier.o Sorcerer.o Stats_Menu.o Choice_Menu.o
 
 
 all: fire_emblem
@@ -49,6 +49,9 @@ Valid_board.o: Valid_board.cpp
 
 Stats_Menu.o: Stats_Menu.cpp
 	g++ -c Stats_Menu.cpp $(MACFLAGS)
+
+Choice_Menu.o: Choice_Menu.cpp
+	g++ -c Choice_Menu.cpp $(MACFLAGS)
 
 .PHONY: clean
 

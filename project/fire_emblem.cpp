@@ -17,6 +17,7 @@
 #include "Cursor.h"
 #include "GamePiece.h"
 #include "Valid_board.h"
+#include "Choice_Menu.h"
 #include <iostream>
 //#include <SDL2/SDL.h>
 //#include <SDL2/SDL_image.h>
@@ -72,6 +73,7 @@ int main(){
 
   //load map info
   level1.loadVector("../maps/small_map_info.txt");
+  Choice_Menu choices(renderer,"../media/choice_menu_attack.png","../media/choice_menu_wait.png");
 
   vector<Character*> players; //vector of characters
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
@@ -155,7 +157,6 @@ int main(){
         stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());
       }
     }
- 
     SDL_RenderPresent(renderer);
   }
 
