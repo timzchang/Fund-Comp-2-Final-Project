@@ -79,11 +79,14 @@ int main(){
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
   Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object of GamePiece from ptr. Necessary for check_select()
   //init heroes
-  players.push_back(new Hero("../media/Hero.png","Chris",1,1,1,renderer,level1.get_tile_prop()));
-//  players.push_back(new Hero("../media/Hero.png","Lucas",2,8,1,renderer,level1.get_tile_prop()));
-//  players.push_back(new Hero("../media/Hero.png","Mason",8,12,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,1,renderer,level1.get_tile_prop())); //added stuff
-  //cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
+  players.push_back(new Hero("../media/Hero.png","Chris",0,0,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Archer("../media/Archer.png","Billy",2,0,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Mage("../media/Mage.png","Messi",0,2,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Soldier("../media/Soldier.png","Ronaldo",1,1,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Hero("../media/Hero2.png","Lucas",14,14,2,renderer,level1.get_tile_prop()));
+  players.push_back(new Sorcerer("../media/Sorcerer2.png","Mason",12,14,2,renderer,level1.get_tile_prop()));
+  players.push_back(new Angel("../media/Angel2.png","Tim",14,12,2,renderer,level1.get_tile_prop()));
+  players.push_back(new Pirate("../media/Pirate2.png","Bob",13,13,2,renderer,level1.get_tile_prop()));
   bool quit = false;
   SDL_Event e;
 
@@ -135,21 +138,13 @@ int main(){
         }
       }
     }
-    //update players/cursor
- //   players[0]->update();
- //   players[1]->update();
- //   players[2]->update();
- //   players[3]->update(); //added Angel
     cursor_ptr.update();
     //clear
     SDL_RenderClear(renderer);
     //draw stuff
     level1.render_map(renderer);
-//    players[0]->draw(renderer);   
-//    players[1]->draw(renderer);   
- //   players[2]->draw(renderer);
- //   players[3]->draw(renderer); //added Angel
-// LOOPS THROUGHT PLAYERS AND DRAWS THEIR STATS MENU IF ONE IS HOVERED OVER
+
+// LOOPS THROUGHT PLAYERS AND DRAWS THEIR STATS MENU IF ONE IS HOVERED OVER. ALSO DRAWS AND UPDATES EACH CHARACTER
     int moves_left = 0;
     for(int i = 0; i < players.size(); i++){
       players[i]->update();
@@ -161,7 +156,7 @@ int main(){
     cursor_ptr.draw(renderer);
     if(moves_left == 0){
       if(player_turn == 1) player_turn = 2;
-      if(player_turn == 2) player_turn = 1;
+      else if(player_turn == 2) player_turn = 1;
       for(int i = 0; i < players.size(); i++){
         players[i]->setMove();
       }

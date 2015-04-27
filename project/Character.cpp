@@ -94,11 +94,11 @@ void Character::check_valid_move(int x, int y, int movement_remaining, vector<Ch
   if(terrain_effect[tile_properties[y][x]]==0) 
     return;							// if the character can't move onto the x,y coordinate, end function
 
-  vector<Character *>::iterator it;
-  for(it = (*players).begin(); it != (*players).end(); ++it){
-    if((*it)->gety() == x && (*it)->getx() == y)
-      /*if (player != (*it)->getPlayer())*/ return;			// if coordinate is occupied by enemy player, end function
-  }
+//  vector<Character *>::iterator it;
+ // for(it = (*players).begin(); it != (*players).end(); ++it){
+ //   if((*it)->gety() == x && (*it)->getx() == y)
+      /*if (player != (*it)->getPlayer())*/// return;			// if coordinate is occupied by enemy player, end function
+ // }
   vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
   // repeat in all direction (recursion)
   if(y-1 >= 0){

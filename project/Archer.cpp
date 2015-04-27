@@ -11,7 +11,7 @@ Archer::Archer(){
   max_hitpoints = 18;
   attack = 9;		
   defence = 6;
-  attack_range = 3;
+  attack_range = 2;
   mobility = 5;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);	// Plains
@@ -30,7 +30,7 @@ Archer::Archer(string path, string my_name, int x, int y, int my_player, SDL_Ren
   max_hitpoints = 18;
   attack = 9;
   defence = 6;
-  attack_range = 3;
+  attack_range = 2;
   mobility = 5;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);
