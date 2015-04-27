@@ -14,6 +14,7 @@ Character::Character(){
   alive = 0;				// with non-default, make the character dead
   selected = 0;
   name = "Anonymous";
+  canMove = 1;
 }
 
 // non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
@@ -29,6 +30,7 @@ Character::Character(string path,string my_name,int x, int y, SDL_Renderer* rend
   selected = 0;
   tile_properties = tile_prop;
   name = my_name;
+  canMove = 1;
 }
 
 // deconstructor
@@ -226,7 +228,7 @@ void Character::process_move_vector(int max_width,int max_height){
     vb.to_zeros(); //clear the valid board after we process the move vector.
     vb.set_tile(1,ypos,xpos); //if we set tile to 1, add_attack_values will draw the attack range.
     clear_move(); //after processing, clear the move vector.
-    
+    takeMove();
 }
 
 //Key:
@@ -273,4 +275,20 @@ int Character::get_vb_width(){
 //returns vb height. Need for Cursor::move()
 int Character::get_vb_height(){
     return vb.get_num_rows();
+}
+
+// sets canMove to 1
+void Character::setMove(){
+  canMove = 1;
+}
+
+
+// makes CanMove data member 0
+void Character::takeMove(){
+  canMove = 0;
+}
+
+// get function for the data member canMove
+int Character::getMove(){
+  return canMove;
 }

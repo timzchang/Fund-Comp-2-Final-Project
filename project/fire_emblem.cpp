@@ -29,7 +29,7 @@ SDL_Renderer * renderer = NULL;
 
 int main(){
   Map level1;
-
+  int player_turn = 1;
   //initialize SDL
   SDL_Init(SDL_INIT_VIDEO);
 
@@ -79,10 +79,10 @@ int main(){
   //GamePiece *cursor_ptr = NULL; //initialize the cursor
   Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object of GamePiece from ptr. Necessary for check_select()
   //init heroes
-  players.push_back(new Hero("../media/Hero.png","Chris",0,0,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Hero("../media/Hero.png","Lucas",2,8,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Hero("../media/Hero.png","Mason",8,12,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,2,renderer,level1.get_tile_prop())); //added stuff
+  players.push_back(new Hero("../media/Hero.png","Chris",1,1,1,renderer,level1.get_tile_prop()));
+//  players.push_back(new Hero("../media/Hero.png","Lucas",2,8,1,renderer,level1.get_tile_prop()));
+//  players.push_back(new Hero("../media/Hero.png","Mason",8,12,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Angel("../media/Angel2.png","Tim",10,5,1,renderer,level1.get_tile_prop())); //added stuff
   //cursor_ptr = new Cursor("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0);
   bool quit = false;
   SDL_Event e;
@@ -136,22 +136,37 @@ int main(){
       }
     }
     //update players/cursor
-    players[0]->update();
-    players[1]->update();
-    players[2]->update();
-    players[3]->update(); //added Angel
+ //   players[0]->update();
+ //   players[1]->update();
+ //   players[2]->update();
+ //   players[3]->update(); //added Angel
     cursor_ptr.update();
     //clear
     SDL_RenderClear(renderer);
     //draw stuff
     level1.render_map(renderer);
-    players[0]->draw(renderer);   
-    players[1]->draw(renderer);   
-    players[2]->draw(renderer);
-    players[3]->draw(renderer); //added Angel
-    cursor_ptr.draw(renderer);
+//    players[0]->draw(renderer);   
+//    players[1]->draw(renderer);   
+ //   players[2]->draw(renderer);
+ //   players[3]->draw(renderer); //added Angel
 // LOOPS THROUGHT PLAYERS AND DRAWS THEIR STATS MENU IF ONE IS HOVERED OVER
-
+    int moves_left = 0;
+    for(int i = 0; i < players.size(); i++){
+      players[i]->update();
+      players[i]->draw(renderer);
+      if(players[i]->getPlayer() == player_turn){
+        moves_left += players[i]->getMove();
+      }
+    }
+    cursor_ptr.draw(renderer);
+    if(moves_left == 0){
+      if(player_turn == 1) player_turn = 2;
+      if(player_turn == 2) player_turn = 1;
+      for(int i = 0; i < players.size(); i++){
+        players[i]->setMove();
+      }
+      cout << "Switched plaer turn" << endl;
+    }
     for(int i = 0; i < players.size(); i++){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
         stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());
@@ -165,8 +180,8 @@ int main(){
   window = NULL;
   renderer = NULL;
 
- // IMG_Quit();
- // SDL_Quit();
- // TTF_Quit();
+//  IMG_Quit();
+//  SDL_Quit();
+//  TTF_Quit();
   return 0;
 }

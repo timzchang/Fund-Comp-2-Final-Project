@@ -183,3 +183,8 @@ Date		Time		Work Done					Learned
 4/25/15		2		Developed the Choice_Menu class. Was going to	I didn't learn anything new other than how to create
 				be how a player selected their move, but 	png images using a picture editor.
 				will not be included in the final game.
+
+4/27/15		.5		Stated to work with the turn based 		I didn't learn anything new here.
+				functionality of the game. Added functions
+				to get and set a canMove data member
+				of the Character class
