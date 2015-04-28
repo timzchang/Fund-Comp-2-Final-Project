@@ -1,3 +1,6 @@
+// Fundamentals of Computing II: Final Project		April 25, 2015
+// Tim Chang, Mason Prosser, Christopher Syers, Lucas Unruh
+
 // Archer.cpp
 // Interface for the Archer class. Defines the various member function of Archer.
 
@@ -24,7 +27,7 @@ Archer::Archer(){
 
 // non-default constructor. Calls non-default constructor of Character class.
 Archer::Archer(string path, string my_name, int x, int y, int my_player, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
-  // sets stats
+  // sets stats see Hero.cpp for slightly more information on what the variables mean.
   player = my_player;
   current_hitpoints = 18;
   max_hitpoints = 18;

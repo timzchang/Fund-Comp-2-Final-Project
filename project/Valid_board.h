@@ -26,7 +26,7 @@ class Valid_board{
     void resize(int, int);				// resizes the board and fills it with 0s
     void print();					// for testing purposes
     void set_tile(int,int,int);				// sets tile (int, int) to 1
-    int get_value(int,int);            //returns val at (x,y)
+    int get_value(int,int);            			// returns val at (x,y)
     int get_num_rows();					// returns the number of rows
     int get_num_cols();					// returns the number of column
     void draw(SDL_Renderer*);				// draws all valid location with 
@@ -34,7 +34,7 @@ class Valid_board{
   private:
     vector< vector<int> > valid_tiles;			// stores 0s and 1s, 0s where a character cannot go and 1s where it can
     SDL_Texture* blue_highlight;			// stores the picture of the blue highlight
-    SDL_Texture* red_highlight;
+    SDL_Texture* red_highlight;				// stores picture for the red highlight
 };
 
 #endif

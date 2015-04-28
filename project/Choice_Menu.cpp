@@ -3,6 +3,8 @@
 
 // April 25, 2015
 
+// Tim Chang, Mason Prosser, Christopher Syers, Luncas Unruh
+
 // Implementation of the Choice_Menu class. Includes definitions for constructors and a draw function
 
 #include "Choice_Menu.h"
@@ -38,7 +40,8 @@ Choice_Menu::~Choice_Menu(){
   }
 }
 
-// draws the menu to the screen:
+// draws the menu to the screen. Doesn't do anything really because we decided
+// to remove it from the game before this function was written properly.
 int Choice_Menu::draw(SDL_Renderer* renderer, int x, int y){
   SDL_RenderCopy(renderer,menu_image_attack,NULL,NULL);
 }

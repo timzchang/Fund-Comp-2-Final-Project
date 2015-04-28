@@ -1,3 +1,5 @@
+// Fundmentals of Computing II: Final Project		April 28, 2015
+// Christopher Syers, Tim Chang, Lucas Unruh, Mason Prosser
 // Pirate.cpp
 // Interface for the Pirate class. Defines the various member function of Pirate.
 
@@ -24,7 +26,7 @@ Pirate::Pirate(){
 
 // non-default constructor. Calls non-default constructor of Character class.
 Pirate::Pirate(string path, string my_name, int x, int y, int my_player, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
-  // sets stats
+  // sets stats. See Hero.cpp or Character.cpp for more information on what the stats mean
   player = my_player;
   current_hitpoints = 28;
   max_hitpoints = 28;

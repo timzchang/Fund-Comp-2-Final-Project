@@ -1,3 +1,5 @@
+// Fundamentals of Computing II: Final Project 		April 25, 2015
+// Christopher Syers, Lucas Unruh, Mason Prosser, Tim Chang
 // Soldier.cpp
 // Interface for the Soldier class. Defines the various member function of Soldier.
 
@@ -24,7 +26,7 @@ Soldier::Soldier(){
 
 // non-default constructor. Calls non-default constructor of Character class.
 Soldier::Soldier(string path, string my_name, int x, int y, int my_player, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
-  // sets stats
+  // sets stats. See Hero.cpp or Character.cpp for information about what the stats mean
   player = my_player;
   current_hitpoints = 26;
   max_hitpoints = 26;

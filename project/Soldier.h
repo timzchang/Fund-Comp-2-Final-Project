@@ -1,3 +1,6 @@
+// Fundamentals of Computing II: Final Project		April 25, 2015
+// Mason Prosser, Tim Chang, Lucas Unruh, Christopher Syers
+
 // Soldier.h
 // interface for the Soldier class. Derivative of Character, sets certain stats. Has no
 // data members. The uniqueness comes in because it has speicifc stats that are set

@@ -1,4 +1,5 @@
 // Fundamentals of Computer II Final Project		April 21, 2015
+// Tim Chang, Mason Prosser, Lucas Unruh, Christopher Syers
 
 // Implementation of the Stats_Menu class.
 
@@ -14,7 +15,7 @@ Stats_Menu::Stats_Menu(){
 // non-default constructor (this is the one that will be used)
 Stats_Menu::Stats_Menu(string path_blue, string path_red, string path_font, SDL_Renderer* renderer){
   SDL_Surface* loaded_surface;
-  font = TTF_OpenFont(path_font.c_str(),56);		// loads the font with size 28 (might change later)
+  font = TTF_OpenFont(path_font.c_str(),56);		// loads the font with size 56 (might change later)
   if (font==NULL){					// checks to see if the font loaded correctly
     cout << "Could not load font" << endl;
   } 
@@ -30,7 +31,7 @@ Stats_Menu::Stats_Menu(string path_blue, string path_red, string path_font, SDL_
 
 // deconstructor
 Stats_Menu::~Stats_Menu(){
-// frees all of the textures and fonts
+// frees all of the textures and fonts if they aren't null already
   if(red_menu!=NULL){
     SDL_DestroyTexture(red_menu);
   }
@@ -59,10 +60,10 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
   string name_str = "Name: " + name;		// loads the name string with a label
   string attack_str = "Attack: " + to_string(attack);		// loads the attack string with a label (needs c++ 11)
   string defence_str = "Defence: " + to_string(defence);	// loads the defence string with a label (needs c++ 11)
-  string hit_points = "Hitpoints: " + to_string(currHP) + "/" + to_string(maxHP);	// loads the hitpoints in the form curr/max.  c++ 11
+  string hit_points = "Hitpoints: " + to_string(currHP) + "/" + to_string(maxHP);	// loads the hitpoints in the form curr/max.  (c++ 11)
   loadedText = TTF_RenderText_Blended(font, name_str.c_str(), color);	// creates a surface for the name text
   SDL_Texture* nameTexture = SDL_CreateTextureFromSurface(renderer,loadedText);		// creates a nameTexture
-  SDL_FreeSurface(loadedText);
+  SDL_FreeSurface(loadedText);		// free and ground pointer every time
   loadedText = NULL;
   loadedText = TTF_RenderText_Blended(font,hit_points.c_str(),color);			// creates a surface for the hitpoints 
 // Continue this process for the rest of the texts

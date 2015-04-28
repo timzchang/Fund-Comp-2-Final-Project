@@ -1,3 +1,5 @@
+// Fundmentals of Computing II: Final Project		April 28, 2015
+// Christopher Syers, Tim Chang, Lucas Unruh, Mason Prosser
 // Pirate.h
 // interface for the Pirate class. Derivative of Character, sets certain stats. Has no
 // data members. The uniqueness comes in because it has speicifc stats that are set

@@ -1,5 +1,5 @@
 // Fundamentals of Computing II Final Project		April 21, 2015
-
+// Christopher Syers, Lucas Unruh, Tim Chang, Mason Prosser
 // Header file for the State_Menu class. This class will contain a couple of
 // images, a font, and the ability to draw the stats to the screen.
 
@@ -21,7 +21,7 @@ class Stats_Menu{
     Stats_Menu();					// default constructor
     Stats_Menu(string,string,string,SDL_Renderer*);	// non-default constructor
     ~Stats_Menu();					//destructor
-    void draw(SDL_Renderer*,int,int,int,string,int,int,int,int);		// draws the menu to the screen (when player is at pos (arg2,arg3) and is on team arg4
+    void draw(SDL_Renderer*,int,int,int,string,int,int,int,int);	// draws the menu to the screen (when player is at pos (arg2,arg3) and is on team arg4
     void print_stats();
   private:
     SDL_Texture* blue_menu;				// texture for blue background image
