@@ -73,4 +73,8 @@ Date            Time(hr.)       Work Done                                       
 				class to detect other characters.
 				promptly screwed up the valid-board generation
 
-Total Hours: 25
+4/28/2015	1		Implemented attacking functionality. Now	Nothing of import
+				Characters can attack each other.
+
+
+Total Hours: 26
