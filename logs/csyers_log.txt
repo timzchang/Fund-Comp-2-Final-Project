@@ -203,3 +203,5 @@ Date		Time		Work Done					Learned
 4/27/15		.5		Added functionality to end game once	Nothing.
 				one of the teams does not have any
 				more players
+
+4/28/15		.5		Commented code				Nothing.

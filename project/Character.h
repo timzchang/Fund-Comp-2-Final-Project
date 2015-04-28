@@ -1,3 +1,6 @@
+// Christopher Syers, Mason Prosser, Lucas Unruh, and Time Chagn
+// Fundametals of computing II Final Project	April 1, 2015
+
 // Character.h
 // Interface of the Character class. Derives from GamePiece, and so has inherentented a xpos and ypos. 
 // This is the parent class of a variety of characters in the game, including Hero, Archer... etc.

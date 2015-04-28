@@ -1,3 +1,6 @@
+// Lucas Unruh, Christopher Syers, Tim Chang, and Mason Prosser
+// Fundamentals of Computing II Final Project	April 2, 2015
+
 // Charcter.cpp
 // Implementation of the Character class. Contains definitions for all member functions.
 
@@ -10,28 +13,28 @@ Character::Character(){
   direction = 0;			// direction starts at 0
   phase = 1;				// phase starts at 1 (stand still)
   character_texture = NULL;		// no image
-  counter = 0;
-  alive = 0;				// with non-default, make the character dead
-  selected = 0;
-  name = "Anonymous";
-  canMove = 1;
+  counter = 0;				// starts counter at 0
+  alive = 0;				// WITH THIS, ANY ANONYMOUS CHARACTER WILL BE REMOVED FROM THE CHARACTER VECTOR RIGHT AWAY: GOOD
+  selected = 0;				// not selected
+  name = "Anonymous";			// no name
+  canMove = 0;				// can't move
 }
 
-// non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values
-Character::Character(string path,string my_name,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop/*[0]*/.size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
+// non-default construtor. Calls non-default of GamePiece to set xpos and ypos to passed in values, and calls the non-default constructor of the valid board.
+Character::Character(string path,string my_name,int x, int y, SDL_Renderer* renderer,vector<vector <int> > tile_prop):GamePiece(x,y), vb(tile_prop.size(),tile_prop.size(),"../media/blue_highlight.png","../media/red_highlight.png",renderer){
   SDL_Surface* loadedSurface = IMG_Load(path.c_str());				// loads the image into character_texture
-  character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);
-  direction = 0;								// direction starts at 0
+  character_texture = SDL_CreateTextureFromSurface(renderer,loadedSurface);	// creates the data member texture from the surface
+  direction = 0;								// direction starts at 0 ( facing downward phase)
   phase = 1;									// phase starts at 1 (stand still phase)
   SDL_FreeSurface(loadedSurface);						// frees the surface
   loadedSurface = NULL;								// grounds pointer
-  counter = 0;
+  counter = 0;									// counter is for what stage of animation the character is in
   alive = 1;									// indicates the character is alive
-  selected = 0;
-  tile_properties = tile_prop;
-  name = my_name;
-  canMove = 1;
-  attacking = 0;   //should be set to 1 when attacking.
+  selected = 0;									// indication of whether a character is selected or not
+  tile_properties = tile_prop;							// 2d vector that has ints for what the tiles are
+  name = my_name;								// stores the name of a character
+  canMove = 1;									// indicates whether a player has taken a turn
+  attacking = 0;   								//should be set to 1 when attacking.
 }
 
 // deconstructor
@@ -40,16 +43,17 @@ Character::~Character(){
     SDL_DestroyTexture(character_texture);		// destroy it
     character_texture = NULL;				// ground the pointer
   }
-  direction = 0;				
+  // set some variables to 0
+  direction = 0;					
   phase = 0;
 }
 
-// draw function. QUESTIONS ABOUT THIS: HOW CAN WE MAKE HERO USE THIS SAME FUNCTION
+// draw function. draws a certain portion of the sprite map to the screen based on phase and direction
 void Character::draw(SDL_Renderer* renderer){
-  if(alive == 0){
+  if(alive == 0){				// doesn't draw if the character is dead (shouldn't try to anyway - should be removed)
     return;
   }
-  if(selected == 1){
+  if(selected == 1){				// if they are selected, draw their valid board as well
     vb.draw(renderer);
   }
   SDL_Rect destRect = {xpos*32, ypos*32, 32, 32};			// destination rectangle. Based on xpos and ypos of GamePiece
@@ -59,7 +63,9 @@ void Character::draw(SDL_Renderer* renderer){
 
 // function to set the direction of the Character
 void Character::change_direction(int face_direction){
-  switch(face_direction){				// changed direction: 0 is up, 1 is right, 2 is down, and 3 is left
+  // changed direction: 0 is up, 1 is right, 2 is down, and 3 is left
+  // direction determines which portion of the sprite sheet is drawn.
+  switch(face_direction){		
     case 0:
       direction=3;
       break;
@@ -75,7 +81,7 @@ void Character::change_direction(int face_direction){
   }
 }
 
-// function to set phase
+// function to set phase. phase determines what walking animation portion the sprite sheet should be drawn as
 void Character::next_phase(){
   phase++;			// increments phase variable
   if(phase > 2) phase = 0;	// if it is greater than 2, reset to 0
@@ -88,46 +94,45 @@ int Character::get_phase(){
 
 // function that takes in a vector of vector and returns it populated with 1s where a character can move
 void Character::check_valid_move(int x, int y, int movement_remaining, vector<Character *> * players){
-// BE CAREFUL WITH COORDINATE SYSTEM - IT IS SLIGHTLY CONFUSING WITH GRAPHICS COORDINATES AND REGULAR VECTOR ARGUMENTS
-  if(movement_remaining < 0){  	// if the character is out of movement
-    return;		
-  }
-  if(terrain_effect[tile_properties[y][x]]==0) 
-    return;							// if the character can't move onto the x,y coordinate, end function
 
-//  vector<Character *>::iterator it;
- // for(it = (*players).begin(); it != (*players).end(); ++it){
- //   if((*it)->gety() == x && (*it)->getx() == y)
-      /*if (player != (*it)->getPlayer())*/// return;			// if coordinate is occupied by enemy player, end function
- // }
+  if(movement_remaining < 0){  	// if the character is out of movement
+    return;			// end recursion
+  }
+  if(terrain_effect[tile_properties[y][x]]==0) 		// if the character can't move onto the new x,y coordinate
+    return;						// end recursion
+
   vb.set_tile(1,y,x);						// if it makes it through checks, the position is valid
-  // repeat in all direction (recursion)
+  // repeat in all direction (recursion). subtracts the terrain_effect for the specific character on the next tile.
+  // one tile up
   if(y-1 >= 0){
     check_valid_move(x,y-1,movement_remaining-terrain_effect[tile_properties[y-1][x]], players);
   }
+  // one tile right
   if(x+1 < tile_properties.size()){
     check_valid_move(x+1,y,movement_remaining-terrain_effect[tile_properties[y][x+1]], players);
   }
+  // one tile down
   if(y+1 < tile_properties[0].size()){
     check_valid_move(x,y+1,movement_remaining-terrain_effect[tile_properties[y+1][x]], players);
   }
+  // one tile left
   if(x-1 >= 0){
     check_valid_move(x-1,y,movement_remaining-terrain_effect[tile_properties[y][x-1]], players);
   }
 }
 
-// updates counter of the character to determine when to change phase
+// updates counter of the character to determine when to change phase. Called every loop in the driver function
 void Character::update(){
-  if(current_hitpoints==0){
-    alive = 0;
+  if(current_hitpoints==0){		// kills the character that doesn't have hitpoints
+    alive = 0;		
   }
-  if(selected==1){
+  if(selected==1){		// only animates the selected characters.
     counter++;
     if(counter == 15){		// changes phase and resets every 15 counts
       counter = 0;
-      next_phase();
+      next_phase();		// goes to the next animation state when the limit is reached
     }
-    vb.add_attack_spots(attack_range);
+    vb.add_attack_spots(attack_range);	// constantly adds the attack spots to their valid board
   }
 }
   
@@ -180,12 +185,13 @@ void Character::select(){ //maybe move check_valid_moves() in here?
 
 // changes selected data member to 0
 void Character::unselect(){ 
-  selected = 0;
-  phase = 1;
-  direction = 0;
+  selected = 0;			
+  phase = 1;			// puts character back to phase 1 (stand still)
+  direction = 0;		// and direction = 0 for downward facing
   
 }
 
+// function that returns 1 if a character is selected, 0 otherwise
 int Character::get_select(){
     return selected;
 }
@@ -304,10 +310,12 @@ int Character::isAlive(){
   return 0;
 }
 
+// return 1 if the character is attacking and 0 if a character is not attacking
 int Character::getAttacking(){
     return attacking;
 }
 
+// function to set the attacking data member which
 void Character::setAttacking(int i){
     attacking = i;
 }
