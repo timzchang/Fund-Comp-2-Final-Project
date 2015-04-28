@@ -10,10 +10,14 @@ class Menu(){
 #endif
 
 Menu::Menu(){
+  SDL_Surface
+  texture = SDL_CreateTextureFromSurface
+  SDL_FreeSurface
+  SDL_RenderCopy
 }
 
 int Menu::display(){
-
+  SDL_Rect
 }
 
 int Menu::instruction(){
