@@ -79,7 +79,13 @@ int main(){
   SDL_FreeSurface(loadedImage);
   loadedImage = NULL;
   SDL_Rect turnDestRect = {80,100,300,100};
-
+  // LOAD WINNER MESSAGES
+  loadedImage = IMG_Load("../media/PlayerOneWins.png");
+  SDL_Texture* player1win = SDL_CreateTextureFromSurface(renderer,loadedImage);
+  loadedImage = IMG_Load("../media/PlayerTwoWins.png");
+  SDL_Texture* player2win = SDL_CreateTextureFromSurface(renderer,loadedImage);
+  SDL_FreeSurface(loadedImage);
+  loadedImage = NULL;
   //load map info
   level1.loadVector("../maps/small_map_info.txt");
   Choice_Menu choices(renderer,"../media/choice_menu_attack.png","../media/choice_menu_wait.png");
@@ -89,13 +95,13 @@ int main(){
   Cursor cursor_ptr("../media/Cursor1.png","../media/Cursor2.png",renderer,0,0); //cursor_ptr changed to object of GamePiece from ptr. Necessary for check_select()
   //init Characters
   players.push_back(new Hero("../media/Hero.png","Chris",0,0,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Archer("../media/Archer.png","Billy",2,0,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Mage("../media/Mage.png","Messi",0,2,1,renderer,level1.get_tile_prop()));
-  players.push_back(new Soldier("../media/Soldier.png","Ronaldo",1,1,1,renderer,level1.get_tile_prop()));
+//  players.push_back(new Archer("../media/Archer.png","Billy",2,0,1,renderer,level1.get_tile_prop()));
+//  players.push_back(new Mage("../media/Mage.png","Messi",0,2,1,renderer,level1.get_tile_prop()));
+//  players.push_back(new Soldier("../media/Soldier.png","Ronaldo",1,1,1,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero2.png","Lucas",14,14,2,renderer,level1.get_tile_prop()));
-  players.push_back(new Sorcerer("../media/Sorcerer2.png","Mason",12,14,2,renderer,level1.get_tile_prop()));
-  players.push_back(new Angel("../media/Angel2.png","Tim",14,12,2,renderer,level1.get_tile_prop()));
-  players.push_back(new Pirate("../media/Pirate2.png","Bob",13,13,2,renderer,level1.get_tile_prop()));
+//  players.push_back(new Sorcerer("../media/Sorcerer2.png","Mason",12,14,2,renderer,level1.get_tile_prop()));
+//  players.push_back(new Angel("../media/Angel2.png","Tim",14,12,2,renderer,level1.get_tile_prop()));
+//  players.push_back(new Pirate("../media/Pirate2.png","Bob",13,13,2,renderer,level1.get_tile_prop()));
   bool quit = false;
   SDL_Event e;
 
@@ -114,11 +120,11 @@ int main(){
           players[1]->setCurrentHitpoints(players[1]->getCurrentHitpoints()-5);
           break;
         case SDLK_s:
-          players[2]->select();
-          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility(), &players);
+//          players[2]->select();
+//          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility(), &players);
           break;
         case SDLK_u:
-          players[2]->unselect();
+//          players[2]->unselect();
           break;
         case SDLK_DOWN:
           //cursor_ptr.test_move(2,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
@@ -196,6 +202,27 @@ int main(){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
         stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());
       }
+    }
+    int player1_alive = 0;
+    int player2_alive = 0;
+    for(int i = 0; i < players.size(); i++){
+      if(players[i]->getPlayer() == 1){
+        player1_alive++;
+      }else{
+        player2_alive++;
+      }
+    } 
+    if(player1_alive == 0){
+      SDL_RenderCopy(renderer,player2win,NULL,&turnDestRect);
+      SDL_RenderPresent(renderer);
+      SDL_Delay(5000);
+      quit = true;
+    }
+    if(player2_alive == 0){
+      SDL_RenderCopy(renderer,player1win,NULL,&turnDestRect);
+      SDL_RenderPresent(renderer);
+      SDL_Delay(5000);
+      quit = true;
     }
     SDL_RenderPresent(renderer);
   }

@@ -197,5 +197,9 @@ Date		Time		Work Done					Learned
 				(right now it happends before the
 				player actually takes its turn)
 
-4/27/15		.25		Added the functionaliy to delete	Nothing
+4/27/15		.25		Added the functionaliy to delete	Nothing.
 				dead players from the game
+
+4/27/15		.5		Added functionality to end game once	Nothing.
+				one of the teams does not have any
+				more players
