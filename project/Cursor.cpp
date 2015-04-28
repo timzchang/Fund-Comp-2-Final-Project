@@ -102,7 +102,7 @@ void Cursor::move(int change, int max_width, int max_height){
   }
 }
 
-//******NEW FUNCTION toggle_select():
+//toggle_select():
 //if Cursor is over a character, it will be selected or deselected. Needs the character vector to loop through each character.
 //if selected:
 //  check_valid_move(x,y,mobility) is called, displaying the possible moveset
@@ -111,29 +111,44 @@ void Cursor::move(int change, int max_width, int max_height){
 //needs map object and moves vector for the 2 valid board functions.
 void Cursor::toggle_select(vector<Character *> * players, Map * level){
     for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
+      
+        //attack function here.
+        if((*hero)->getAttacking()){                                                          //if this hero is attacking
+            for (vector<Character *>::iterator victim=(*players).begin(); victim !=(*players).end(); ++victim){  //loop through players
+                if(this->getx()==(*victim)->getx() && this->gety()==(*victim)->gety()){                          //if cursor is on a player when enter
+                    (*victim)->setCurrentHitpoints((*victim)->getCurrentHitpoints() - (*hero)->getAttack());      //hurt player (what if you hurt yourself)
+                    (*hero)->setCurrentHitpoints((*hero)->getMaxHitpoints());                                   //hack. if you hurt yourself, heal yourself
+                    (*hero)->setAttacking(0);
+                    (*hero)->takeMove();
+                    
+                }
+            }
+        }
+        
       if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety()){                    //if this cursor and character are on the same coordinate
-        if((*hero)->get_select()==0){                                                        //and this player is not selected
+        if((*hero)->get_select()==0 && (*hero)->getMove()==1){                                                        //and this player is not selected
           (*hero)->select();                                                                 //select (this only changes the "selected" member of Character to 1. Makes the guy animate as well.)
           (*hero)->check_valid_move((*hero)->getx(),(*hero)->gety(),(*hero)->getMobility(), players); //this is the one that updates its valid board
+            
         }else{
           (*hero)->unselect();                                                               //similarly, this only changes "selected" to 0. stops the guy from being animated
           (*hero)->process_move_vector(level->get_width(),level->get_height());              //process move vector.
         }
       }
-        if((*hero)->get_select() && (*hero)->size_move()>0){                                 //if this hero is selected and its move vector is greater than zero
+      if((*hero)->get_select() && (*hero)->size_move()>0 && (*hero)->getAttacking()==0){     //if this hero is selected and its move vector is greater than zero
           //(*hero)->unselect();                                                               //deselect and process move vector.
           (*hero)->process_move_vector(level->get_width(),level->get_height());
-        }
+          (*hero)->setAttacking(1);                                                         //now we are attacking
+          
+      }
+        
+
     }
 }
 
 
-//NEXT IMPROVEMENT:
-//if there is a character selected, limit the movement of the cursor to the valid board. I don't know how we should approach this.
-//Currently the "move_cursor()" function is in main.
-//I originally thought calling this function every keypress would be inefficient, but it might be necessary.
-//
-//******NEW FUNCTION move_select():*******
+
+//move_select():
 //This function is called each time someone hits the arrow keys.
 //it will loop through the character vector in search of a character who is selected.
 //if the character is selectecd, we will update its move vector with the "move" value.
@@ -143,26 +158,38 @@ void Cursor::move_select(vector<Character *> * players, int move,Map *level){
         if((*hero)->get_select()){   //if a hero is selected,
             switch(move){
                 case 0: //up
-                    if((*hero)->get_tile(gety()-1,getx()) == 1){
+                    if((*hero)->get_tile(gety()-1,getx()) == 1 && (*hero)->getAttacking()==0){ //if we're not attacking, and next spot is valid move
                         (*hero)->add_move(move);
+                        Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    if((*hero)->getAttacking() && ((*hero)->get_tile(gety()-1,getx()) == 2 || (*hero)->get_tile(gety()-1,getx()) == 1)){ //if the player is attacking, and the cursor is in valid movespace
                         Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
                     }
                     break;
                 case 1: //right
-                    if((*hero)->get_tile(gety(),getx()+1) == 1){
+                    if((*hero)->get_tile(gety(),getx()+1) == 1 && (*hero)->getAttacking()==0){
                         (*hero)->add_move(move);
+                        Cursor::move(1,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    if((*hero)->getAttacking() && ((*hero)->get_tile(gety(),getx()+1) == 2 || (*hero)->get_tile(gety(),getx()+1) == 1)){ //if the player is attacking, and the cursor is in valid movespace
                         Cursor::move(1,(*hero)->get_vb_width(),(*hero)->get_vb_height());
                     }
                     break;
                 case 2: //down
-                    if((*hero)->get_tile(gety()+1,getx()) == 1){
+                    if((*hero)->get_tile(gety()+1,getx()) == 1 && (*hero)->getAttacking()==0){
                         (*hero)->add_move(move);
+                        Cursor::move(2,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    if((*hero)->getAttacking() && ((*hero)->get_tile(gety()+1,getx()) == 2 || (*hero)->get_tile(gety()+1,getx()) == 1)){ //if the player is attacking, and the cursor is in valid movespace
                         Cursor::move(2,(*hero)->get_vb_width(),(*hero)->get_vb_height());
                     }
                     break;
                 case 3: //left
-                    if((*hero)->get_tile(gety(),getx()-1) == 1){
+                    if((*hero)->get_tile(gety(),getx()-1) == 1 && (*hero)->getAttacking()==0){
                         (*hero)->add_move(move);
+                        Cursor::move(3,(*hero)->get_vb_width(),(*hero)->get_vb_height());
+                    }
+                    if((*hero)->getAttacking() && ((*hero)->get_tile(gety(),getx()-1) == 2 || (*hero)->get_tile(gety(),getx()-1) == 1)){ //if the player is attacking, and the cursor is in valid movespace
                         Cursor::move(3,(*hero)->get_vb_width(),(*hero)->get_vb_height());
                     }
                     break;

@@ -31,6 +31,7 @@ Character::Character(string path,string my_name,int x, int y, SDL_Renderer* rend
   tile_properties = tile_prop;
   name = my_name;
   canMove = 1;
+  attacking = 0;   //should be set to 1 when attacking.
 }
 
 // deconstructor
@@ -229,7 +230,7 @@ void Character::process_move_vector(int max_width,int max_height){
     vb.to_zeros(); //clear the valid board after we process the move vector.
     vb.set_tile(1,ypos,xpos); //if we set tile to 1, add_attack_values will draw the attack range.
     clear_move(); //after processing, clear the move vector.
-    takeMove();	  // once a character has processed a move vector, take its move capability
+    //takeMove();	  // once a character has processed a move vector, take its move capability
 }
 
 //Key:
@@ -301,4 +302,16 @@ int Character::isAlive(){
     return 1;
   }
   return 0;
+}
+
+int Character::getAttacking(){
+    return attacking;
+}
+
+void Character::setAttacking(int i){
+    attacking = i;
+}
+
+void Character::attack_phase(vector<Character *> * players, Character * hero){
+    
 }

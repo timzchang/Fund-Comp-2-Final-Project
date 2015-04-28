@@ -50,6 +50,9 @@ class Character: public GamePiece {
 		void takeMove();		// changes canMove to 0
                 int getMove();			// return a 1 or 0 that corresponds to the variable canMove:
                 int isAlive();			// tells if the character's health is 0
+        int getAttacking();             //returns attacking flag
+        void setAttacking(int);         //sets attacking flag
+        void attack_phase(vector<Character *> *, Character *);  //handles attacking phase.
 	protected:
 		int player;						// 1 or 2 depending on the player
 		int direction;						// direction the sprite is facing
@@ -70,5 +73,6 @@ class Character: public GamePiece {
        		vector<int> moves;               	   		// stores moves.
 		string name;						// holds the name of the Character	
 		int canMove;						// indicates if a character can move (0 if the have already taken a turn)
+        int attacking;                      //indicates if character is attacking.
 };
 #endif
