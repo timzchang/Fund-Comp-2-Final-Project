@@ -207,3 +207,6 @@ Date		Time		Work Done					Learned
 4/28/15		.5		Commented code				Nothing.
 
 4/28/15		.5		Commented code				Nothing.
+
+4/28/15		2		Created the menu operation		Nothing much new.
+				along with the Menu class.

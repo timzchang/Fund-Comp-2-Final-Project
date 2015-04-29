@@ -43,7 +43,7 @@ int main(){
     std::cout<<"INVALID RENDER CREATION"<< std::endl;
     return 1;
   }
-  SDL_SetRenderDrawColor(renderer,255,255,255,255);
+  SDL_SetRenderDrawColor(renderer,22,132,255,255);
 
   //initializing SDL_Image
   int imgFlags = IMG_INIT_PNG;
@@ -53,8 +53,8 @@ int main(){
   }
 
 // Menu loop (with "instructions" loop inside) will go here most likely (and exit when "play" is chosen - We could add a large while loop if we want the game to return to the menu after it finishes menu=0, 1=instruction, 2=play, 3=quit
-  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png", renderer);
-/*  int selection=0;
+  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png","../media/instructions.png",  renderer);
+/*  int selection=0; 
   while(selection!=2){
     if (selection==0)
             menu.display_menu(renderer);
@@ -64,7 +64,51 @@ int main(){
             break;
   }*/
 
-
+  SDL_Event e;
+  bool quit = false;
+  bool play = false;
+  bool menu_draw = true;
+  int selection=0;
+  while(!quit && !play){
+    SDL_RenderClear(renderer);
+    if(menu_draw)
+      menu.display_menu(renderer);
+    else
+      menu.display_instruction(renderer);
+    while(SDL_PollEvent(&e) != 0){
+      if(e.type==SDL_QUIT){
+        quit = true;
+      }else if(e.type==SDL_KEYDOWN){
+        switch(e.key.keysym.sym){
+        case SDLK_UP:
+          if(menu_draw)
+            menu.cursor_up();
+          break;
+        case SDLK_DOWN:
+          if(menu_draw)
+            menu.cursor_down();
+          break;
+        case SDLK_RETURN:
+          selection=menu.get_phase();
+          if(selection==3)
+            quit=true;
+          if(selection==1)
+            cout<<"No level 2. Make another selection."<<endl;
+          if(selection==0)
+            play=true;
+          if(selection==2){
+            if(menu_draw)
+              menu_draw=false;
+            else
+              menu_draw=true;
+          }
+          break;
+      }
+      }
+    }
+  SDL_RenderPresent(renderer);
+  }
+  SDL_RenderClear(renderer);
   //initialize SDL_ttf
   if( TTF_Init() == -1){
     cout << "SDL TTF couln't initialize!\n";
@@ -104,8 +148,6 @@ int main(){
 //  players.push_back(new Sorcerer("../media/Sorcerer2.png","Mason",12,14,2,renderer,level1.get_tile_prop()));
   players.push_back(new Angel("../media/Angel2.png","Tim",14,12,2,renderer,level1.get_tile_prop()));
 //  players.push_back(new Pirate("../media/Pirate2.png","Bob",13,13,2,renderer,level1.get_tile_prop()));
-  bool quit = false;
-  SDL_Event e;
 
     //Key:
     //0 = up
@@ -122,10 +164,12 @@ int main(){
           players[1]->setCurrentHitpoints(players[1]->getCurrentHitpoints()-5);
           break;
         case SDLK_s:
+            menu.cursor_down();
 //          players[2]->select();
 //          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility(), &players);
           break;
         case SDLK_u:
+            menu.cursor_up();
 //          players[2]->unselect();
           break;
         case SDLK_DOWN:
@@ -226,7 +270,6 @@ int main(){
       SDL_Delay(5000);
       quit = true;
     }
-    menu.draw_menu(renderer);
     SDL_RenderPresent(renderer);
   }
 

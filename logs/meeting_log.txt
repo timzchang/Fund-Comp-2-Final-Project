@@ -42,3 +42,7 @@ Date	Length of Meeting (hrs)		Members Present		Topic Discussed		Decided/Accompli
 								implement attack
 								implement pop-up menu
 								Implement turn processing
+
+4/28	2				Chris and Lucas		Created Menu class an	
+								the loop for the menu
+								in main.
