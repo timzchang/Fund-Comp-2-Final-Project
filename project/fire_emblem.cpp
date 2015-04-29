@@ -58,6 +58,7 @@ int main(){
   bool quit = false;
   bool play = false;
   bool menu_draw = true;
+  bool game_won = false;
   int selection=0;
 // LOOP THAT OPERATES THE MENU. WILL NEED FURTHER COMMENTING LATER 
   while(!quit && !play){
@@ -250,12 +251,24 @@ int main(){
       }
     } 
     if(player1_alive == 0){
+      SDL_RenderClear(renderer);
+      level1.render_map(renderer);
+      for(int i = 0; i < players.size(); i++){
+        players[i]->draw(renderer);
+      }
+      cursor_ptr.draw(renderer);
       SDL_RenderCopy(renderer,player2win,NULL,&turnDestRect);
       SDL_RenderPresent(renderer);
       SDL_Delay(5000);
       quit = true;
     }
     if(player2_alive == 0){
+      SDL_RenderClear(renderer);
+      level1.render_map(renderer);
+      for(int i = 0; i < players.size(); i++){
+        players[i]->draw(renderer);
+      }
+      cursor_ptr.draw(renderer);
       SDL_RenderCopy(renderer,player1win,NULL,&turnDestRect);
       SDL_RenderPresent(renderer);
       SDL_Delay(5000);
