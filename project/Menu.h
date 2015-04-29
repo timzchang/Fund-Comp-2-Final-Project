@@ -5,7 +5,7 @@
 #include<SDL2/SDL_image.h>
 using namespace std;
 
-class Menu(){
+class Menu {
   public:
     Menu(string, string, SDL);
     int display();
