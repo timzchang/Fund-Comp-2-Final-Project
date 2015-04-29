@@ -133,12 +133,12 @@ int main(){
   //init Characters
   players.push_back(new Hero("../media/Hero.png","Chris",0,0,1,renderer,level1.get_tile_prop()));
   players.push_back(new Archer("../media/Archer.png","Billy",2,0,1,renderer,level1.get_tile_prop()));
-//  players.push_back(new Mage("../media/Mage.png","Messi",0,2,1,renderer,level1.get_tile_prop()));
-//  players.push_back(new Soldier("../media/Soldier.png","Ronaldo",1,1,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Mage("../media/Mage.png","Messi",0,2,1,renderer,level1.get_tile_prop()));
+  players.push_back(new Soldier("../media/Soldier.png","Ronaldo",1,1,1,renderer,level1.get_tile_prop()));
   players.push_back(new Hero("../media/Hero2.png","Lucas",14,14,2,renderer,level1.get_tile_prop()));
-//  players.push_back(new Sorcerer("../media/Sorcerer2.png","Mason",12,14,2,renderer,level1.get_tile_prop()));
+  players.push_back(new Sorcerer("../media/Sorcerer2.png","Mason",12,14,2,renderer,level1.get_tile_prop()));
   players.push_back(new Angel("../media/Angel2.png","Tim",14,12,2,renderer,level1.get_tile_prop()));
-//  players.push_back(new Pirate("../media/Pirate2.png","Bob",13,13,2,renderer,level1.get_tile_prop()));
+  players.push_back(new Pirate("../media/Pirate2.png","Bob",13,13,2,renderer,level1.get_tile_prop()));
 
     //Key:
     //0 = up
@@ -185,7 +185,7 @@ int main(){
           break;
         case SDLK_RETURN:
 	  //do select stuff
-          cursor_ptr.toggle_select(&players,&level1); //managed to encompass everything in one function. Selects or deselects players. moves players. Will need to modify when we implement a popup menu.
+          cursor_ptr.toggle_select(&players,&level1,player_turn); //managed to encompass everything in one function. Selects or deselects players. moves players. Will need to modify when we implement a popup menu.
 	  break;
         }
       }

@@ -109,29 +109,36 @@ void Cursor::move(int change, int max_width, int max_height){
 //if unselected:
 //  unselect and process_move_vector(level_width,level_height)
 //needs map object and moves vector for the 2 valid board functions.
-void Cursor::toggle_select(vector<Character *> * players, Map * level){
+void Cursor::toggle_select(vector<Character *> * players, Map * level, int player_turn){
     for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
       
         //attack function here.
         if((*hero)->getAttacking()){                                                          //if this hero is attacking
             for (vector<Character *>::iterator victim=(*players).begin(); victim !=(*players).end(); ++victim){  //loop through players
-                if(this->getx()==(*victim)->getx() && this->gety()==(*victim)->gety()){                          //if cursor is on a player when enter
+                if(this->getx()==(*victim)->getx() && this->gety()==(*victim)->gety() && (*victim)->getPlayer()!=player_turn){             //if cursor is on a player when enter
                     (*victim)->setCurrentHitpoints((*victim)->getCurrentHitpoints() - (*hero)->getAttack());      //hurt player (what if you hurt yourself)
-                    (*hero)->setCurrentHitpoints((*hero)->getMaxHitpoints());                                   //hack. if you hurt yourself, heal yourself
+                    if((*hero)==(*victim))
+                        (*hero)->setCurrentHitpoints((*hero)->getMaxHitpoints());                                   //hack. if you hurt yourself, heal yourself
                     (*hero)->setAttacking(0);
                     (*hero)->takeMove();
+                    (*hero)->unselect();
                     
+                }else{
+                    (*hero)->setAttacking(0);
+                    (*hero)->unselect();
+                    (*hero)->takeMove();
                 }
             }
         }
         
-      if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety()){                    //if this cursor and character are on the same coordinate
+      if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety() && (*hero)->getPlayer()==player_turn){                    //if this cursor and character are on the same coordinate
         if((*hero)->get_select()==0 && (*hero)->getMove()==1){                                                        //and this player is not selected
           (*hero)->select();                                                                 //select (this only changes the "selected" member of Character to 1. Makes the guy animate as well.)
           (*hero)->check_valid_move((*hero)->getx(),(*hero)->gety(),(*hero)->getMobility(), players); //this is the one that updates its valid board
             
         }else{
-          (*hero)->unselect();                                                               //similarly, this only changes "selected" to 0. stops the guy from being animated
+          //(*hero)->unselect();                                    //similarly, this only changes "selected" to 0. stops the guy from being animated
+            (*hero)->setAttacking(1);
           (*hero)->process_move_vector(level->get_width(),level->get_height());              //process move vector.
         }
       }

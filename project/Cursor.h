@@ -25,7 +25,7 @@ class Cursor: public GamePiece {
     int get_phase();				// gets current phase of the cursor
     void update();				// updates clock counts
     void move(int,int,int);
-    void toggle_select(vector<Character *> *, Map *); //if the cursor is over a character, it will be selected or deselected. If it is not over a character and the move vector>1, we process_move_vector
+    void toggle_select(vector<Character *> *, Map *, int); //if the cursor is over a character, it will be selected or deselected. If it is not over a character and the move vector>1, we process_move_vector
     void move_select(vector<Character *> *, int move, Map *); //loop through character vector, if a character is selected (there should only be one at a time), update a move vector.
     //TEST FUNCTION PLEASE IGNORE
     void test_move(int change, int max_width, int max_height);
