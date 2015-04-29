@@ -110,20 +110,28 @@ void Cursor::move(int change, int max_width, int max_height){
 //  unselect and process_move_vector(level_width,level_height)
 //needs map object and moves vector for the 2 valid board functions.
 void Cursor::toggle_select(vector<Character *> * players, Map * level, int player_turn){
+    int num_selected = 0;
+    
+    for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) {
+        if((*hero)->get_select())  //if a hero is already selected, increment num_selected. Used to fix bug when attacking teammate
+            num_selected++;
+    }
+    
     for (vector<Character *>::iterator hero=(*players).begin(); hero !=(*players).end(); ++hero) { //hero iterator to loop through player vector
       
         //attack function here.
         if((*hero)->getAttacking()){                                                          //if this hero is attacking
             for (vector<Character *>::iterator victim=(*players).begin(); victim !=(*players).end(); ++victim){  //loop through players
                 if(this->getx()==(*victim)->getx() && this->gety()==(*victim)->gety() && (*victim)->getPlayer()!=player_turn){             //if cursor is on a player when enter
-                    (*victim)->setCurrentHitpoints((*victim)->getCurrentHitpoints() - (*hero)->getAttack());      //hurt player (what if you hurt yourself)
+                    //notAttacking = 0;
+                    (*victim)->setCurrentHitpoints((*victim)->getCurrentHitpoints() - ((*hero)->getAttack()-(*victim)->getDefence()));      //hurt player (what if you hurt yourself)
                     if((*hero)==(*victim))
                         (*hero)->setCurrentHitpoints((*hero)->getMaxHitpoints());                                   //hack. if you hurt yourself, heal yourself
                     (*hero)->setAttacking(0);
                     (*hero)->takeMove();
                     (*hero)->unselect();
                     
-                }else{
+                }else if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety()){
                     (*hero)->setAttacking(0);
                     (*hero)->unselect();
                     (*hero)->takeMove();
@@ -131,24 +139,22 @@ void Cursor::toggle_select(vector<Character *> * players, Map * level, int playe
             }
         }
         
-      if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety() && (*hero)->getPlayer()==player_turn){                    //if this cursor and character are on the same coordinate
+      if(this->getx()==(*hero)->getx() && this->gety()==(*hero)->gety() && (*hero)->getPlayer()==player_turn && num_selected==0){                    //if this cursor and character are on the same coordinate and the hero is the right team and he's the only one being
         if((*hero)->get_select()==0 && (*hero)->getMove()==1){                                                        //and this player is not selected
           (*hero)->select();                                                                 //select (this only changes the "selected" member of Character to 1. Makes the guy animate as well.)
           (*hero)->check_valid_move((*hero)->getx(),(*hero)->gety(),(*hero)->getMobility(), players); //this is the one that updates its valid board
             
-        }else{
-          //(*hero)->unselect();                                    //similarly, this only changes "selected" to 0. stops the guy from being animated
-            (*hero)->setAttacking(1);
-          (*hero)->process_move_vector(level->get_width(),level->get_height());              //process move vector.
         }
       }
-      if((*hero)->get_select() && (*hero)->size_move()>0 && (*hero)->getAttacking()==0){     //if this hero is selected and its move vector is greater than zero
-          //(*hero)->unselect();                                                               //deselect and process move vector.
-          (*hero)->process_move_vector(level->get_width(),level->get_height());
+      if((*hero)->get_select() && (*hero)->size_move()>0 && (*hero)->getAttacking()==0 && num_selected==1){     //if this hero is selected and its move vector is greater than zero
+           (*hero)->process_move_vector(level->get_width(),level->get_height());
           (*hero)->setAttacking(1);                                                         //now we are attacking
           
+      }else if((*hero)->get_select() && (*hero)->getAttacking()==0 && num_selected==1){
+          (*hero)->setAttacking(1);
+          (*hero)->process_move_vector(level->get_width(),level->get_height());
       }
-        
+        //notAttacking=1;
 
     }
 }
