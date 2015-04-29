@@ -54,7 +54,7 @@ int main(){
 
 // Menu loop (with "instructions" loop inside) will go here most likely (and exit when "play" is chosen - We could add a large while loop if we want the game to return to the menu after it finishes menu=0, 1=instruction, 2=play, 3=quit
   Menu menu("../media/menu_screen.png", "../media/sword_cursor.png", renderer);
-  int selection=0;
+/*  int selection=0;
   while(selection!=2){
     if (selection==0)
             menu.display_menu(renderer);
@@ -62,7 +62,7 @@ int main(){
             menu.display_instruction(renderer);
     else if (selection==3)
             break;
-  }
+  }*/
 
 
   //initialize SDL_ttf
@@ -226,6 +226,7 @@ int main(){
       SDL_Delay(5000);
       quit = true;
     }
+    menu.draw_menu(renderer);
     SDL_RenderPresent(renderer);
   }
 
