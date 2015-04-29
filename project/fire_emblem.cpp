@@ -5,6 +5,7 @@
   The driver program for the game. All functionality will be implemented here.
  */
 
+#include "Menu.h"
 #include "Map.h"
 #include "Character.h"
 #include "Hero.h"
@@ -52,17 +53,17 @@ int main(){
   }
 
 // Menu loop (with "instructions" loop inside) will go here most likely (and exit when "play" is chosen - We could add a large while loop if we want the game to return to the menu after it finishes menu=0, 1=instruction, 2=play, 3=quit
-/*
+  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png", renderer);
   int selection=0;
   while(selection!=2){
     if (selection==0)
-            selection=menu.display(../media/menu_screen.png, ../media/sword_cursor.png, renderer);
+            menu.display();
     else if (selection==1)
-            selection=menu.instruction(../media/instructions.png, renderer);
-    else if (selection==3
+            menu.instruction();
+    else if (selection==3)
             return;
   }
-*/
+
 
   //initialize SDL_ttf
   if( TTF_Init() == -1){
