@@ -76,5 +76,7 @@ Date            Time(hr.)       Work Done                                       
 4/28/2015	1		Implemented attacking functionality. Now	Nothing of import
 				Characters can attack each other.
 
+4/29/2015	2		Fixed attack bug. Implemented "b button"	Nothing of import
+				feature.
 
-Total Hours: 26
+Total Hours: 28
