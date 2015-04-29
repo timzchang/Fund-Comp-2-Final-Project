@@ -214,13 +214,19 @@ int main(){
       if(player_turn == 1){
         player_turn = 2;
         SDL_RenderCopy(renderer,player2turn,NULL,&turnDestRect);
-        SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer);  
         SDL_Delay(2000);
+	while(SDL_PollEvent(&e) != 0 ){
+        
+        }
       }else if(player_turn == 2){
         player_turn = 1;
         SDL_RenderCopy(renderer,player1turn,NULL,&turnDestRect);
         SDL_RenderPresent(renderer);
         SDL_Delay(2000);
+	while(SDL_PollEvent(&e) != 0 ){
+
+        }
       }
       for(int i = 0; i < players.size(); i++){
         players[i]->setMove();
