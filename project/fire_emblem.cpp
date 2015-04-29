@@ -57,11 +57,11 @@ int main(){
   int selection=0;
   while(selection!=2){
     if (selection==0)
-            menu.display();
+            menu.display_menu(renderer);
     else if (selection==1)
-            menu.instruction();
+            menu.display_instruction(renderer);
     else if (selection==3)
-            return;
+            break;
   }
 
 
