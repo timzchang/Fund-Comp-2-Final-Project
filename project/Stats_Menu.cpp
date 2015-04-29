@@ -54,10 +54,10 @@ void Stats_Menu::print_stats(){
 }
 
 // function to draw the stat menu
-void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, string name, int currHP, int maxHP, int attack, int defence){
+void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, string name, int currHP, int maxHP, int attack, int defence, string class_name){
   SDL_Surface* loadedText;
   SDL_Color color = {255,255,255};		// sets color to white
-  string name_str = "Name: " + name;		// loads the name string with a label
+  string name_str = "Name: " + name +" (" + class_name+")";		// loads the name string with a label
   string attack_str = "Attack: " + to_string(attack);		// loads the attack string with a label (needs c++ 11)
   string defence_str = "Defence: " + to_string(defence);	// loads the defence string with a label (needs c++ 11)
   string hit_points = "Hitpoints: " + to_string(currHP) + "/" + to_string(maxHP);	// loads the hitpoints in the form curr/max.  (c++ 11)
@@ -82,7 +82,7 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
     if(y < map_height/2){	// if the character is currently in the bottom half of the screen
       SDL_Rect dest = {0,map_height*32-96,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
       SDL_Rect source = {0,0,192,96};     			// gets whole image
-      SDL_Rect nameRect = {10,map_height*32-90,100,20};		// size of the name
+      SDL_Rect nameRect = {10,map_height*32-90,150,20};		// size of the name
       SDL_Rect hpRect = {10,map_height*32-70,150,20};		// where to draw the hp string
       SDL_Rect attackRect = {10,map_height*32-50,80,20};	// where to draw the attack
       SDL_Rect defenceRect = {10,map_height*32-30,80,20};	// where to draw the defence 
@@ -94,7 +94,7 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
     }else{			// if the character is in the top half of the screen 
       SDL_Rect dest = {0,0,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
       SDL_Rect source = {0,0,192,96};     			// gets whole image
-      SDL_Rect nameRect = {10,0,100,20};			// destination of the name string
+      SDL_Rect nameRect = {10,0,150,20};			// destination of the name string
       SDL_Rect hpRect = {10,20,150,20};				// where to draw the hp string
       SDL_Rect attackRect = {10,40,80,20};			// where to draw the attack
       SDL_Rect defenceRect = {10,60,80,20};			// where to draw the defence 
@@ -108,7 +108,7 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
     if(y < map_height/2){	// if the character is in the bottom half the screen
       SDL_Rect dest = {0,map_height*32-96,192,96};		// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
       SDL_Rect source = {0,0,192,96};     			// gets whole image
-      SDL_Rect nameRect = {10,map_height*32-90,100,20};		// size of the name
+      SDL_Rect nameRect = {10,map_height*32-90,150,20};		// size of the name
       SDL_Rect hpRect = {10,map_height*32-70,150,20};		// where to draw the hp string
       SDL_Rect attackRect = {10,map_height*32-50,80,20};	// where to draw the attack
       SDL_Rect defenceRect = {10,map_height*32-30,80,20};	// where to draw the defence 
@@ -120,7 +120,7 @@ void Stats_Menu::draw(SDL_Renderer* renderer, int y, int map_height, int team, s
     }else{			// if the character is in the top hald of the screen
       SDL_Rect dest = {0,0,192,96};				// HARD CODED! WILL NEED TO BE CHANGED IF LEVEL 2 IS ADDED
       SDL_Rect source = {0,0,192,96};     			// gets whole image
-      SDL_Rect nameRect = {10,0,100,20};			// size of the name
+      SDL_Rect nameRect = {10,0,150,20};			// size of the name
       SDL_Rect hpRect = {10,20,150,20};				// where to draw the hp string
       SDL_Rect attackRect = {10,40,80,20};			// where to draw the attack
       SDL_Rect defenceRect = {10,60,80,20};			// where to draw the defence 
