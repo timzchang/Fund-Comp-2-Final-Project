@@ -15,10 +15,11 @@ using namespace std;
 
 class Menu {
   public:
-    Menu(string, string, string, SDL_Renderer*);		// non-default constructor
+    Menu(string, string, string, string, SDL_Renderer*);	// non-default constructor
     ~Menu();							// deconstructor
     void display_menu(SDL_Renderer*);				// draws the menu and cursor
     void display_instruction(SDL_Renderer*);			// displays the instruction_text texture
+    void display_controls(SDL_Renderer*);			// displays the controls_text texture
     void cursor_up();						// changes the phase of the cursor
     void cursor_down();						// changes the phase of the cursor
     int get_phase();						// returns the phase of the counter
@@ -27,6 +28,7 @@ class Menu {
     SDL_Texture* menu_text;	
     SDL_Texture* cursor_text;
     SDL_Texture* instruction_text;
+    SDL_Texture* controls_text;
     int phase;							// phase determines where the sword cursor is drawn
     
 };
