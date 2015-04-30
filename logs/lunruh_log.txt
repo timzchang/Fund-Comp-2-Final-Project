@@ -1,5 +1,19 @@
 tutorials ~5 hrs
+-blitting images
+-renderer creation
+-textures
+-key events
+-moving images
+
 coding with chris ~1.5 hrs
-creating menu ~5 hrs
+-early development of classes
+-formulation of valid move recursion algorithm
+
+creating menu 6+ hrs
+-menu screen photoshop work
+-instructions screen
+-controls screen
+-formulation of Menu.h and Menu.cpp
+-editing main to handle Menu
 
 meetings in group log
