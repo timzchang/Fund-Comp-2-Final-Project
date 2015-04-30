@@ -49,7 +49,7 @@ int main(){
     return 1;
   }
 
-  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png", "../media/instructions.png", "../media/Controls.png", renderer);
+  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png", "../media/instructions.png", "../media/controls.png", renderer);
   // set some flags
   SDL_Event e;
   bool quit = false;
