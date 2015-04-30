@@ -20,10 +20,7 @@
 #include "Valid_board.h"
 #include "Choice_Menu.h"
 #include <iostream>
-//#include <SDL2/SDL.h>
-//#include <SDL2/SDL_image.h>
 #include <vector>
-//#include <SDL2/SDL_ttf.h>
 #include "Stats_Menu.h"
 SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
@@ -157,12 +154,9 @@ int main(){
           break;
         case SDLK_s:
             menu.cursor_down();
-//          players[2]->select();
-//          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility(), &players);
           break;
         case SDLK_u:
             menu.cursor_up();
-//          players[2]->unselect();
           break;
         case SDLK_DOWN:
           //cursor_ptr.test_move(2,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
@@ -308,8 +302,5 @@ int main(){
   window = NULL;
   renderer = NULL;
 
-//  IMG_Quit();
-//  SDL_Quit();
-//  TTF_Quit();
   return 0;
 }

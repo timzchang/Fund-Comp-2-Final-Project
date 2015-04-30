@@ -14,7 +14,7 @@ Hero::Hero(){
   current_hitpoints = 25;
   max_hitpoints = 25;
   attack = 10;		
-  defence = 7;
+  defence = 5;
   attack_range = 1;
   mobility = 4;
   terrain_effect.push_back(0);	// There is no tile with number 0
@@ -34,7 +34,7 @@ Hero::Hero(string path, string my_name, int x, int y, int my_player, SDL_Rendere
   current_hitpoints = 25;		// heros have 25 hp
   max_hitpoints = 25;			// heros have 25 hp
   attack = 10;				
-  defence = 7;
+  defence = 5;
   attack_range = 1;			// how far the player can attack
   mobility = 4;				// number of steps a character can take in a turn
 // terain_effect is a vector of the number of movement it takes for this character to move over the tile type of its index.

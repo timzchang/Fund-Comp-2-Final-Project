@@ -36,4 +36,6 @@ Date		Time Spent		Accomplished
 					   the check_valid_move function. The changes didn't work, but are
 					   at least a good start.
 
-4/24		
+4/24		1 hour			Worked on balancing characters
+
+4/29		1/2 hour		Finished balancing characters, cleaned up unused code

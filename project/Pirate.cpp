@@ -10,10 +10,10 @@ Pirate::Pirate(){
   // set stats
   class_name = "Pirate";
   player = 1;
-  current_hitpoints = 28;
-  max_hitpoints = 28;
+  current_hitpoints = 25;
+  max_hitpoints = 25;
   attack = 11;		
-  defence = 6;
+  defence = 4;
   attack_range = 1;
   mobility = 4;
   terrain_effect.push_back(0);
@@ -30,10 +30,10 @@ Pirate::Pirate(string path, string my_name, int x, int y, int my_player, SDL_Ren
   // sets stats. See Hero.cpp or Character.cpp for more information on what the stats mean
   class_name = "Pirate";
   player = my_player;
-  current_hitpoints = 28;
-  max_hitpoints = 28;
+  current_hitpoints = 25;
+  max_hitpoints = 25;
   attack = 11;
-  defence = 6;
+  defence = 4;
   attack_range = 1;
   mobility = 4;
   terrain_effect.push_back(0);

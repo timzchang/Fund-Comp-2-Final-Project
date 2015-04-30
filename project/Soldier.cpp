@@ -10,10 +10,10 @@ Soldier::Soldier(){
   // set stats
   class_name = "Soldier";
   player = 1;
-  current_hitpoints = 26;
-  max_hitpoints = 26;
+  current_hitpoints = 25;
+  max_hitpoints = 25;
   attack = 7;		
-  defence = 9;
+  defence = 7;
   attack_range = 1;
   mobility = 3;
   terrain_effect.push_back(0);
@@ -30,10 +30,10 @@ Soldier::Soldier(string path, string my_name, int x, int y, int my_player, SDL_R
   // sets stats. See Hero.cpp or Character.cpp for information about what the stats mean
   class_name = "Soldier";
   player = my_player;
-  current_hitpoints = 26;
-  max_hitpoints = 26;
+  current_hitpoints = 25;
+  max_hitpoints = 25;
   attack = 7;
-  defence = 9;
+  defence = 7;
   attack_range = 1;
   mobility = 3;
   terrain_effect.push_back(0);
