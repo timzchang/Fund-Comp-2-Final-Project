@@ -20,10 +20,7 @@
 #include "Valid_board.h"
 #include "Choice_Menu.h"
 #include <iostream>
-//#include <SDL2/SDL.h>
-//#include <SDL2/SDL_image.h>
 #include <vector>
-//#include <SDL2/SDL_ttf.h>
 #include "Stats_Menu.h"
 SDL_Window * window = NULL;
 SDL_Renderer * renderer = NULL;
@@ -52,12 +49,13 @@ int main(){
     return 1;
   }
 
-  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png","../media/instructions.png",  renderer);
+  Menu menu("../media/menu_screen.png", "../media/sword_cursor.png", "../media/instructions.png", "../media/controls.png", renderer);
   // set some flags
   SDL_Event e;
   bool quit = false;
   bool play = false;
   bool menu_draw = true;
+  int instruction = 0;
   bool game_won = false;
   int selection=0;
 // LOOP THAT OPERATES THE MENU. WILL NEED FURTHER COMMENTING LATER 
@@ -65,8 +63,10 @@ int main(){
     SDL_RenderClear(renderer);
     if(menu_draw)
       menu.display_menu(renderer);
-    else
+    else if(instruction==1)
       menu.display_instruction(renderer);
+    else if(instruction==2)
+      menu.display_controls(renderer);
     while(SDL_PollEvent(&e) != 0){
       if(e.type==SDL_QUIT){
         quit = true;
@@ -80,6 +80,14 @@ int main(){
           if(menu_draw)
             menu.cursor_down();
           break;
+        case SDLK_RIGHT:
+          if(instruction==1)
+            instruction=2;
+          break;
+        case SDLK_LEFT:
+          if(instruction==2)
+            instruction=1;
+          break;
         case SDLK_RETURN:
           selection=menu.get_phase();
           if(selection==3)
@@ -89,10 +97,13 @@ int main(){
           if(selection==0)
             play=true;
           if(selection==2){
-            if(menu_draw)
+            if(menu_draw){
               menu_draw=false;
-            else
+              instruction=1;
+            }else{
               menu_draw=true;
+              instruction=0;
+            }
           }
           break;
       }
@@ -157,12 +168,9 @@ int main(){
           break;
         case SDLK_s:
             menu.cursor_down();
-//          players[2]->select();
-//          players[2]->check_valid_move(players[2]->getx(),players[2]->gety(),players[2]->getMobility(), &players);
           break;
         case SDLK_u:
             menu.cursor_up();
-//          players[2]->unselect();
           break;
         case SDLK_DOWN:
           //cursor_ptr.test_move(2,level1.get_width(),level1.get_height());  //TEST FUNCTION PLEASE IGNORE.
@@ -308,8 +316,5 @@ int main(){
   window = NULL;
   renderer = NULL;
 
-//  IMG_Quit();
-//  SDL_Quit();
-//  TTF_Quit();
   return 0;
 }

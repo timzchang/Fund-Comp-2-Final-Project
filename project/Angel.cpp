@@ -13,9 +13,9 @@ Angel::Angel(){
   current_hitpoints = 19;
   max_hitpoints = 19;
   attack = 12;		
-  defence = 6;
+  defence = 4;
   attack_range = 1;
-  mobility = 7;
+  mobility = 6;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);	// Plains
   terrain_effect.push_back(2);	// Trees
@@ -33,9 +33,9 @@ Angel::Angel(string path,string name ,int x, int y, int my_player, SDL_Renderer*
   current_hitpoints = 19;
   max_hitpoints = 19;
   attack = 12;
-  defence = 6;
-  attack_range = 2;
-  mobility = 7;
+  defence = 4;
+  attack_range = 1;
+  mobility = 6;
   terrain_effect.push_back(0);
   terrain_effect.push_back(1);
   terrain_effect.push_back(2);

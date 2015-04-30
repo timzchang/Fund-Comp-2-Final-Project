@@ -14,7 +14,7 @@ Mage::Mage(){
   current_hitpoints = 15;
   max_hitpoints = 15;
   attack = 13;		
-  defence = 6;
+  defence = 4;
   attack_range = 2;
   mobility = 4;
   terrain_effect.push_back(0);
@@ -34,7 +34,7 @@ Mage::Mage(string path, string name, int x, int y, int my_player, SDL_Renderer* 
   current_hitpoints = 15;
   max_hitpoints = 15;
   attack = 13;
-  defence = 6;
+  defence = 4;
   attack_range = 2;
   mobility = 4;
   terrain_effect.push_back(0);

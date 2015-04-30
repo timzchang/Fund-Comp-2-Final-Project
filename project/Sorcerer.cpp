@@ -11,7 +11,7 @@ Sorcerer::Sorcerer(){
   max_hitpoints = 15;
   current_hitpoints = 15;
   attack = 14;		
-  defence = 6;
+  defence = 4;
   attack_range = 2;
   mobility = 3;
   terrain_effect.push_back(0);
@@ -31,7 +31,7 @@ Sorcerer::Sorcerer(string path, string my_name, int x, int y, int my_player, SDL
   max_hitpoints = 15; 
   current_hitpoints = 15;
   attack = 14;
-  defence = 6;
+  defence = 4;
   attack_range = 2;
   mobility = 3;
   terrain_effect.push_back(0);

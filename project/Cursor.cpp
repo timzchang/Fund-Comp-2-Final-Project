@@ -208,11 +208,7 @@ void Cursor::move_select(vector<Character *> * players, int move,Map *level){
                     break;
             }
             hero_selected=1;
-            //(*hero)->add_move(move);
-            //Cursor::move(move,(*hero)->get_vb_width(),(*hero)->get_vb_height());
-        }/*else{
-            Cursor::move(0,(*hero)->get_vb_width(),(*hero)->get_vb_height());
-        }*/
+        }
         
     }
     if(!hero_selected)
