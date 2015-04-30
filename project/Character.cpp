@@ -323,3 +323,8 @@ void Character::setAttacking(int i){
 void Character::attack_phase(vector<Character *> * players, Character * hero){
     
 }
+
+// function that returns the Character's class
+string Character::getClass(){
+  return class_name;
+}

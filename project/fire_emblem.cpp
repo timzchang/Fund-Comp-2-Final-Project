@@ -35,7 +35,7 @@ int main(){
   SDL_Init(SDL_INIT_VIDEO);
 
   //Create window
-  window = SDL_CreateWindow("Fire Emblem",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,480,480,SDL_WINDOW_SHOWN);
+  window = SDL_CreateWindow("Incendiary Regalia",SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,480,480,SDL_WINDOW_SHOWN);
 
   //initialize/create Renderer
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
@@ -188,6 +188,15 @@ int main(){
 	  //do select stuff
           cursor_ptr.toggle_select(&players,&level1,player_turn); //managed to encompass everything in one function. Selects or deselects players. moves players. Will need to modify when we implement a popup menu.
           break;
+        case SDLK_e:
+          for(int i = 0; i < players.size(); i++){
+            if(players[i]->getPlayer() == player_turn){
+              players[i]->takeMove();
+	      players[i]->unselect();
+	      players[i]->setAttacking(0);
+            }
+          }
+	  break;
         case SDLK_SPACE:
           for (vector<Character *>::iterator hero=players.begin(); hero !=players.end(); ++hero) { //hero iterator to loop through player vector
               if((*hero)->get_select()){
@@ -226,7 +235,7 @@ int main(){
         player_turn = 2;
         SDL_RenderCopy(renderer,player2turn,NULL,&turnDestRect);
         SDL_RenderPresent(renderer);  
-        SDL_Delay(2000);
+        SDL_Delay(1000);
 	while(SDL_PollEvent(&e) != 0 ){
         
         }
@@ -234,7 +243,7 @@ int main(){
         player_turn = 1;
         SDL_RenderCopy(renderer,player1turn,NULL,&turnDestRect);
         SDL_RenderPresent(renderer);
-        SDL_Delay(2000);
+        SDL_Delay(1000);
 	while(SDL_PollEvent(&e) != 0 ){
 
         }
@@ -255,7 +264,7 @@ int main(){
 // ENDS DELETING CHARACTER WHO HAVE DIED
     for(int i = 0; i < players.size(); i++){
       if(players[i]->getx() == cursor_ptr.getx() && players[i]->gety() == cursor_ptr.gety()){
-        stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence());
+        stat_menu.draw(renderer,players[i]->gety(),level1.get_height(),players[i]->getPlayer(),players[i]->getName(),players[i]->getCurrentHitpoints(),players[i]->getMaxHitpoints(),players[i]->getAttack(),players[i]->getDefence(),players[i]->getClass());
       }
     }
     int player1_alive = 0;
@@ -276,7 +285,7 @@ int main(){
       cursor_ptr.draw(renderer);
       SDL_RenderCopy(renderer,player2win,NULL,&turnDestRect);
       SDL_RenderPresent(renderer);
-      SDL_Delay(5000);
+      SDL_Delay(3000);
       quit = true;
     }
     if(player2_alive == 0){
@@ -288,7 +297,7 @@ int main(){
       cursor_ptr.draw(renderer);
       SDL_RenderCopy(renderer,player1win,NULL,&turnDestRect);
       SDL_RenderPresent(renderer);
-      SDL_Delay(5000);
+      SDL_Delay(3000);
       quit = true;
     }
     SDL_RenderPresent(renderer);

@@ -9,6 +9,7 @@
 // default constructor (calls default constructor of Character class). This is never used
 Hero::Hero(){
   // set stats
+  class_name = "Hero";
   player = 1;
   current_hitpoints = 25;
   max_hitpoints = 25;
@@ -28,6 +29,7 @@ Hero::Hero(){
 // non-default constructor. Calls non-default constructor of Character class.
 Hero::Hero(string path, string my_name, int x, int y, int my_player, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
   // sets stats
+  class_name = "Hero";
   player = my_player;			// sets which team the player is on
   current_hitpoints = 25;		// heros have 25 hp
   max_hitpoints = 25;			// heros have 25 hp

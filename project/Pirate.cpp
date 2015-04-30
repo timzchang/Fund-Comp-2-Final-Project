@@ -8,6 +8,7 @@
 // default constructor (calls default constructor of Character class)
 Pirate::Pirate(){
   // set stats
+  class_name = "Pirate";
   player = 1;
   current_hitpoints = 28;
   max_hitpoints = 28;
@@ -27,6 +28,7 @@ Pirate::Pirate(){
 // non-default constructor. Calls non-default constructor of Character class.
 Pirate::Pirate(string path, string my_name, int x, int y, int my_player, SDL_Renderer* renderer,vector<vector <int> > tile_prop):Character(path,my_name,x,y,renderer,tile_prop){	
   // sets stats. See Hero.cpp or Character.cpp for more information on what the stats mean
+  class_name = "Pirate";
   player = my_player;
   current_hitpoints = 28;
   max_hitpoints = 28;
