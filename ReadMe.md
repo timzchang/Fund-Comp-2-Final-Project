@@ -60,3 +60,7 @@ Game:
 - Character select screen
 - Scrolling maps
 - Enemy AI
+
+##Assets/Sprites:
+- http://fireemblem.wikia.com/wiki/Ancient_Horrors
+- http://www.famitsu.com/freegame/tool/chibi/index1.html
