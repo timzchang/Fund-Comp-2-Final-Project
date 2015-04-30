@@ -8,15 +8,15 @@ Chris Syers
 4/30/2015
 
 
-Project Description:
+##Project Description:
 
 Our goal for this project was to make a Fire Emblem clone with 2 players using SDL. The game includes 7 character classes and one map.
 
 
-Installation and Running:
+##Installation and Running:
 To install, navigate to the project directory, and type "make". Then run the executable ./fire_emblem
 
-System Requirements:
+##System Requirements:
 Mac or Linux systems only.
 Must have installed:
 - SDL2
@@ -29,12 +29,12 @@ These can be found here-
 * SDL_ttf - https://www.libsdl.org/projects/SDL_ttf/
 
 
-Gameplay:
+##Gameplay:
 
 Incendiary Regalia is a turn-based strategy game. On their turn players move their characters according to their movement range and
 try to eliminate the enemy team. Different characters have different movement restrictions, attack stats and defense stats.
 
-Controls:
+##Controls:
 
 Menu:
 - Up/down  Select option
@@ -47,11 +47,11 @@ Game:
 - E	      Force end of turn
 
 
-Known Bugs:
+##Known Bugs:
 - Random Segmentation fault. Happens about 5% of the time, reason unknown.
 - Valid movment board (blue squares) sometime drawn over characters, sometimes drawn under characters
 
-Further Improvements:
+##Further Improvements:
 - MOAR LEVELS!
 - Terrain effects on attack
 - Sound effects
