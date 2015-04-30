@@ -19,14 +19,14 @@ To install, navigate to the project directory, and type "make". Then run the exe
 System Requirements:
 Mac or Linux systems only.
 Must have installed:
--SDL2
--SDL_image
--SDL_ttf
+- SDL2
+- SDL_image
+- SDL_ttf
 
 These can be found here-
-SDL2 - https://www.libsdl.org/download-2.0.php
-SDL_image - https://www.libsdl.org/projects/SDL_image/
-SDL_ttf - https://www.libsdl.org/projects/SDL_ttf/
+* SDL2 - https://www.libsdl.org/download-2.0.php
+* SDL_image - https://www.libsdl.org/projects/SDL_image/
+* SDL_ttf - https://www.libsdl.org/projects/SDL_ttf/
 
 
 Gameplay:
@@ -35,27 +35,28 @@ Incendiary Regalia is a turn-based strategy game. On their turn players move the
 try to eliminate the enemy team. Different characters have different movement restrictions, attack stats and defense stats.
 
 Controls:
+
 Menu:
--Up/down  Select option
--Enter 	  Confirm choice
+- Up/down  Select option
+- Enter 	  Confirm choice
 
 Game:
--Arrow Keys   Move Cursor
--Enter 	      Select/Attack Character
--Space	      Deselect Character while in movement mode
--E	      Force end of turn
+- Arrow Keys   Move Cursor
+- Enter 	      Select/Attack Character
+- Space	      Deselect Character while in movement mode
+- E	      Force end of turn
 
 
 Known Bugs:
--Random Segmentation fault. Happens about 5% of the time, reason unknown.
--Valid movment board (blue squares) sometime drawn over characters, sometimes drawn under characters
+- Random Segmentation fault. Happens about 5% of the time, reason unknown.
+- Valid movment board (blue squares) sometime drawn over characters, sometimes drawn under characters
 
 Further Improvements:
--MOAR LEVELS!
--Terrain effects on attack
--Sound effects
--Movement animation
--Attacking animation
--Character select screen
--Scrolling maps
--Enemy AI
+- MOAR LEVELS!
+- Terrain effects on attack
+- Sound effects
+- Movement animation
+- Attacking animation
+- Character select screen
+- Scrolling maps
+- Enemy AI
