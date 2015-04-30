@@ -7,7 +7,7 @@
 #include "Menu.h"
 
 // non-default constructor
-Menu::Menu(string menu_path, string cursor_path, string instruction_path, SDL_Renderer* renderer){
+Menu::Menu(string menu_path, string cursor_path, string instruction_path, string controls_path, SDL_Renderer* renderer){
   phase=0;									// starts with the cursor at the first position
   // surfaces to hold images
   SDL_Surface* menu_surface = IMG_Load(menu_path.c_str());			
